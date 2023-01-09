@@ -1,0 +1,443 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://linjunya.github.io</id>
+    <title>林君思🦌</title>
+    <updated>2023-01-09T09:02:52.024Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://linjunya.github.io"/>
+    <link rel="self" href="https://linjunya.github.io/atom.xml"/>
+    <subtitle>今天学的要记得记录哟
+（所有记录仅作为学习记录，不作为商业用途）</subtitle>
+    <logo>https://linjunya.github.io/images/avatar.png</logo>
+    <icon>https://linjunya.github.io/favicon.ico</icon>
+    <rights>All rights reserved 2023, 林君思🦌</rights>
+    <entry>
+        <title type="html"><![CDATA[学习路线指导]]></title>
+        <id>https://linjunya.github.io/post/xue-xi-lu-xian-zhi-dao/</id>
+        <link href="https://linjunya.github.io/post/xue-xi-lu-xian-zhi-dao/">
+        </link>
+        <updated>2023-01-09T08:54:26.000Z</updated>
+        <summary type="html"><![CDATA[<ol>
+<li>
+<p>大学四级英语证书，必备的。六级，可以的话，就去努力，努力整一个。</p>
+</li>
+<li>
+<p>参加竞赛，计算机竞赛的证书含金量很高的；知名的一些算法竞赛倒是挺好的，比如可以打打acm省赛，组个队，混点银牌铜牌；蓝桥杯可以自由报名——刷点题目，省一国三都可以的；其他的，有的话就参加。</p>
+</li>
+<li>
+<p>PAT，自己百度去官网。PAT | 计算机程序设计能力考试www.patest.cn/计算机等级证书，就不建议多想了，这个事给非计算机专业的学生考的，要是考的话意义不大。</p>
+</li>
+<li>
+<p>教师资格证，转行倒是可以。软考，圈钱的，目前不建议考；以后要是呆在体制的话，再考也不迟，考个高级证书，每个月有几百块的补贴，倒是可以考虑。</p>
+</li>
+<li>
+<p>阿里的ACA、ACP、ACM认证考试，有点贵，不大建议~~Oracle认证考试，也有对应的OCA、OCP、OCM。（身边要是有资源的话，倒是可以的）阿里云认证 - 阿里云大学`软件专业，不同与常规的文理科，很多学习内容和能力很难用试卷来衡量的。 打好基础，加个开发工作室、实验室，做点项目，以后找份中等的工作妥妥的。 考研，深造。</p>
+</li>
+<li>
+<p>不太了解倒不如在github上捣鼓出一些东西数据库————oraclelinux—————RedhatWindows———ms网络————cisco，Juniper自己的实力确实很强家庭条件OK的话———ccie（改版了）+jncie+oracle（考个基础的就行）+ms，找工作基本上没问题了好像有点难度，难度比较BT，尤其是jncie，非常难，不过以后求职，明显的优势摆在那里，当然不是paper的认证具体的由您的家庭，您的能力，您的动力，决定您的未来同学————出了校门，没有什么是容易的，加油</p>
+</li>
+<li>
+<p>有含金量的证书： ACM国际大学生程序设计竞赛、GPLT团队程序设计天梯赛、蓝桥杯全国软件和信息技术专业人才大赛、中国大学生计算机设计大赛、百度之星竞赛、阿里天池竞赛、Hackathon、华为软件精英挑战赛、全国计算机仿真大奖赛….</p>
+</li>
+</ol>
+<p>找工作除了考取证书外，还需要：</p>
+<ol>
+<li>掌握至少一门编程语言，例如，C/C++、Java或者Python等；</li>
+<li>学习数据结构与算法，至少掌握常见的数据结构与算法；</li>
+<li>学习数据库知识，因为做项目几乎离不开数据库，数据库必须掌握；</li>
+<li>掌握一门技能，例如后端开发、网络编程、web开发、移动端开发、人工智能等；</li>
+<li>扎实的基础，操作系统，计算机网络，计算机组织原理、汇编等相关专业课程。</li>
+</ol>
+]]></summary>
+        <content type="html"><![CDATA[<ol>
+<li>
+<p>大学四级英语证书，必备的。六级，可以的话，就去努力，努力整一个。</p>
+</li>
+<li>
+<p>参加竞赛，计算机竞赛的证书含金量很高的；知名的一些算法竞赛倒是挺好的，比如可以打打acm省赛，组个队，混点银牌铜牌；蓝桥杯可以自由报名——刷点题目，省一国三都可以的；其他的，有的话就参加。</p>
+</li>
+<li>
+<p>PAT，自己百度去官网。PAT | 计算机程序设计能力考试www.patest.cn/计算机等级证书，就不建议多想了，这个事给非计算机专业的学生考的，要是考的话意义不大。</p>
+</li>
+<li>
+<p>教师资格证，转行倒是可以。软考，圈钱的，目前不建议考；以后要是呆在体制的话，再考也不迟，考个高级证书，每个月有几百块的补贴，倒是可以考虑。</p>
+</li>
+<li>
+<p>阿里的ACA、ACP、ACM认证考试，有点贵，不大建议~~Oracle认证考试，也有对应的OCA、OCP、OCM。（身边要是有资源的话，倒是可以的）阿里云认证 - 阿里云大学`软件专业，不同与常规的文理科，很多学习内容和能力很难用试卷来衡量的。 打好基础，加个开发工作室、实验室，做点项目，以后找份中等的工作妥妥的。 考研，深造。</p>
+</li>
+<li>
+<p>不太了解倒不如在github上捣鼓出一些东西数据库————oraclelinux—————RedhatWindows———ms网络————cisco，Juniper自己的实力确实很强家庭条件OK的话———ccie（改版了）+jncie+oracle（考个基础的就行）+ms，找工作基本上没问题了好像有点难度，难度比较BT，尤其是jncie，非常难，不过以后求职，明显的优势摆在那里，当然不是paper的认证具体的由您的家庭，您的能力，您的动力，决定您的未来同学————出了校门，没有什么是容易的，加油</p>
+</li>
+<li>
+<p>有含金量的证书： ACM国际大学生程序设计竞赛、GPLT团队程序设计天梯赛、蓝桥杯全国软件和信息技术专业人才大赛、中国大学生计算机设计大赛、百度之星竞赛、阿里天池竞赛、Hackathon、华为软件精英挑战赛、全国计算机仿真大奖赛….</p>
+</li>
+</ol>
+<p>找工作除了考取证书外，还需要：</p>
+<ol>
+<li>掌握至少一门编程语言，例如，C/C++、Java或者Python等；</li>
+<li>学习数据结构与算法，至少掌握常见的数据结构与算法；</li>
+<li>学习数据库知识，因为做项目几乎离不开数据库，数据库必须掌握；</li>
+<li>掌握一门技能，例如后端开发、网络编程、web开发、移动端开发、人工智能等；</li>
+<li>扎实的基础，操作系统，计算机网络，计算机组织原理、汇编等相关专业课程。</li>
+</ol>
+<!-- more -->
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[设备唯一标识方法（Unique Identifier）：如何在Windows系统上获取设备的唯一标识 ]]></title>
+        <id>https://linjunya.github.io/post/she-bei-wei-yi-biao-shi-fang-fa-unique-identifierru-he-zai-windows-xi-tong-shang-huo-qu-she-bei-de-wei-yi-biao-shi/</id>
+        <link href="https://linjunya.github.io/post/she-bei-wei-yi-biao-shi-fang-fa-unique-identifierru-he-zai-windows-xi-tong-shang-huo-qu-she-bei-de-wei-yi-biao-shi/">
+        </link>
+        <updated>2023-01-09T07:17:47.000Z</updated>
+        <content type="html"><![CDATA[<p><em>唯一的标识一个设备是一个基本功能，可以拥有很多应用场景，比如软件授权（如何保证你的软件在授权后才能在特定机器上使用）、软件License，设备标识，设备身份识别等。下面列举一下各种方法的优劣：</em></p>
+<h2 id="1网卡mac地址">（1）网卡MAC地址</h2>
+<pre><code>     MAC地址可能是最常用的标识方法，但是现在这种方法基本不可靠：一个电脑可能存在多个网卡，多个MAC地址，如典型的笔记本可能存在有线、无线、蓝牙等多个MAC地址，随着不同连接方式的改变，每次MAC地址也会改变。而且，当安装有虚拟机时，MAC地址会更多。MAC地址另外一个更加致命的弱点是，MAC地址很容易手动更改。因此，MAC地址基本不推荐用作设备唯一ID。
+</code></pre>
+<h2 id="2cpu-id">（2）CPU ID</h2>
+<pre><code>     在Windows系统中通过命令行运行“wmic cpu get processorid”就可以查看CPU ID。
+
+     目前CPU ID也无法唯一标识设备，Intel现在可能同一批次的CPU ID都一样，不再提供唯一的ID。而且经过实际测试，新购买的同一批次PC的CPU ID很可能一样。这样作为设备的唯一标识就会存在问题。
+</code></pre>
+<h2 id="3硬盘序列号">（3）硬盘序列号</h2>
+<pre><code>     在Windows系统中通过命令行运行“wmic diskdrive get serialnumber”可以查看。
+
+     硬盘序列号作为设备唯一ID存在的问题是，很多机器可能存在多块硬盘，特别是服务器，而且机器更换硬盘是很可能发生的事情，更换硬盘后设备ID也必须随之改变，不然也会影响授权等应用。因此，很多授权软件没有考虑使用硬盘序列号。而且，不一定所有的电脑都能获取到硬盘序列号。
+</code></pre>
+<h2 id="4自定义算法生成唯一id">（4）自定义算法生成唯一ID</h2>
+<pre><code>     可以使用自制的一个特定算法（如GUID、或者一定位数的随机数）生成唯一的ID，然后写入到注册表或者设备上，作为其唯一ID。
+
+     这种方法不依赖任何硬件特征，唯一性也可以自己完全控制，不过纯软件的实现缺点是这个ID很容易伪造，也很容易擦除；而且很可能还需要在线验证，后台存储所有ID的服务器必须保持在线。
+</code></pre>
+<h2 id="5windows的产品idproductid">（5）Windows的产品ID（ProductId）</h2>
+<pre><code>     在“控制面板\系统和安全\系统”的最下面就可以看到激活的Windows产品ID信息，另外通过注册表“HKEY_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion”也可以看到看到“ProductId”字段。
+
+     不过这个产品ID并不唯一，不同系统或者机器重复的概率也比较大。虚拟机中克隆的系统，使用同一个镜像安装激活的系统，其产品ID就可能一模一样。经过实测，笔者在两台Thinkpad笔记本上发现其ProductId完全一样。
+</code></pre>
+<h2 id="6machineguid">（6）MachineGUID</h2>
+<pre><code>     Windows安装时会唯一生成一个GUID，可以在注册表“HKEY_MACHINE\SOFTWARE\Microsoft\Cryptography”中查看其“MachineGuid”字段。
+
+     这个ID作为Windows系统设备的唯一标识不错，不过值得注意的一点是，与硬件ID不一样，这个ID在重装Windows系统后应该不一样了。这样授权软件在重装系统后，可能就需要用户重新购买授权。
+</code></pre>
+<h2 id="7主板smbios-uuid">（7）主板smBIOS UUID</h2>
+<pre><code>     在Windows系统中通过命令行运行“wmic csproduct get UUID”可以查看。
+
+     主板UUID是很多授权方法和微软官方都比较推崇的方法，即便重装系统UUID应该也不会变（笔者没有实测重装，不过在一台机器上安装双系统，获取的主板UUID是一样的，双系统一个windows一个Linux，Linux下用“dmidecode -s system-uuid”命令可以获取UUID）。
+
+     但是这个方法也有缺陷，因为不是所有的厂商都提供一个UUID，当这种情况发生时，wmic会返回“FFFFFFFF-FFFF-FFFF-FFFF-FFFFFFFFFFFF”，即一个无效的UUID。
+</code></pre>
+<h2 id="8外置密码设备提供唯一id">（8）外置密码设备提供唯一ID</h2>
+<pre><code>     这种方法很多，比如U盾里面可以提供唯一的密钥标识，可信计算密码芯片里面的背书密钥EK等都是唯一固定在安全硬件里面的，而且通过良好的密码算法生成，唯一性和差异性都可以保证，安全性也更高。
+
+     这种方法需要在计算设备连接外置密码芯片，增加经济负担和开发成本。而且，即便这种方法也存在欺骗攻击和代理攻击等破解方法。
+
+
+
+     当然还有很多其它方法，如可以获取声卡、CPU模式和频率、IDE控制器、内存等其他信息。甚至，可以收集设备的软硬件配置，通过统计方法和机器学习方法进行分类识别设备。学术上，还有各种密码算法，硬件不可克隆函数PUF等唯一标识的方法可以使用。
+
+     从软件授权这个简单的应用来看，购买外置密码设备硬件太过昂贵，可以采用简单的组合方法，推荐使用主板UUID作为主标识，当UUID返回无效的值时，可以进一步采用CPU ID、BIOS序列号、MachineGUID等方式作为次标识，这基本可以解决问题。
+
+     其实设备唯一标识其实也是指纹的一种，想要使用标识或者指纹时，首先必须明确自己的真实意图，是要标识一个用户（这样可以使用身份证、指纹、手机验证等方式），还是要标识一个设备（本文列举的各种设备ID）。根据自己的真实意图才能进一步思考具体使用的方式，不忘初衷。
+
+   不过，不管使用怎样的硬件信息或者牛气的算法来进行用户或者设备的标识，还是一句老话“道高一尺，魔高一丈”，都是可以被攻破的，即便你的标识伪造不了、克隆不了，攻击者也可以使用其它攻击方式，如逆向你的验证check代码，然后将其修改掉，使其check失灵。因此，无论设备标识或者用户标识，很多情况下可能只防君子、不防小人，甚至悲观者认为这些手段都是防止合法用户的，影响用户使用的方便性，大可以取消掉。笔者认为，没有必要这么悲观，知识产权等信息是尊敬人的价值和劳动的表现，即便不能完全防止小人，我们也要通过这些方法将一般的小人排除在技术门槛之外，并尽量增加高级小人破解时的代价。
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[c语言查漏补缺]]></title>
+        <id>https://linjunya.github.io/post/2f-gen-2f-de-qu-bie/</id>
+        <link href="https://linjunya.github.io/post/2f-gen-2f-de-qu-bie/">
+        </link>
+        <updated>2023-01-07T09:24:41.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="2f跟2f的区别">%2f跟%.2f的区别</h1>
+<p><strong>两者的区分如下：</strong></p>
+<ol>
+<li>
+<p>%2f是指数据总共占两列，而%.2f是小数位数占两列；</p>
+</li>
+<li>
+<p>%.2f是保留小数点后两位精度。%2f表示保留两位精度（包括小数点，前后）</p>
+</li>
+</ol>
+<figure data-type="image" tabindex="1"><img src="https://iknow-pic.cdn.bcebos.com/9358d109b3de9c82941d9a1d6081800a19d84323?x-bce-process=image%2Fresize%2Cm_lfit%2Cw_600%2Ch_800%2Climit_1%2Fquality%2Cq_85%2Fformat%2Cf_auto" alt="" loading="lazy"></figure>
+<h1 id="switch语句的几个重点">Switch语句的几个重点</h1>
+<p><em>在有多个选择分支条件的情况下，用if 语句难免会繁琐且效率不高，此时便是switch语言的用武之地。</em></p>
+<h2 id="关于-defaut的位置">关于 defaut的位置。</h2>
+<pre><code>这个问题相信有一大部分人没有考虑过，因为常见的程序中default 都在最后，这要造成了一些人认为default 在最后。
+
+MSDN 的说法：
+
+There can be at most one default statement. The default statement need not come at the end; it can appear anywhere in the body of the switch statement. In fact it is often more efficient if it appears at the beginning of the switch statement. A case or default label can only appear inside a switch statement. 
+</code></pre>
+<p><strong>最多有一个default 语句在一个switch 中，default 声明不一定在末尾，它可以出现在switch的任何地方那个，实际上如果default出现在switch 的开头会更有效率。</strong></p>
+<h2 id="关于switch参数值的类型">关于switch（）参数值的类型。</h2>
+<pre><code> **参数值类型必须是这几种类型之一：int,long,short ,byte，char.**
+switch为什么只能用int,short,byte,char，long,因为switch 只能使用 int 类型或者是可以转换为 int类型的参数(char,char 和 int 通过ascii转换)。
+
+ **C语言没有规定一定是int 类型，但是要求是完整的，因此只能是上面几种了。**
+</code></pre>
+<h2 id="case空格">case空格</h2>
+<p>case1和case 1完全不一样<br>
+一个是case1（case1就是case1——一个整体），一个是case 1（1为表达式）</p>
+<h1 id="for循环变体">for循环变体</h1>
+<h2 id="省略表达式1">省略表达式1</h2>
+<ol>
+<li>for语句的表达式1是对循环变量设置初值。</li>
+<li>如忽略了表达式1，应在for语句之前给循环变量赋值。</li>
+<li>注意：忽略了表达式1，但是其后的&quot;;&quot;不能去。</li>
+</ol>
+<h2 id="省略表达式2">省略表达式2</h2>
+<p>表达式2是对循环设定循环条件，不设置即代表表达式2始终为真，即是循环无终止的运行下去。相当于<br>
+iCount=1;<br>
+while(1)<br>
+{<br>
+sum=sum+iCount;<br>
+iCount++;<br>
+}</p>
+<h2 id="省略表达式3">省略表达式3</h2>
+<pre><code>sum=sum+iCount;
+iCount++;
+}
+</code></pre>
+<h2 id="三个表达式都忽略">三个表达式都忽略</h2>
+<p>相当于while语句永远为真<br>
+while（1）<br>
+{<br>
+语句<br>
+}</p>
+<h2 id="表达式1可与循环变量赋值无关">表达式1可与循环变量赋值无关</h2>
+<p>表达式可以设置循环变量初值，也可以是与循环无关的其他表达式。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[vscode创建java项目注意事项]]></title>
+        <id>https://linjunya.github.io/post/vscode-chuang-jian-java-xiang-mu/</id>
+        <link href="https://linjunya.github.io/post/vscode-chuang-jian-java-xiang-mu/">
+        </link>
+        <updated>2023-01-06T15:31:17.000Z</updated>
+        <content type="html"><![CDATA[<ol>
+<li>Shift+Ctrl+P 搜索create java project</li>
+<li>在Source Path中添加项目路径</li>
+<li>如果用coderunner运行代码则一定要配置coderunner的output</li>
+<li>一般在vscode直接使用其java插件的run java执行代码<br>
+<em>（好处是class文件会直接编译在bin不会乱，否则就可能出现class文件直接编译在src文件夹里）</em></li>
+</ol>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Java新手注意]]></title>
+        <id>https://linjunya.github.io/post/java-xin-shou-zhu-yi/</id>
+        <link href="https://linjunya.github.io/post/java-xin-shou-zhu-yi/">
+        </link>
+        <updated>2023-01-06T13:46:36.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="java的类名命名规则">Java的类名命名规则</h1>
+<p>Java 中定义类名的规则很宽松。名字必须以字母开头，后面可以跟字母和数字的任意组合。 长度基本上没有限制。但是不能使用 Java 保留字（例如，public 或 class）作为类名。</p>
+<h2 id="驼峰命名法">驼峰命名法</h2>
+<p>如果名字由多个单词组成，每个单词的第一个字母都应该大写（这种在一个单词中间使用大写字母的方式称为大驼峰法 -- 即帕斯卡命名法。eg.World、Hello.</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[基础语法（python）]]></title>
+        <id>https://linjunya.github.io/post/ji-chu-yu-fa-python/</id>
+        <link href="https://linjunya.github.io/post/ji-chu-yu-fa-python/">
+        </link>
+        <updated>2023-01-05T14:26:20.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="标识符">标识符</h1>
+<p>所谓的标识符就是对变量、常量、函数、类等对象起的名字。</p>
+<h2 id="常量">常量</h2>
+<p>是指在程序运行过程中值不能发生改变的量</p>
+<h2 id="变量">变量</h2>
+<p>是指在程序运行过程中值可以发生改变的量</p>
+<p>与数学中的变量一样需要为Python中的每一个变量指定一个名字，eg.x、y、test等</p>
+<p>python是一种弱类型的语言，变量的类型由其值的类型决定</p>
+<p>Python变量在使用前不需要先定义，为一个变量赋值后，则该变量会自动创建。</p>
+<h3 id="变量命名规则">变量命名规则</h3>
+<p><strong>变量名可以包括字母、数字和下划线，但是数字不能作为开头字符</strong><br>
+<em>eg.test1可以，1test不可以</em><br>
+<strong>系统关键字不能做变量名使用</strong><br>
+<em>eg.and、break等都是系统关键字，不能作为变量名使用</em><br>
+<strong>Python的变量名区分大小写</strong><br>
+<em>eg.test和Test不一样</em></p>
+<p>提示Python3.x默认使用UTF-8编码，变量名中允许包含中文<br>
+如：测试是个有效的变量名。</p>
+<h2 id="数据类型概述">数据类型概述</h2>
+<h3 id="常用数据类型">常用数据类型</h3>
+<ol>
+<li>Number（数字）</li>
+<li>String（字符串）</li>
+<li>List（列表）</li>
+<li>Tuple（元组）</li>
+<li>Set（集合）</li>
+<li>Dictionary（字典）</li>
+</ol>
+<h2 id="三种不同的数字类型">三种不同的数字类型</h2>
+<ul>
+<li>int（整型）</li>
+<li>float（浮点型）</li>
+<li>complex（复数类型）</li>
+</ul>
+<h3 id="整型">整型</h3>
+<p>整型数字包括正整数、0和负整数，不带小数点，无大小限制。<br>
+<strong>整数可以使用不同的进制表示</strong></p>
+<ul>
+<li>不加任何前缀为十进制整数</li>
+<li>加前缀0o为八进制</li>
+<li>加前缀0x为十六进制</li>
+</ul>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[python启蒙]]></title>
+        <id>https://linjunya.github.io/post/python-qi-meng/</id>
+        <link href="https://linjunya.github.io/post/python-qi-meng/">
+        </link>
+        <updated>2023-01-05T11:21:27.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="python3代码样式指导手册pep8">python3代码样式指导手册（PEP8）</h1>
+<p><a href="https://pep8.org/">地址</a><br>
+<em>原网址是外网可能访问有点慢，也可能需要科学上网</em></p>
+<h1 id="新手注意整理">新手注意整理</h1>
+<p>（参考教程b站小甲鱼）</p>
+<ol>
+<li>检查标点符号是否都为英文</li>
+<li>缩进是否正确（不同于C语言只是为了格式美观）</li>
+<li>函数拼写是否正确</li>
+</ol>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[关于脚本的认识]]></title>
+        <id>https://linjunya.github.io/post/guan-yu-jiao-ben-de-ren-shi/</id>
+        <link href="https://linjunya.github.io/post/guan-yu-jiao-ben-de-ren-shi/">
+        </link>
+        <updated>2023-01-04T20:31:00.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="前言">前言</h1>
+<p>之前一直都听到什么什么脚本，用python编写一个脚本，还有受众繁多的油猴脚本。那么什么是脚本呢？</p>
+<h1 id="什么是脚本">什么是脚本</h1>
+<p>所谓脚本（Script），就是使用一种特定的描述性语言，依据一定的格式编写的可执行文件。</p>
+<h1 id="怎样去使用脚本">怎样去使用脚本</h1>
+<p>认识了什么是脚本那么怎样去使用脚本呢？</p>
+<p>推荐谷歌浏览器、Microsoft Edge。利用 油猴（脚本管理器）插件，在 <a href="https://greasyfork.org/zh-CN"> https://greasyfork.org/zh-CN </a>中下载脚本即可使用，方便快捷，而且可能有出人意料的效果！！！</p>
+<h2 id="插件介绍">插件介绍</h2>
+<p>而在众多的扩展中，就不得不提到一个浏览器插件——<strong>Tampermonkey</strong>。中文俗称<strong>油猴</strong>。</p>
+<p>相信很多人也听说过，大家可以把他理解为一个<strong>用户脚本管理器</strong>。它本身是无法为我们发挥什么作用的，它主要依靠<strong>各大社区编写的扩展脚本（JavaScript代码）运行在浏览器上</strong>，来<em>改变被访问网页的功能，提升我们的网页浏览体验 。</em></p>
+<h2 id="插件安装">插件安装</h2>
+<p>下面我们来进行安装</p>
+<p><em>演示浏览器：Microsoft Edge（推荐）</em></p>
+<p><em>方法一</em></p>
+<ol>
+<li>直接百度手动搜索进入Tampermonkey官网。</li>
+</ol>
+<p>点击下载，页面跳转至Edge外接扩展商店的安装页面，我们直接获取安装就好了，Edge以外的其他浏览器点击下载则会跳转至chrome 网上应用店，正常情况下咱们是打不开的，需要科学上网才可以打开。</p>
+<ol start="2">
+<li>或者，很多浏览器里也贴心的自带有相应的扩展市场，我们也可以直接在其扩展应用市场之类的地方直接安装。</li>
+</ol>
+<p><em>方法二</em></p>
+<p>考虑到文明上网的普及问题，非Edge以外的其他浏览器，我们也可以在很多渠道获取Tampermonkey的crx文件，将下载下来的压缩包解压出来，其中类型为CRX文件就是接下来需要用到的安装文件。</p>
+<p>打开浏览器设置，打开扩展程序页面，或者直接搜索Chrome://extensions/进入。然后保持页面开发者模式的开启。找到被解压后的tampermonkey.crx文件，将其拖动到扩展程序页面，释放并同意完成安装。</p>
+<p>成功安装后会弹出这个窗口，页面右上角也会出现油猴扩展的logo。</p>
+<p>不同浏览器所支持的扩展及安装过程可能略有出入，这里呢就主要以我的情况来介绍，不过理论上支持chrome内核的其他浏览器都是可以安装的。</p>
+<h2 id="脚本获取">脚本获取</h2>
+<p>之前我们说过，油猴插件是以运行用户脚本来实现功能的，这里我们点击窗口右上角的油猴插件logo 。</p>
+<p>添加新脚本。这个主要是给有一定基础能力的人使用，当然也可以把我们信任的第三方脚本复制进来，然后进入文件再点击保存来使用，这里我们不作深究。</p>
+<p>获取新脚本。进入由油猴插件为我们提供的脚本市场，这里面大都是其他用户为了满足自己的需要而写并分享出来的，我们就可以使用这些现成的脚本。</p>
+<p>推荐<strong>GreasyFork</strong>，页面布局简单明了，容易上手。</p>
+<h2 id="脚本安装与使用">脚本安装与使用</h2>
+<p>这里我们挑选或搜索一个脚本：AC-baidu-重定向优化百度搜狗谷歌必应搜索_favicon_双列<br>
+<img src="https://linjunya.github.io/post-images/1672865811015.webp" alt="" loading="lazy"></p>
+<p>进入页面，我们会看到该脚本的相关基本信息，大致了解了该脚本的具体功能与用户们的使用评价，酌情选择安装该脚本。<br>
+<img src="https://linjunya.github.io/post-images/1672865859373.webp" alt="" loading="lazy"></p>
+<p>安装完毕后，再次点击右上角油猴logo，进入管理面板，即可查看我们安装的脚本，在这里我们也可以对脚本进行禁用、导出、删除等其他管理操作。</p>
+<p><img src="https://linjunya.github.io/post-images/1672865943264.jpg" alt="" loading="lazy"><br>
+根据前面脚本信息页面功能的具体描述，我们来验证脚本的作用，我们这次回到主页， 然后“任意”搜索一部动漫。<br>
+<strong>脚本使用前</strong><br>
+<img src="https://linjunya.github.io/post-images/1672866035902.webp" alt="" loading="lazy"></p>
+<p><strong>脚本使用后</strong><br>
+<img src="https://linjunya.github.io/post-images/1672866058716.webp" alt="" loading="lazy"></p>
+<p>经过页面右上角简单的自定义设置后，页面内无用的垃圾信息明显减少了，内容排列更工整，反人类排版布局消失了，至少我不用一直歪着头看屏幕。</p>
+<p>每一个用户脚本一般都是在其特定的域名内发挥作用的。至于其他好用的脚本，这里就不给大家一一展示了，码字好累。</p>
+<h2 id="脚本的保存">脚本的保存</h2>
+<p>如果安装了很多的脚本，我们如何更好的保存下来呢？比如说我们需要更换电脑，或者需要重装浏览器，重新再一个一个去安装？时间是宝贵的！</p>
+<p>这里油猴为我们提供了几种方法。我们再次回到管理面板，选择实用工具。<br>
+<img src="https://linjunya.github.io/post-images/1672866297079.webp" alt="" loading="lazy"></p>
+<ol>
+<li>云：选择导出备份到云盘（国内支持OneDrive）<br>
+<img src="https://linjunya.github.io/post-images/1672866341125.webp" alt="" loading="lazy"></li>
+</ol>
+<p>之后可在显示备份中备份记录里查看并选择导入进行安装<br>
+<img src="https://linjunya.github.io/post-images/1672866366571.jpg" alt="" loading="lazy"></p>
+<ol start="2">
+<li>压缩包和文件：任意选择一个导出，分别会被下载保存为一个.zip压缩格式文件和一个.txt文本格式文件，我们用来备份保存。<br>
+<img src="https://linjunya.github.io/post-images/1672866383528.jpg" alt="" loading="lazy"></li>
+</ol>
+<p>以后安装就只需在对应选项中点击选择文件，找到被转移保存的相关对应文件选择并打开安装即可<br>
+<img src="https://linjunya.github.io/post-images/1672866408044.png" alt="" loading="lazy"></p>
+<h2 id="使用须知">使用须知</h2>
+<p>那么，安装的这些脚本靠谱吗？</p>
+<p>恶意脚本是可以侵犯我们的隐私，并能够代表我们来进行其他操作。Tampermonkey本身是有着严格的权限设置的，只要你是在其官方渠道下载的脚本，我们应当在尽可能安全的渠道安装脚本。</p>
+<p>可以检查脚本源码，查看代码中是否包含敏感操作，你要是能看懂的话。或者去反馈评论里，查看其他用户评论如何，脚本是否违规被检测，是否已失效，有利也有弊。</p>
+<p><em>提示：无论我们是否安装该插件，也无论在任何情况下，我们在日常生活中也要时刻注意个人信息的保护。</em></p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[连接GitHub的小技巧]]></title>
+        <id>https://linjunya.github.io/post/lian-jie-github-de-xiao-ji-qiao/</id>
+        <link href="https://linjunya.github.io/post/lian-jie-github-de-xiao-ji-qiao/">
+        </link>
+        <updated>2023-01-04T11:09:20.000Z</updated>
+        <content type="html"><![CDATA[<ol>
+<li>修改host代理</li>
+<li>使用VPN工具</li>
+</ol>
+<h1 id="修改host代理">修改host代理</h1>
+<p><a href="https://github.com/521xueweihan/GitHub520">链接</a></p>
+<h1 id="启用vpn工具">启用vpn工具</h1>
+<ol>
+<li>Steam++（一个免费工具专用steam但顺带也可以加速github）</li>
+<li>猎豹加速器（每天签到或者注册账户可以免费用一个小时普通通道也远胜过steam++速度）</li>
+<li>白鲸加速器（注册一次30天免费使用，可以用校园卡类不长期使用的手机号申请邮箱等白嫖）</li>
+</ol>
+<h2 id="临时邮箱注册白嫖法">临时邮箱注册白嫖法</h2>
+<ol>
+<li><a href="https://tempmail.cn">https://tempmail.cn</a>.</li>
+<li><a href="https://temp-mail.org">https://temp-mail.org</a>.</li>
+</ol>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[观《万里归途》有感]]></title>
+        <id>https://linjunya.github.io/post/guan-lesslesswan-li-gui-tu-greatergreater-you-gan/</id>
+        <link href="https://linjunya.github.io/post/guan-lesslesswan-li-gui-tu-greatergreater-you-gan/">
+        </link>
+        <updated>2023-01-03T15:57:27.000Z</updated>
+        <summary type="html"><![CDATA[<h1 id="写作构思">写作构思</h1>
+<ol>
+<li>人物解析</li>
+<li>事件解析</li>
+<li>精神解析</li>
+<li>事件完成的总览</li>
+<li>故事背景</li>
+</ol>
+<h2 id="人物盘点">人物盘点</h2>
+<ol>
+<li>外交官老宗，老章（职场老人），成朗（少年人）</li>
+<li>边境官哈桑（守住底线，视国家为信仰）</li>
+</ol>
+<p>具体什么等我闲暇时候再看的时候写吧，现在是北京时间凌晨34分30秒，我就不一一解析了。关键触动我的还是中国人的精神气，不管是少年人，还是职场老人，勇者一往无前，虽惧，但傲骨不折。</p>
+]]></summary>
+        <content type="html"><![CDATA[<h1 id="写作构思">写作构思</h1>
+<ol>
+<li>人物解析</li>
+<li>事件解析</li>
+<li>精神解析</li>
+<li>事件完成的总览</li>
+<li>故事背景</li>
+</ol>
+<h2 id="人物盘点">人物盘点</h2>
+<ol>
+<li>外交官老宗，老章（职场老人），成朗（少年人）</li>
+<li>边境官哈桑（守住底线，视国家为信仰）</li>
+</ol>
+<p>具体什么等我闲暇时候再看的时候写吧，现在是北京时间凌晨34分30秒，我就不一一解析了。关键触动我的还是中国人的精神气，不管是少年人，还是职场老人，勇者一往无前，虽惧，但傲骨不折。</p>
+<!-- more -->
+]]></content>
+    </entry>
+</feed>
