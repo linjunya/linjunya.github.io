@@ -1,0 +1,695 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://linjunya.github.io/</id>
+    <title>林君需要温习</title>
+    <updated>2024-06-01T06:40:30.225Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://linjunya.github.io/"/>
+    <link rel="self" href="https://linjunya.github.io/atom.xml"/>
+    <subtitle>温故而知新</subtitle>
+    <logo>https://linjunya.github.io/images/avatar.png</logo>
+    <icon>https://linjunya.github.io/favicon.ico</icon>
+    <rights>All rights reserved 2024, 林君需要温习</rights>
+    <entry>
+        <title type="html"><![CDATA[0601 面试题]]></title>
+        <id>https://linjunya.github.io/post/0601-mian-shi-ti/</id>
+        <link href="https://linjunya.github.io/post/0601-mian-shi-ti/">
+        </link>
+        <updated>2024-06-01T06:25:55.000Z</updated>
+        <content type="html"><![CDATA[<ol>
+<li>常用的聚合函数有哪些</li>
+<li>字符串函数 数字函数 逻辑函数 日期函数</li>
+<li>分组和排序的关键字</li>
+<li>MVCC 和LBCC的区别</li>
+<li>MVCC的实现原理</li>
+<li>乐观锁和悲观锁的区别</li>
+<li>锁的粒度</li>
+<li>共享锁和排他锁的区别</li>
+<li>死锁的四个必要条件</li>
+<li>如何避免和解决死锁</li>
+</ol>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[DB-5 afternoon]]></title>
+        <id>https://linjunya.github.io/post/db-5-afternoon/</id>
+        <link href="https://linjunya.github.io/post/db-5-afternoon/">
+        </link>
+        <updated>2024-06-01T05:32:38.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="afternoon">afternoon</h1>
+<ol>
+<li>视图</li>
+<li>存储过程</li>
+<li>函数</li>
+<li>游标</li>
+<li>触发器</li>
+</ol>
+<p><strong>Oracle</strong></p>
+<ol>
+<li>数据类型</li>
+<li>函数</li>
+<li>序列</li>
+</ol>
+<p>笔试题</p>
+<h2 id="sql执行流程">SQL执行流程</h2>
+<p>redo log</p>
+<p>DML语句过程</p>
+<ol>
+<li>先写日志，内存写 磁盘写 log buffer</li>
+<li>再写缓存</li>
+<li>刷新缓存</li>
+</ol>
+<p>双写缓冲</p>
+<p>Doublewrite Buffer file</p>
+<p>Undo log先保存状态，然后再redo log收尾 事务恢复，bin log可以恢复数据</p>
+<h2 id="视图">视图</h2>
+<p>什么是视图？<br>
+select 语句<br>
+select * from (select id,name,addr from p where name=&quot;xxx&quot;) t where t.id =xxx;<br>
+临时的结果</p>
+<ol>
+<li>
+<p>当我们需要子啊多条sql语句中重复使用同一个结果集时，使用视图</p>
+</li>
+<li>
+<p>不想暴露表结构的时候，使用视图<br>
+视图是一个虚拟表 将查询结果集，做一个命名</p>
+<p>--作为视图保存下来<br>
+--单表视图<br>
+create view dept_id AS<br>
+select * from emp where dept_id=1;<br>
+--多表结果，也可以作为视图<br>
+create view emp_d as<br>
+selecy e.id,e.job from emp e join dept d<br>
+on e.dept</p>
+</li>
+</ol>
+<p>视图不是表，也不存在于磁盘，也不存在内存里，只是作为一个代名词来代替前面的结果集。<br>
+视图单表可以做DML操作，多表不能做DML操作。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[DB-5 0601]]></title>
+        <id>https://linjunya.github.io/post/db-5-0601/</id>
+        <link href="https://linjunya.github.io/post/db-5-0601/">
+        </link>
+        <updated>2024-06-01T00:55:18.000Z</updated>
+        <content type="html"><![CDATA[<p>#db-5</p>
+<h2 id="无关">无关</h2>
+<ol>
+<li>多写代码多报错</li>
+<li>多背面试题，理解不了算球</li>
+<li>sql会写，面试题会背，也要好好学java</li>
+<li>java需要讲逻辑</li>
+</ol>
+<h2 id="大概">大概</h2>
+<ol>
+<li>事务<br>
+概念，四大特性，脏读、不可重复读、幻读，事务四种隔离级别</li>
+</ol>
+<h2 id="事务的四种隔离级别">事务的四种隔离级别</h2>
+<ol>
+<li>
+<p>可重复读 （解决幻读）</p>
+<p>usb db01;<br>
+create table users(<br>
+id int primary key,<br>
+username varchar(20),<br>
+money double(4,2)<br>
+)<br>
+insert into users value(1,&quot;小明&quot;,40);<br>
+insert into users value(1,&quot;小王&quot;,20);<br>
+-- 模拟转账<br>
+-- 事务分为两种 显式事务 和隐式事务<br>
+-- mysql的事务提交方式 是自动提交 而Oracle的提交方式是手动提交<br>
+-- 事务的提交方式 手动提交 和 自动提交<br>
+start transaction; -- 开启事务 标准版<br>
+begin; -- 不标准版 只能mysql用<br>
+select * from users;<br>
+-- 回滚操作 回到事务开始之前的操作;<br>
+savepoint; -- 断点 事务中的存档<br>
+rollback;<br>
+update money=10 where username=&quot;小明&quot;;<br>
+update money=50 where username=&quot;小王&quot;;</p>
+<p>-- 事务的提交<br>
+commit;</p>
+</li>
+</ol>
+<h2 id="事务相关的概念">事务相关的概念</h2>
+<h3 id="事务的并发问题">事务的并发问题</h3>
+<ol>
+<li>写冲突</li>
+<li>除了设置隔离级别 想其他办法解决并发问题</li>
+</ol>
+<p>可重复读的实现原理</p>
+<ul>
+<li>MVCC 思想 版本号的机制 只能读取当前版本号之前的数据 事务开始的时候</li>
+<li>LBCC（淘汰的）一个事务在操作时候，另一个事务不能读，不能写。</li>
+</ul>
+<h3 id="dml语句的执行流程">DML语句的执行流程</h3>
+<ol>
+<li>Buffer Pool内存缓存区</li>
+</ol>
+<h3 id="数据库锁">数据库锁</h3>
+<ol>
+<li>行锁</li>
+<li>页锁</li>
+<li>表锁</li>
+<li>读锁 事务1 对数据1加锁 共享锁 表锁<br>
+事务2 对数据1 加锁 互斥锁 行锁</li>
+<li>写锁</li>
+<li><strong>乐观锁</strong>MVCC</li>
+<li><strong>悲观锁</strong>互斥锁</li>
+<li>共享锁 读共享，写互斥</li>
+<li>recode字段锁 记录锁，字段锁</li>
+<li>gap间隙锁</li>
+<li>next-key临键锁</li>
+<li>插入意向锁 （不算意向锁 特殊间隙锁）</li>
+<li><strong>死锁</strong>（必须知道）<br>
+问题</li>
+<li>死锁的该奶奶</li>
+<li>死锁的四个必要条件</li>
+<li>避免死锁</li>
+<li>解决死锁</li>
+</ol>
+<p>意向共享锁 我将要对他持有一个共享操作</p>
+<h4 id="为什么需要锁">为什么需要锁</h4>
+<p>保证数据安全 并发修改的安全</p>
+<h5 id="锁的种类">锁的种类</h5>
+<p>粒度 范围 大小</p>
+<ol>
+<li>行锁 加锁的对象是一行数据 加锁慢</li>
+<li>页锁  读取数据的一夜数据 page</li>
+<li>表锁 对一张表 加锁 加锁快</li>
+</ol>
+<h3 id="死锁">死锁</h3>
+<p>冲突 阻塞</p>
+<ol>
+<li>事务A的加锁顺序 先操作1 再操作数据2</li>
+<li>事务B的加锁顺序 是先操作数据2 再操作数据1</li>
+<li>都在等待对方释放锁</li>
+</ol>
+<p>没有主键进行加锁，就加表级锁</p>
+<p>对聚簇索引或者唯一索引进行加锁时，才能加表级锁。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[db-4 05-25 afternoon]]></title>
+        <id>https://linjunya.github.io/post/db-4-05-25-afternoon/</id>
+        <link href="https://linjunya.github.io/post/db-4-05-25-afternoon/">
+        </link>
+        <updated>2024-05-25T05:32:26.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="afternoon">afternoon</h1>
+<h2 id="索引的种类">索引的种类</h2>
+<ol>
+<li>普通索引</li>
+</ol>
+<p>所有构建在非主键字段列的索引都是普通索引<br>
+2. 唯一索引</p>
+<p>唯一索引具有唯一性，索引必须是唯一的且不能为null<br>
+3. 全文索引</p>
+<p>优化模糊查询的<br>
+大文本的模糊匹配检索</p>
+<p><strong>主键跟索引的关系</strong></p>
+<ol>
+<li>因为索引定义在主键列 叫做聚簇索引</li>
+<li>我们一般声明了主键就会自动构建一个聚簇索引</li>
+<li>如果没有声明主键 会选择一个唯一索引作为聚簇索引</li>
+<li>如果也没有符合要求的聚簇索引 那么会创建个6字节的row_id作为聚簇索引</li>
+</ol>
+<p>只有聚簇索引的value才是数据的地址<br>
+所有定义在非主键的索引 都是非聚簇索引 也叫二级索引 也是辅助索引<br>
+1， 非聚簇索引的value是主键值</p>
+<p>有一种现象 就是我们遍历一颗非聚簇索引 无法完全获得所有的查询列</p>
+<p>1， index（name)select id，name,age from student where id =1002;<br>
+2. 此时 我们一颗B+Tree的遍历只能获得name id 无法获得age所以我们需要age还要遍历一次主键id的b+tree 那么我们遍历了两次b+tree<br>
+3. 这种现象就叫做回表查询</p>
+<p>还有第二种现象 就是我们遍历一次B+tree就可以获得所有的查询列 不需要再回表了</p>
+<ol>
+<li>index（name）select id,name from student where name=&quot;小明&quot;；</li>
+<li>我们是可以避免回表查询</li>
+<li>这种现象就是覆盖索引</li>
+</ol>
+<h2 id="索引应该如何使用">索引应该如何使用</h2>
+<p><strong>建立索引</strong></p>
+<ol>
+<li>
+<p>首先，索引并不是越多越好</p>
+</li>
+<li>
+<p>在合适的字段上建立索引</p>
+<ul>
+<li>频繁查询的字段</li>
+<li>where后面的条件字段</li>
+<li>外键字段</li>
+<li>有序的字段列上建立索引</li>
+<li>在离散度比较高的字段列建立索引（反而言之，就是重复度比较低的字段列）</li>
+</ul>
+</li>
+<li>
+<p>建立联合索引代替单列索引（遵循索引的最左匹配）</p>
+</li>
+</ol>
+<h2 id="索引怎么维护-何时失效">索引怎么维护 何时失效</h2>
+<ol>
+<li>select * 会失效 遇见 星号之后就会直接全表扫描</li>
+<li>隐式数据类型转换 字符串不加引号</li>
+<li>对索引列使用函数 或者算数运算</li>
+<li>模糊查询的前模糊查询会失效，后模糊不会失效</li>
+<li>负向查询 not in not like not exists</li>
+</ol>
+<p>数据库优化</p>
+<ol>
+<li>搭建集群（一主多从） 配置读写分离 主服务器用来写 从服务器用来读</li>
+<li>提供缓存中间件 避免或者减少磁盘的IO</li>
+<li>花钱升级配置</li>
+<li>MySQL--》Oracle</li>
+</ol>
+<!-- java多线程注意 -->
+<!-- 数据库的锁注意一下 -->
+<h2 id="什么是事务">什么是事务</h2>
+<ul>
+<li>是数据库操作的最小逻辑单元</li>
+<li>一条或者一组sql组成的一个不可分割的整体</li>
+</ul>
+<h2 id="为什么需要事务">为什么需要事务</h2>
+<ul>
+<li>数据安全--》数据的一致性</li>
+<li>数据库事务特点</li>
+</ul>
+<ol>
+<li>
+<p>A 原子性 <strong>不可再分割就是原子性</strong> undo log</p>
+</li>
+<li>
+<p>C 一致性 要么全部执行成功 要么全不执行rollback ，回滚回退版本，类似撤销的感觉<br>
+如果在执行过程中因为一些原因导致 执行失败或者异常那么回到事务开始之前的状态<br>
+double write<br>
+<strong>事务更新前后的数据状态是一致的</strong></p>
+</li>
+<li>
+<p>I 隔离性 事务之间互不干扰<br>
+只隔离事务，不隔离数据。数据之间互不隔离</p>
+</li>
+<li>
+<p>D 持久性<br>
+数据一旦提交，对于数据库的影响是持久的redolog</p>
+</li>
+</ol>
+<h2 id="事务的三个并发问题">事务的三个并发问题</h2>
+<ul>
+<li>
+<p>出现在事务的并发操作下 并发 DML</p>
+</li>
+<li>
+<p>脏读</p>
+</li>
+<li>
+<p>不可重复读</p>
+</li>
+<li>
+<p>幻读</p>
+</li>
+</ul>
+<p>脏读：T1更新了一条数据 T2读取了这个更新但是<strong>没有提交</strong>的数据T1 <strong>回滚</strong>了 所以T2<strong>读</strong>到的数据和磁盘数据不一致<br>
+不可重复读：事务1先读一条数据 事务2把这条数据更新了 如何提交、事务1再次读取 发现跟第一次数据不一样。<br>
+幻读 多条数据 添加</p>
+<h2 id="事务的四种隔离级别">事务的四种隔离级别</h2>
+<ol>
+<li>读未提交<br>
+事务可以读取到没有提交的数据</li>
+<li>读已提交<br>
+事务只能读取已经提交的数据</li>
+<li>可重复读<br>
+在一个事务中 后两次读取的数据内容是一样的</li>
+<li>串行化<br>
+事务是依次执行</li>
+</ol>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[db-4 （5-25）]]></title>
+        <id>https://linjunya.github.io/post/db-4-5-25/</id>
+        <link href="https://linjunya.github.io/post/db-4-5-25/">
+        </link>
+        <updated>2024-05-25T00:34:47.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="db-4">db-4</h1>
+<h2 id="数据库索引">数据库索引</h2>
+<ol>
+<li>什么是索引</li>
+<li>索引的作用</li>
+<li>怎么使用索引</li>
+</ol>
+<p>对一列或者多列的数据进行排序的数据结构<br>
+是一个可以排序的数据结构<br>
+索引是一个存储在<strong>磁盘</strong>空间上的文件数据<br>
+索引是一个辅助工具（基本概念）<br>
+目录（索引就是数据的目录或者检索辅助目录）</p>
+<p>什么是目录？<br>
+什么情况下才有目录？篇幅大，篇幅长时候需要有目录，辅助翻阅（少的就不需要）<br>
+所以当数据量特别大的时候就需要有索引来辅助我们浏览数据</p>
+<p>目录是一本书上的实质文本，记录在书的文本里的。目录也需要我们手动维护，情况如下：</p>
+<ol>
+<li>需要手动设置 目录名，和跳转地址（即物理地址，即数据存储在具体的地址）</li>
+<li>手动增加，删除数据</li>
+</ol>
+<p>索引即目录存在的优缺点<br>
+<strong>优</strong></p>
+<ol>
+<li>可快速翻阅到某个章节，即数据存储的地方</li>
+<li>目录（索引）可以得到文章的故事线（数据的用处）<br>
+<strong>缺</strong></li>
+<li>目录的章节名称需要自己定义（索引的数据用处需要自己来定义）</li>
+<li>删减修改文章时，目录需要排序（修改数据时，索引需要排序）拿到的文章不连续（实际数据的地址不连续）</li>
+</ol>
+<p>索引作用<br>
+<strong>索引的结构</strong></p>
+<ul>
+<li>结构 分为两列，索引列，和地址列   K-V</li>
+<li>索引可以加快数据检索的速度，和全表扫描的速度</li>
+</ul>
+<p><em>数据检索</em>，<em>存储的机制是什么？</em><br>
+内存和外存<br>
+内存读写 快速，容易丢失数据<br>
+外存 磁盘，机械 老式 不易丢失，固态 快 易丢失 ，软盘，光碟<br>
+读写的基本单位 扇区，512bit<br>
+对于os来讲（os操作系统），4K 8个扇区，<br>
+对于innodb存储引擎 16K 32个扇区   可以改变，要满足2的n次方</p>
+<p>逻辑顺序<br>
+对于一张表的数据 设置一个主键id1~100<br>
+物理顺序</p>
+<p>顺序IO<br>
+数据在磁盘上，地址是连续的<br>
+随机IO<br>
+数据在磁盘上，地址随机分布</p>
+<p>预读   因一条数据太小，会将数据前后的数据全部都加载进来。</p>
+<p>随机IO的缺点</p>
+<p>全表扫描比较慢    类似：<br>
+select * from stu;</p>
+<p>公司的数据一般以万计，此时数据的读取就会非常慢。<br>
+而大数据则需要数十亿计算才能算大数据。<br>
+一般速度需要达到30-50ms 才好<br>
+家用计算机 一千万数据全表扫描，随机IO不使用索引，需要23s左右才能扫完，有索引则0.2s左右就能完成。</p>
+<p>看存储，要看存储介质，颗粒还是磁盘<br>
+看读写方式，磁盘：转速，颗粒：片</p>
+<p>索引的工作原理（加快检索速度）</p>
+<ol>
+<li>索引真实存在，索引存在于磁盘</li>
+<li>索引比较小</li>
+<li>索引 索引列（数据列） 地址列（数据在磁盘的地址）</li>
+<li>使用索引检索不使用全表扫描，直接进行区间扫描<br>
+走索引的区间扫描 id=3--》得到物理地址，扫到id=3就不向下扫，直接区间找数据了</li>
+<li>区间查询 比索引慢一点点</li>
+</ol>
+<p>索引谁来用？数据库系统自己来使用，查询优化器这个模块来使用。</p>
+<p><strong>索引的结构</strong><br>
+<em>优</em></p>
+<ol>
+<li>加快随机访问和全表扫描的速度</li>
+<li>加快表连接的速度<br>
+<em>缺</em></li>
+<li>存储在磁盘上 占据磁盘空间</li>
+<li>增删改 会影响索引</li>
+</ol>
+<p>eg.有一百万数据，name是索引列，要删除name中姓张的人（2w）怎么删除最快？</p>
+<p>索引适用于查询，不适用DML。</p>
+<p>索引的数据结构</p>
+<!-- 要学（C++ 数据结构以及算法 java)
+eg.递归算法，尾递归算法，排序算法，回溯算法，分治，广度优先，深度优先 -->
+<ol>
+<li>什么结构查询效率最快 数组 数组中哪一种检索方式最快？二分查找法 在一个有序数组中进行二分检索</li>
+</ol>
+<p>二分查找法的缺点<br>
+数组长度固定 千万数据就需要千万数组，对于内存承载的压力太大<br>
+不建议使用数组</p>
+<ol>
+<li>长度固定 在大数据下 存储压力大</li>
+<li>增删上，存储介质压力太大 空间复杂度</li>
+</ol>
+<p>第一种场景</p>
+<p>添加数据 并发 修改集</p>
+<ol>
+<li>磁盘中原有一千数据，想添加100数据</li>
+<li>在磁盘构建新的数组【1100】</li>
+<li>将原数组的1000复制到新数组</li>
+<li>将100数据 添加到新数组</li>
+<li>删除原数组</li>
+<li>数组还要要求地址是连续的</li>
+</ol>
+<p>第二种场景</p>
+<p><strong>链表</strong></p>
+<ol>
+<li>由值域，指针域组成</li>
+<li>做增删改，不会有额外的内存，但是查询性能较差</li>
+</ol>
+<p>第三种结构</p>
+<p><strong>树</strong><br>
+<em>二叉树</em><br>
+左指针和右指针</p>
+<ol>
+<li>比较二叉树，和根节点去比较 大的放右边，小的放左边</li>
+<li>斜树</li>
+<li>二叉平衡刮擦整改三个月<br>
+左子树的深度和右子树的深度差的绝对值小于等于1<br>
+<em>多路树</em><br>
+指针，路degree<br>
+值域，关键字<br>
+关键字+1=degree</li>
+</ol>
+<p>InnoDB 存储引擎一次获取到的数据单元page 也就是16k<br>
+一次IO获取的量也是16k=16*1024=16834bit字节<br>
+B tree</p>
+<ol>
+<li>每一个节点里的可以存多个关键字N</li>
+<li>每一个节点可以有的路树 组多是N+1 Degree</li>
+<li>不稳定的IO次数</li>
+</ol>
+<p>B+tree</p>
+<ol>
+<li>N=Degree</li>
+<li>每个节点只存索引的key 只存关键字 不存地址 不存value</li>
+<li>value 放在叶子节点上</li>
+<li>叶子节点是一个有序的链表</li>
+<li>IO稳定</li>
+<li>可以存更多数据</li>
+<li>扫库扫描更快<br>
+t-tree主存寻找技术<br>
+主存和内存<br>
+主存，线程内存，缓存</li>
+</ol>
+<p>hashIndex 哈希索引<br>
+InnoDB不支持，但可以创建</p>
+<ul>
+<li>哈希结构 数组+链表 只存在内存，不存在磁盘</li>
+<li>支持哈希类型索引一定是内存</li>
+<li>只支持等值查询</li>
+<li>索引列是int类型</li>
+<li>将索引列数据经过hash算法变成数字存入索引列</li>
+</ul>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[db-3（5-19）]]></title>
+        <id>https://linjunya.github.io/post/db-35-19/</id>
+        <link href="https://linjunya.github.io/post/db-35-19/">
+        </link>
+        <updated>2024-05-19T00:28:32.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="db-3">db-3</h1>
+<ol>
+<li>讲了一上午作业（第一套）那个文档就是</li>
+<li>hw1.sql是讲解内容</li>
+</ol>
+<h2 id="1342">13：42</h2>
+<ol>
+<li>对分组之后的结果做判断就用having</li>
+<li>对分组之前的结果做判断就用where</li>
+</ol>
+<p>（主要看筛选对象）<br>
+但是分组之后不能用where</p>
+<h2 id="1535">15：35</h2>
+<ul>
+<li>sql执行原理</li>
+<li>持久化的数据在哪</li>
+<li>存储的过程是谁来决定的 （存储引擎）</li>
+</ul>
+<h3 id="mysql-服务端-服务">Mysql 服务端 服务</h3>
+<p>net start mysql 开启mysql服务</p>
+<p>navicat是客户端工具</p>
+<p>sqlyoung datagrip之列都叫做客户端工具</p>
+<h4 id="流程">流程</h4>
+<ol>
+<li>先建立客户端与服务端的连接</li>
+</ol>
+<p>分为<strong>长连接</strong>与<strong>短连接</strong></p>
+<p>长连接一般8h</p>
+<ol start="2">
+<li>Mysql数据存储在磁盘上  需要通过IO获取数据</li>
+</ol>
+<p>所有磁盘的读写都会建立一个缓冲区 缓存</p>
+<p>在读写执行没有完成的时候，磁盘的数据都在缓冲区里存放</p>
+<ol start="3">
+<li>查看一下缓冲区里有没有我需要的数据</li>
+</ol>
+<p>使用场景： 查询缓存 query——cache<br>
+必须是连续执行两次的查询语句 才能使用查询缓存<br>
+5.7版本关闭了查询缓存<br>
+8.0就直接删除了<br>
+改用外部的缓存中间件redis</p>
+<ol start="4">
+<li>我们写的语句需要是sql语句</li>
+</ol>
+<p>首先要先保证结构<br>
+我们需要用一个解析器来检查sql的语法是否正确<br>
+先检查单词是否正确，关键字是否正确<br>
+将sql变成解析树，查看语法格式是否正确</p>
+<p>需要再次解析<br>
+检查表，字段，是否存在<br>
+完善上面的解析树</p>
+<p>给定一个执行计划</p>
+<p>执行计划会有多种，指定一个标准来执行，要遵循最小开销原则<br>
+查询优化器的作用根据已有条件，基于最小开销原则，给定一个执行计划</p>
+<p>执行引擎（explain）来执行计划</p>
+<p>执行引擎执行计划时，我们就是IO数据了</p>
+<ul>
+<li>数据在磁盘上以什么方式存储？ 文件 后缀名--》文本格式 .txt .md .c .py</li>
+</ul>
+<p>存储引擎觉得存储数据写入格式</p>
+<h5 id="存储引擎有哪些">存储引擎有哪些</h5>
+<p>可以用c语言自己写一个存储引擎</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[db-2]]></title>
+        <id>https://linjunya.github.io/post/db-2/</id>
+        <link href="https://linjunya.github.io/post/db-2/">
+        </link>
+        <updated>2024-04-27T05:02:35.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="函数">函数</h1>
+<h2 id="字符串函数">字符串函数</h2>
+<ul>
+<li>‘+’拼接 ，加法，正数</li>
+<li>length返回的是字节长度，一个汉字在utf-8中占3个字节</li>
+<li>substr 截取，</li>
+<li>trim默认去除空格，也可以去除指定字符串</li>
+</ul>
+<h2 id="数学函数">数学函数</h2>
+<ul>
+<li>%，MOD取模（取余数）</li>
+<li>ABS（）绝对值</li>
+<li>ceil向上取整</li>
+<li>floor（）向下取整</li>
+<li>log10，log2对数</li>
+<li>mod取模</li>
+<li>rand（）返回一个随机的范围数值rand（3）固定三个随机数，下次rand（3）就取用上次的随机数</li>
+<li>round（）四舍五入（x，y）x原数据，y精确到几位</li>
+</ul>
+<h2 id="流程函数">流程函数</h2>
+<ul>
+<li>CASE	案例运算符</li>
+<li>IF()	if/else 构造</li>
+<li>IFNULL()	Null if/else 构造</li>
+<li>NULLIF()	如果 expr1 = expr2，则返回 NULL</li>
+</ul>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[安卓实训第一天]]></title>
+        <id>https://linjunya.github.io/post/an-zhuo-shi-xun-di-yi-tian/</id>
+        <link href="https://linjunya.github.io/post/an-zhuo-shi-xun-di-yi-tian/">
+        </link>
+        <updated>2024-04-22T06:27:16.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="修改grendle镜像源">修改grendle镜像源</h1>
+<ol>
+<li>为了解决启动as慢的问题</li>
+<li><img src="https://linjunya.github.io//post-images/1713767681887.png" alt="" loading="lazy"></li>
+<li>把org那段的修改为国内镜像源distributionUrl=https://mirrors.cloud.tencent.com/gradle/gradle-5.6.4-all.zip</li>
+</ol>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[DB_day1上课内容]]></title>
+        <id>https://linjunya.github.io/post/db_day1-shang-ke-nei-rong/</id>
+        <link href="https://linjunya.github.io/post/db_day1-shang-ke-nei-rong/">
+        </link>
+        <updated>2024-04-21T00:31:11.000Z</updated>
+        <content type="html"><![CDATA[<h3 id="db_day1">DB_day1</h3>
+<ul>
+<li>Mysql Oracle</li>
+<li>CRUD 单表 函数</li>
+<li>多表</li>
+<li>SQL执行原理</li>
+<li>索引和事务</li>
+<li>数据库锁</li>
+<li>Oracle</li>
+<li>视图 游标 存储过程 自定义函数 触发器</li>
+</ul>
+<h1 id="数据库">数据库</h1>
+<p>database<br>
+简称db</p>
+<ul>
+<li>用来存储数据的一个容器 一个服务，按照指定的结构进行存储</li>
+</ul>
+<h3 id="根据存储结构有两类">根据存储结构有两类</h3>
+<ol>
+<li>关系型数据库（Mysql Oracle SqlServer）</li>
+</ol>
+<p>将数据持久化存储 数据存储在磁盘上</p>
+<p>严格按照表结构进行存储 行 列</p>
+<p>遵循SQL语法操作数据库</p>
+<ol start="2">
+<li>非关系型数据库</li>
+</ol>
+<ul>
+<li>数据存储在内存中</li>
+<li>具有不同的存储结构</li>
+</ul>
+<h1 id="mysql">Mysql</h1>
+<p>MySQLAB--》sun--》Oracle</p>
+<h1 id="navicat">Navicat</h1>
+<p>连接客户端工具</p>
+<h1 id="sql语句">SQL语句</h1>
+<h2 id="sql结构化查询语言">SQL结构化查询语言</h2>
+<ul>
+<li>DDL 数据定义语言</li>
+<li>DML 数据操作语言 更新</li>
+<li>DQL 数据查询语言 查询语句</li>
+<li>DCL 数据控制语句 授权撤销</li>
+<li>TCL 事务控制语句</li>
+</ul>
+<h3 id="ddl语句">DDL语句</h3>
+<h4 id="建库建表语句">建库建表语句</h4>
+<h4 id="数据类型">数据类型</h4>
+<ol>
+<li>整数tinyint，smallint，int，bigint</li>
+<li>浮点数float，double（m,n）m几位数，精确到n，decimal   小数，精度</li>
+<li>字符串char固定长度字符串 varchar可变长度字符串</li>
+<li>日期 年，年月日date，时分秒time，年月日时分秒datetime，时间戳timestamp</li>
+<li>字节blog</li>
+</ol>
+<h1 id="函数">函数</h1>
+<p>看文档<br>
+https://dev.mysql.com/doc/refman/8.3/en/string-functions.html#function_replace</p>
+<ol>
+<li>concat</li>
+<li>replace</li>
+<li>substr</li>
+<li>trim</li>
+</ol>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[在Linux里安装Tomcat]]></title>
+        <id>https://linjunya.github.io/post/zai-linux-li-an-zhuang-tomcat/</id>
+        <link href="https://linjunya.github.io/post/zai-linux-li-an-zhuang-tomcat/">
+        </link>
+        <updated>2024-04-04T00:31:20.000Z</updated>
+        <content type="html"><![CDATA[<ol>
+<li>先找到官网<a href="tomcat.apache.org">tomcat.apache.org</a></li>
+<li>选择Tomcat9，在Core里找到tar.gz格式的复制链接</li>
+<li>在XTerminal里输入 yum -y install wget 安装wget工具方便从网站上下载文件，获取数据</li>
+<li>weget https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.87/bin/apache-tomcat-9.0.87.tar.gz</li>
+<li></li>
+</ol>
+]]></content>
+    </entry>
+</feed>
