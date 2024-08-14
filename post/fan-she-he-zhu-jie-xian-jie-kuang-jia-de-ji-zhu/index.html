@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>反射和注解（衔接框架的技术） | 林君需要温习</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://linjunya.github.io//favicon.ico?v=1723624590115">
+<link rel="stylesheet" href="https://linjunya.github.io//styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="小小反射有大作用
+不一定用反射技术编程，但一定用得到
+能干嘛
+
+能够减少冗余代码
+重复步骤进一步封装再封装
+
+原理
+反射的原理是在运行时，动态获取到某个类的字节码对象，并基于字节码对象的一系列API反射出其属性、方法、构造方法、参数、注解等..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://linjunya.github.io/">
+        <img src="https://linjunya.github.io//images/avatar.png?v=1723624590115" class="site-logo">
+        <h1 class="site-title">林君需要温习</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      温故而知新
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://linjunya.github.io//atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">反射和注解（衔接框架的技术）</h2>
+            <div class="post-date">2024-07-26</div>
+            
+            <div class="post-content" v-pre>
+              <h1 id="小小反射有大作用">小小反射有大作用</h1>
+<p>不一定用反射技术编程，但一定用得到</p>
+<h2 id="能干嘛">能干嘛</h2>
+<ol>
+<li>能够减少冗余代码</li>
+<li>重复步骤进一步封装再封装</li>
+</ol>
+<h2 id="原理">原理</h2>
+<p>反射的原理是在<strong>运行时</strong>，<strong>动态</strong>获取到某个类的字节码对象，并基于字节码对象的一系列API反射出其属性、方法、构造方法、参数、注解等信息。</p>
+<p>字节码存到内存就不是文件了，是对象，磁盘上才是文件<br>
+反射要围绕字节码对象做文章</p>
+<h2 id="classforname类路径并返回字节码对象">Class.forName(&quot;类路径&quot;)，并返回字节码对象</h2>
+<p>● 通常应用于加载非当前环境中的字节码，例如，加载某个库里面的字节码，而这个库是否被安装是不确定的，此方法设置了ClassNotFoundException异常抛出。</p>
+<ul>
+<li>不明确有没有这个对象</li>
+</ul>
+<h2 id="类名class返回字节码对象">类名.class返回字节码对象</h2>
+<p>● 通常用于加载当前环境中已存在的字节码<br>
+● 能通过编译就一定能找到这个类，所以这种方式不会抛出异常<br>
+这种方法一定要有这个类</p>
+<h2 id="对象getclass-返回字节码对象">对象.getClass() 返回字节码对象</h2>
+<p>● 可用于通过对象的方式，获取创建此对象的字节码对象</p>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://linjunya.github.io/post/jvm-xu-ni-ji/">
+                  <h3 class="post-title">
+                    面试题的恶补
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>

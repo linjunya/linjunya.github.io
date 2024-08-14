@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>db-6 0616 (oracle) | 林君需要温习</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://linjunya.github.io//favicon.ico?v=1723624590115">
+<link rel="stylesheet" href="https://linjunya.github.io//styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="0616
+Mysql
+
+存储过程
+
+什么是存储过程
+sql的执行逻辑
+sql执行流程
+解析器和预编译
+就是代码的编译和检查
+将一条或者多条组成的一段sql进行预编译 再次执行的时候 就可以不用再编译
+有什么好处
+特点
+
+能够完成复杂的运算和..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://linjunya.github.io/">
+        <img src="https://linjunya.github.io//images/avatar.png?v=1723624590115" class="site-logo">
+        <h1 class="site-title">林君需要温习</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      温故而知新
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://linjunya.github.io//atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">db-6 0616 (oracle)</h2>
+            <div class="post-date">2024-06-16</div>
+            
+            <div class="post-content" v-pre>
+              <h1 id="0616">0616</h1>
+<h2 id="mysql">Mysql</h2>
+<ol>
+<li>存储过程</li>
+</ol>
+<p><em>什么是存储过程</em><br>
+sql的执行逻辑<br>
+sql执行流程<br>
+解析器和预编译<br>
+就是代码的编译和检查</p>
+<p>将一条或者多条组成的一段sql进行预编译 再次执行的时候 <strong>就可以不用再编译</strong></p>
+<p><em>有什么好处</em><br>
+<strong>特点</strong></p>
+<ul>
+<li>能够完成复杂的运算和判断</li>
+</ul>
+<p><strong>优点</strong></p>
+<ul>
+<li>可编程性强，灵活性强（就是代码可以写得很复杂）<br>
+<em>怎么用</em><br>
+语法<br>
+DDL语句 对对象的操作 数据库对象 show set mysql指令不是语句</li>
+</ul>
+<p>语言和指令<br>
+--存储过程的对象名 PROCEDURE<br>
+create table users(<br>
+id int primary key<br>
+username varchar(20)，<br>
+gender char(1),<br>
+addr varchar(100)<br>
+)</p>
+<pre><code>insert into users values(1,&quot;小明&quot;,&quot;男&quot;,&quot;安徽&quot;);
+insert into users values(1,&quot;小刘&quot;,&quot;男&quot;,&quot;安徽&quot;);
+insert into users values(1,&quot;小明&quot;,&quot;男&quot;,&quot;安徽&quot;);
+insert into users values(1,&quot;小明&quot;,&quot;男&quot;,&quot;安徽&quot;);
+
+
+create procedure test1()
+begin
+select * from users where gender=&quot;男&quot;;
+select * from users where username=&quot;小刘&quot;;
+
+end;
+</code></pre>
+<p>-- 创建一个存储过程<br>
+对里面的sql进行预编译<br>
+-- 执行 也是调用过程</p>
+<p>--第二部分规则<br>
+-- 做业务流程 传参和返回<br>
+CREATE PROCEDURE test2()<br>
+begin<br>
+-- 定义一个变量</p>
+<!-- DECLARE userid int default 0; -->
+<p>DECLARE user_name varchar(20) ;<br>
+-- 采用set赋值<br>
+-- set user_name varchar(20) DEFAULT &quot;&quot;；<br>
+-- 进行查询 将id 为3的数据的username<br>
+赋值给user_name<br>
+select username into user_name from users where id=3;<br>
+select user_name;</p>
+<p>end;<br>
+call test2();</p>
+<p>-- 传参 和返回设计<br>
+-- 所以这里的变量类型 有两类 传入in 和返回out<br>
+-- 还有最特殊的 传入和返回 inout</p>
+<p>create procedure test3(in userid int,out uname varchar(20))<br>
+begin<br>
+select username into uname from users where id=<br>
+userid;<br>
+end;</p>
+<p>-- 调用存储过程，先声明返回<br>
+是因为返回的结果需要一个对象去接收<br>
+set @uname=&quot;&quot;;<br>
+call test3(3,@uname)<br>
+select @uname;</p>
+<!-- --shell python -->
+<p>-- 局部和成员<br>
+<strong>局部</strong></p>
+<pre><code>create procedure test4()
+beigin
+beigin
+end;
+end;
+</code></pre>
+<p>里面的就叫局部，外面套着的不是<br>
+成员变量其实就是全局变量<br>
+create procedure test3()</p>
+<p>if 语法<br>
+if()语句体<br>
+if(userid % 2=0) then<br>
+select username into result from users where id=userid;</p>
+<p>什么叫分支，分支一定要有判断true或者false</p>
+<p>什么叫循环，就是重复执行某代码 根据条件做出不同结果。</p>
+<p>起始条件<br>
+判断条件<br>
+循环变量控制条件</p>
+<ol start="2">
+<li>
+<p>游标<br>
+<strong>概念</strong><br>
+多表关联查询时，将查询结果起个别名 可以作为查询表 临时表<br>
+游标 其实就是一个查询结果集<br>
+将查询结果 保存在游标对象里面<br>
+和视图比较相似<br>
+就可以操作了 游标操作<br>
+在java里叫迭代器，也叫结果集<br>
+https://blog.csdn.net/qq_33157666/article/details/87877246?spm=1001.2014.3001.5501</p>
+</li>
+<li>
+<p>函数<br>
+将一些功能进行封装 就是函数</p>
+</li>
+</ol>
+<ul>
+<li>跟存储过程区别 函数有返回值类型，存储过程没有返回值</li>
+<li>调用 函数可以在sql中使用 存储过程 只能单独 调用</li>
+</ul>
+<ol start="4">
+<li>触发器</li>
+</ol>
+<p>监听某种事件，触发另一个事件<br>
+监听的事件种类 是什么种类 DML</p>
+<p>触发事件可以是DQL语句，但是没有愿意，所以一般也是DML语句</p>
+<p>行为时间 before after</p>
+<p>之前用old，之后new</p>
+<h2 id="oracle">Oracle</h2>
+<ol>
+<li>oracle 的数据类型</li>
+<li>DML DQL</li>
+<li>函数（有区别）</li>
+<li>序列</li>
+</ol>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://linjunya.github.io/post/0601-mian-shi-ti/">
+                  <h3 class="post-title">
+                    0601 面试题
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>

@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>linux -2 | 林君需要温习</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://linjunya.github.io//favicon.ico?v=1723624590115">
+<link rel="stylesheet" href="https://linjunya.github.io//styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="命令
+win中如何获取帮助
+win中我们用任何指令+/？
+拿ping来举例
+退出（5种方式）
+
+q
+exit
+c(ctrl)
+d都用ctrl
+z
+
+linux种如何获取帮助
+man ping （man手册前面）
+info ping（
+pin..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://linjunya.github.io/">
+        <img src="https://linjunya.github.io//images/avatar.png?v=1723624590115" class="site-logo">
+        <h1 class="site-title">林君需要温习</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      温故而知新
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://linjunya.github.io//atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">linux -2</h2>
+            <div class="post-date">2024-08-07</div>
+            
+            <div class="post-content" v-pre>
+              <h1 id="命令">命令</h1>
+<h2 id="win中如何获取帮助">win中如何获取帮助</h2>
+<p>win中我们用任何指令+/？</p>
+<p>拿ping来举例</p>
+<h2 id="退出5种方式">退出（5种方式）</h2>
+<ol>
+<li>q</li>
+<li>exit</li>
+<li>c(ctrl)</li>
+<li>d都用ctrl</li>
+<li>z</li>
+</ol>
+<h2 id="linux种如何获取帮助">linux种如何获取帮助</h2>
+<p>man ping （man手册前面）<br>
+info ping（<br>
+ping -affg（非法参数 获得报错信息）<br>
+大多数 简易帮助可以用 --help，-h（不正规）</p>
+<p>man和info比较正规，用起来方便</p>
+<h2 id="文件系统的相关指令">文件系统的相关指令</h2>
+<table>
+<thead>
+<tr>
+<th>windows</th>
+<th>linux</th>
+<th>描述信息</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>--</td>
+<td>pwd</td>
+<td>显示当前所在目录的绝对路径</td>
+</tr>
+<tr>
+<td>dir</td>
+<td>ls</td>
+<td>查看指定目录中有哪些内容</td>
+</tr>
+<tr>
+<td>cd</td>
+<td>cd</td>
+<td>进入指定目录</td>
+</tr>
+<tr>
+<td>--</td>
+<td>touch</td>
+<td>新建文件</td>
+</tr>
+<tr>
+<td>mkdir</td>
+<td>mkdir</td>
+<td>新建目录</td>
+</tr>
+<tr>
+<td>rmdir</td>
+<td>rmdir</td>
+<td>删除空目录</td>
+</tr>
+<tr>
+<td>del</td>
+<td>rm</td>
+<td>删除文件</td>
+</tr>
+<tr>
+<td>--</td>
+<td>rm -r</td>
+<td>删除非空目录</td>
+</tr>
+<tr>
+<td>copy</td>
+<td>cp</td>
+<td>拷贝文件或目录</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>win</th>
+<th>lin</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>move</td>
+<td>mv</td>
+<td>剪切</td>
+</tr>
+<tr>
+<td>find</td>
+<td>find</td>
+<td>查找文件或者目录</td>
+</tr>
+<tr>
+<td>--</td>
+<td>ln</td>
+<td>软硬链接</td>
+</tr>
+<tr>
+<td>notepad</td>
+<td>more less head tail cat tac nl</td>
+<td>查看文件内容</td>
+</tr>
+<tr>
+<td>notepad</td>
+<td>vi</td>
+<td>编辑文件</td>
+</tr>
+</tbody>
+</table>
+<h2 id="绝对路径相对路径">绝对路径，相对路径</h2>
+<p>从树根开始描述就是绝对路径<br>
+从当前位置开始描述就是相对路径</p>
+<p>.当前目录<br>
+..返回上级目录</p>
+<p>注意Linux中要用/，Windows中才有\。<br>
+文件夹本质上就是文件，也不能跟文件同名</p>
+<p>mv ./test ./test1剪切当前文件下的test，复制到当前文件夹下，命名成test1</p>
+<h2 id="查找">查找</h2>
+<p>find根据文件名，大小，时间查找<br>
+find / -name cdrom<br>
+文件名加<em>可以模糊查询<br>
+cdrom</em>后面有后缀的也可以<br>
+*cdrom只要有他的都查找<br>
+find 从树根开始 根据文件名查找 文件名</p>
+<p>whereis ping指令查找。</p>
+<p>ln 硬链接 指向同一个扇区<br>
+软链接， 快捷方式，指向另一个文件，通过这个文件来访问扇区</p>
+<p>所以我们删除并不是在删除扇区的数据，实际上是在删除节点。<br>
+彻底删除粉碎数据，也是把数据重写，让他不成段，就永远丢失数据了。</p>
+<p>常规文件都是硬链接，访问的都是iNode这个节点。</p>
+<p>ll是 ls -l 缩写<br>
+显示详细内容</p>
+<p>ln 源节点 目标节点 （硬链接</p>
+<p>ln -s 源节点 目标节点 （软链接</p>
+<h2 id="查看">查看</h2>
+<p>more 可翻页<br>
+less 进入模式，可以回返<br>
+head 前十行<br>
+tail 后十行<br>
+cat 不能回返<br>
+tac nl 不知道有什么稀奇的</p>
+<p>退出vi<br>
+q！<br>
+进程管理器<br>
+kill语句杀掉这个进程<br>
+kill +进程号</p>
+<h2 id="vi编辑器">vi编辑器</h2>
+<ol>
+<li>主模式</li>
+<li>编辑模式</li>
+<li></li>
+</ol>
+<p>.开头隐藏文件<br>
+swp帮你偷偷保存的缓存文件，保证你非正常关闭时候，也能保存文件<br>
+ls -a查看<br>
+最好删掉，<br>
+rm -f test（文件名）*</p>
+<h3 id="主模式">主模式</h3>
+<p>yy复制一行，p粘贴<br>
+5 yy 复制5行，p粘贴<br>
+yy表示复制行， n yy 表示复制n行<br>
+剪切 dd 表示剪切行，不粘贴就当删除用了。<br>
+yw 复制单词 ，光标停留到首字母，一直复制到空格都复制完<br>
+dw剪切单词，同上<br>
+n yw ，n dw 同上<br>
+-，会把单词分隔开，-本身当作一个单词，_不当成单词，属于常规的名称。</p>
+<p>/+要查找的字符串，按n找下一个。</p>
+<h2 id="可视行模式">可视行模式</h2>
+<p>shift +v进入，选中，进入前调整好光标。<br>
+：e 要导出的文件名。</p>
+<p>：setnumber出现行号<br>
+:   setnonumber不出现行号<br>
+：set nu出现行号<br>
+：set nonu不出现行号</p>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://linjunya.github.io/post/linux-1/">
+                  <h3 class="post-title">
+                    linux -1
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>

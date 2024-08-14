@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>目录及文件的基本操作 | 林君需要温习</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://linjunya.github.io//favicon.ico?v=1723624590115">
+<link rel="stylesheet" href="https://linjunya.github.io//styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="一、pwd命令
+
+（Print  Working  Directory）
+描述：显示出完整的当前工作目录的名称  绝对路径
+
+[root@localhost ~]# pwd			#显示当前的工作目录
+/root
+
+
+选项：-P  显示链接的..." />
+    <meta name="keywords" content="linux基本指令" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://linjunya.github.io/">
+        <img src="https://linjunya.github.io//images/avatar.png?v=1723624590115" class="site-logo">
+        <h1 class="site-title">林君需要温习</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      温故而知新
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://linjunya.github.io//atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">目录及文件的基本操作</h2>
+            <div class="post-date">2024-04-04</div>
+            
+            <div class="post-content" v-pre>
+              <h1 id="一-pwd命令">一、pwd命令</h1>
+<ul>
+<li>（Print  Working  Directory）</li>
+<li>描述：显示出完整的当前工作目录的名称  绝对路径</li>
+</ul>
+<pre><code class="language-shell">[root@localhost ~]# pwd			#显示当前的工作目录
+/root
+</code></pre>
+<ul>
+<li>选项：-P  显示链接的真实路径</li>
+</ul>
+<pre><code class="language-bash">[root@localhost ~]# cd /bin/	#切换到 根目录下的 bin 目录
+[root@localhost bin]# pwd
+/bin
+[root@localhost bin]# pwd -P	#显示链接的真实路径
+/usr/bin
+</code></pre>
+<h1 id="二-cd-命令">二、cd 命令</h1>
+<ul>
+<li>（Change   Directory）</li>
+<li>描述：切换当前的工作目录</li>
+<li>命令格式：cd     [目标文件夹位置]</li>
+</ul>
+<pre><code class="language-shell">[root@localhost ~]# cd /opt/
+[root@localhost opt]# pwd
+/opt
+</code></pre>
+<h5 id="cd-命令常用的几种方式">cd 命令常用的几种方式</h5>
+<ol>
+<li>直接使用  cd   会切换到当前登录用户的家目录、</li>
+</ol>
+<pre><code class="language-shell">[root@localhost opt]# cd 
+[root@localhost ~]# pwd
+/root
+</code></pre>
+<ol start="2">
+<li>cd  ..   切换到当前目录的父目录</li>
+</ol>
+<pre><code class="language-shell">[root@localhost ~]# cd ..
+[root@localhost /]# pwd
+/
+</code></pre>
+<ol start="3">
+<li>cd  ~用户名    切换到目标用户的家目录</li>
+</ol>
+<pre><code class="language-shell">[root@localhost ~]# useradd lisi
+[root@localhost ~]# cd ~lisi
+[root@localhost lisi]# pwd
+/home/nsd2005
+</code></pre>
+<ol start="4">
+<li>cd  -   切换到上一个工作目录</li>
+</ol>
+<pre><code class="language-shell">[root@localhost ~]# cd /opt 
+[root@localhost opt]# cd /etc
+[root@localhost etc]# cd -		#频繁的在两个目录中切换时 很好用
+/opt
+</code></pre>
+<ul>
+<li>绝对路径和相对路径
+<ul>
+<li>绝对路径：以根目录开始的完整路径</li>
+<li>相对路径：以当前所在的目录为参照物的路径</li>
+</ul>
+</li>
+</ul>
+<h1 id="三-ls-命令">三、ls 命令</h1>
+<ul>
+<li>
+<p>（list）显示指定目录下的内容（列出当前工作目录所含文件及子目录)</p>
+</li>
+<li>
+<p>命令格式：ls   [选项]   [目录或文件名]…</p>
+</li>
+</ul>
+<pre><code class="language-shell">[root@localhost ~]# ls
+anaconda-ks.cfg       公共  视频  文档  音乐
+initial-setup-ks.cfg  模板  图片  下载  桌面
+</code></pre>
+<h5 id="常用的选项">常用的选项</h5>
+<ul>
+<li>-A  显示目标目录下所有的文件和目录，包括隐藏文件</li>
+</ul>
+<pre><code class="language-shell">[root@localhost ~]# ls -A /root/
+#除 -A 外 还有个 选项是 -a
+#两个选项的区别在于   -a  会多显示   . 和  ..
+#. 和  ..  是两个特殊的目录，分别代表 当前目录和上一级目录
+</code></pre>
+<ul>
+<li>-l   长格式显示文件的详细属性</li>
+</ul>
+<pre><code class="language-shell">[root@localhost ~]# ls -l /etc/passwd
+-rw-r--r--. 1 root root 2727 6月   8 10:24 /etc/passwd
+</code></pre>
+<ul>
+<li>-d   显示目录本身的属性</li>
+</ul>
+<pre><code class="language-shell">[root@localhost ~]# ls -ld /etc
+</code></pre>
+<ul>
+<li>-h   提供一个易读的单位</li>
+</ul>
+<pre><code class="language-shell">[root@localhost ~]# ls -lh /etc/passwd
+</code></pre>
+<ul>
+<li>-R   递归显示内容</li>
+</ul>
+<pre><code class="language-shell">[root@localhost ~]# ls -R /etc/
+</code></pre>
+<ul>
+<li>-u     显示文件或目录最后被访问的时间</li>
+</ul>
+<pre><code class="language-shell">[root@localhost ~]# ls -l /etc/passwd
+[root@localhost ~]# ls -lu /etc/passwd
+</code></pre>
+<ul>
+<li>-t    以修改时间排序，ls目录默认是按文件名称排序的</li>
+</ul>
+<pre><code class="language-shell">[root@localhost ~]# ls -lt /etc/
+</code></pre>
+<h1 id="四-mkdir命令">四、mkdir命令</h1>
+<ul>
+<li>
+<p>创建目录</p>
+</li>
+<li>
+<p>命令格式：mkdir      [选项]...    目录...</p>
+</li>
+</ul>
+<pre><code class="language-shell">[root@localhost ~]# mkdir /opt/nsd2005
+[root@localhost ~]# cd /opt/nsd2005
+[root@localhost nsd2005]# pwd
+/opt/nsd2005
+</code></pre>
+<h5 id="常用的选项-2">常用的选项</h5>
+<ul>
+<li>-p     创建一个目录并将它的父目录也创建出来（创建一个连续的目录）</li>
+</ul>
+<pre><code class="language-shell">[root@localhost nsd2005]# mkdir -p /opt/nsd2005/aa/bb/cc/dd/ee
+[root@localhost nsd2005]# cd /opt/nsd2005/aa/bb/cc/dd/ee
+[root@localhost ee]# pwd
+/opt/nsd2005/aa/bb/cc/dd/ee
+</code></pre>
+<ul>
+<li>-m     创建目录时指定权限</li>
+</ul>
+<pre><code class="language-shell">[root@localhost ~]# mkdir -m 444 /opt/nsd05
+[root@localhost ~]# ls -ld /opt/nsd05
+dr--r--r--. 2 root root 6 6月   8 10:50 /opt/nsd05
+</code></pre>
+<h1 id="五-touch命令">五、touch命令</h1>
+<ul>
+<li>创建文件或修改文件时间
+<ul>
+<li>不存在则创建，存在则跟新文件所有的时间为系统时间</li>
+</ul>
+</li>
+<li>命令格式： touch    文件名</li>
+</ul>
+<pre><code class="language-shell">[root@localhost ~]# touch 1.txt   		#在当前目录下创建文件1.txt
+[root@localhost ~]# touch /opt/1.txt    #在指定目录下创建文件1.txt
+</code></pre>
+<h1 id="六-cp命令">六、cp命令</h1>
+<ul>
+<li>（copy）</li>
+<li>描述：复制文件或目录</li>
+<li>命令格式：cp    [选项]...    原文件1、原文件2…     目标路径</li>
+</ul>
+<pre><code class="language-shell">[root@localhost ~]# cp /etc/passwd /opt/			#拷贝/etc/passwd到/opt下
+[root@localhost ~]# ls /opt/
+ 
+[root@localhost ~]# cp /etc/passwd /opt/pass		#拷贝/etc/passwd到/opt下并将其副本改名为pass
+[root@localhost ~]# ls /opt/
+</code></pre>
+<h5 id="常用选项">常用选项</h5>
+<ul>
+<li>-r    递归复制，复制目录时必须有的选项</li>
+</ul>
+<pre><code class="language-shell">[root@svr7 ~]# cp /home/ /opt/						#复制目录时，必须要加-r选项
+cp: 略过目录&quot;/home/&quot;
+[root@svr7 ~]# cp -r /home/ /opt/
+</code></pre>
+<ul>
+<li>-p  保持权限不变的复制</li>
+</ul>
+<pre><code class="language-shell">[root@svr7 ~]# cd /var/named/				#切换到地址库文件存放的目录
+[root@svr7 named]# ls -l named.localhost
+[root@svr7 named]# cp  -p   named.localhost      tedu.cn.zone   
+#复制模板文件，-p选项保证文件属性（所属组为named）不变
+[root@svr7 named]# ls -l tedu.cn.zone
+</code></pre>
+<ul>
+<li>-a  复制时保留源文件的所有属性（包括权限、时间等）</li>
+</ul>
+<pre><code class="language-shell">[root@svr7 ~]# ls -l /etc/passwd
+-rw-r--r--. 1 root root 2237 9月  17 19:51 /etc/passwd
+[root@svr7 ~]# cp /etc/passwd /opt/
+[root@svr7 ~]# ls -l /opt/passwd 			#直接复制的结果
+-rw-r--r--. 1 root root 2237 9月  18 22:19 /opt/passwd
+[root@svr7 ~]# cp -a /etc/passwd /opt/pass
+[root@svr7 ~]# ll /opt/pass					#使用-a选项复制的结果
+-rw-r--r--. 1 root root 2237 9月  17 19:51 /opt/pass
+</code></pre>
+<h1 id="七-rm命令">七、rm命令</h1>
+<ul>
+<li>
+<p>删除目录或文件</p>
+</li>
+<li>
+<p>命令格式：rm    [选项]...    文件...</p>
+</li>
+<li>
+<p>常用的选项</p>
+<ul>
+<li>-r     ：递归删除（删除目录必须要有）</li>
+<li>-f     ： 强制删除</li>
+</ul>
+<pre><code class="language-shell">[root@localhost ~]# rm -rf /opt/1.txt 
+[root@localhost ~]# rm -rf /opt/nsd05/
+[root@localhost ~]# ls /opt/
+</code></pre>
+</li>
+</ul>
+<h1 id="八-mv命令">八、mv命令</h1>
+<ul>
+<li>
+<p>（move）移动文件或目录</p>
+</li>
+<li>
+<p>路径不变的移动（重命名）</p>
+</li>
+<li>
+<p>命令格式：mv    原文件…     目标路径</p>
+<pre><code class="language-shell">[root@localhost ~]# touch 1.txt
+[root@localhost ~]# mv 1.txt  /opt/1.txt
+</code></pre>
+</li>
+<li>
+<p>重命名</p>
+<pre><code class="language-shell">[root@localhost ~]# mv  /opt/1.txt /opt/2.txt
+[root@localhost ~]# ls /opt/
+</code></pre>
+</li>
+</ul>
+<h1 id="九-du-命令">九、du 命令</h1>
+<ul>
+<li>描述：统计文件或者目录使用硬盘空间的大小</li>
+<li>命令格式  ：   du   [选项]   文件或目录</li>
+</ul>
+<h5 id="常用选项-2">常用选项</h5>
+<ul>
+<li>
+<p>-s    显示文件或目录的大小</p>
+</li>
+<li>
+<p>-h    加一个易读的单位</p>
+</li>
+<li>
+<p>-a    查看所有目录以及文件的大小</p>
+</li>
+</ul>
+<pre><code class="language-shell">[root@localhost ~]# du -sh /etc/passwd
+</code></pre>
+<h1 id="十-find命令">十、find命令</h1>
+<ul>
+<li>
+<p>描述：搜索文件或目录</p>
+</li>
+<li>
+<p>命令格式： find    [目录]   [条件1]   [条件2]</p>
+</li>
+<li>
+<p>常用的条件</p>
+<ul>
+<li>-type  类型   （f 文本文件、 d  目录、 l快捷方式）</li>
+<li>-name  “文件名称”</li>
+<li>-iname  按文档名称查找，且不区分大小写</li>
+<li>-size     + | - 文件大小（k、M、G、TB、PB、EB）</li>
+<li>-user  用户名</li>
+<li>-mtime  按修改时间查找</li>
+<li>-empty  查找空白文件或目录
+<ul>
+<li>-group  按组查找</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-shell">[root@localhost ~]# find /boot/ -type f		#查找/boot目录下所有的文件
+[root@localhost ~]# find /boot/ -empty 		#查找/boot目录下所有的空文件或目录
+</code></pre>
+<ul>
+<li>
+<p>高级使用：处理查找的内容</p>
+</li>
+<li>
+<p>命令格式：find   [范围]    [条件]    -exec   处理命令   {}    ;</p>
+<ul>
+<li>-exec     对找到的文件或目录执行额外的命令</li>
+<li>-a      并且</li>
+<li>-o      或者</li>
+<li>示例</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-shell">[root@localhost ~]# find /boot/ -type f  -exec cp {} /opt/ \;
+  
+[root@localhost ~]# find /opt/ -type f  -exec rm -rf  {}  \;
+[root@localhost ~]# ls /opt/
+</code></pre>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://linjunya.github.io/tag/hj50pd5LA/" class="tag">
+                    linux基本指令
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://linjunya.github.io/post/xu-ni-ji-pei-zhi-centoshuan-jing-de-zhun-bei-ai-rui-ban/">
+                  <h3 class="post-title">
+                    虚拟机配置centos（环境的准备）----艾瑞版
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>

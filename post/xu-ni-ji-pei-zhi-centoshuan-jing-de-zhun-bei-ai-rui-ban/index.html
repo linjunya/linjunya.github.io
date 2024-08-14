@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>虚拟机配置centos（环境的准备）----艾瑞版 | 林君需要温习</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://linjunya.github.io//favicon.ico?v=1723624590115">
+<link rel="stylesheet" href="https://linjunya.github.io//styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="新建虚拟机
+
+选用典型配置
+稍后安装操作系统
+客户机操作系统选用Linux（版本Centos 7 64位）
+第一个虚拟机名称就叫centos1
+在除了c盘以外的磁盘新建一个software的文件夹
+在software里新建一个centos
+..." />
+    <meta name="keywords" content="艾瑞" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://linjunya.github.io/">
+        <img src="https://linjunya.github.io//images/avatar.png?v=1723624590115" class="site-logo">
+        <h1 class="site-title">林君需要温习</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      温故而知新
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://linjunya.github.io//atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">虚拟机配置centos（环境的准备）----艾瑞版</h2>
+            <div class="post-date">2024-04-04</div>
+            
+              <div class="feature-container" style="background-image: url('https://linjunya.github.io//post-images/xu-ni-ji-pei-zhi-centoshuan-jing-de-zhun-bei-ai-rui-ban.jpeg')">
+              </div>
+            
+            <div class="post-content" v-pre>
+              <h1 id="新建虚拟机">新建虚拟机</h1>
+<ol>
+<li>选用典型配置</li>
+<li>稍后安装操作系统</li>
+<li>客户机操作系统选用Linux（版本Centos 7 64位）</li>
+<li>第一个虚拟机名称就叫centos1</li>
+<li>在除了c盘以外的磁盘新建一个software的文件夹</li>
+<li>在software里新建一个centos</li>
+<li>里面的centos1、2、3文件夹（以后centos新建的虚拟机就这样保存）</li>
+<li>一直下一步，直到完成</li>
+<li>编辑虚拟机设置硬件cd/dvd 找到你的iso文件（就是你下载的镜像）</li>
+<li>选择中文</li>
+<li>点击安装位置自动选择位置，把以太网打开（ens33）</li>
+<li>不创建用户，root密码尽量简单，我选择123456</li>
+<li>然后进入了centos之后就开始配置ip，网络，当然也可以在打开以太网的那步开始配置</li>
+<li>重启之后，login：root，Password：123456</li>
+<li>登录之后，输入 vi /etc/sysconfig/network-scripts/ifcfg-ens33</li>
+<li>BOOTPROTO=&quot;static&quot;</li>
+<li>然后在最后一行开始添加</li>
+<li>IPADDR=&quot;192.168.124.150&quot;,在VMware左上角的编辑查看net模式的子网地址</li>
+<li>我的是192.168.124.0，选一个没用过的后缀0~255。</li>
+<li>如果要装第二个虚拟机，就依次顺延就很方便</li>
+<li>继续添加PREFIX=&quot;24&quot;</li>
+<li>GATEWAY=&quot;192.168.124.2&quot;(第三组数字一定要填自己看到的数字)</li>
+<li>DNS1 =&quot;114.114.114.114&quot;</li>
+<li>esc一下，:wq回车</li>
+<li>然后重载一下网络</li>
+<li>systemctl retart network.service</li>
+<li>然后看一下你的ip，输入：ip addr</li>
+</ol>
+<h1 id="连接xterminal">连接XTerminal</h1>
+<ol>
+<li>左上角图标找到SSH</li>
+<li>新建一个分组，centos</li>
+<li>点击右边的绿色加号，新建一个服务器</li>
+<li>名字centos1，ip 填入&quot;192.168.124.150&quot;(你tm填自己的！)</li>
+<li>用户root，登录密码123456</li>
+<li>点击连接，然后成功了就可以直接通过XTerminal操作虚拟机了</li>
+</ol>
+<p>Nice！</p>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://linjunya.github.io/tag/-tH3CUk0L/" class="tag">
+                    艾瑞
+                  </a>
+                
+              </div>
+            
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>

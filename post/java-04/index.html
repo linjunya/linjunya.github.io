@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>Java -04 | 林君需要温习</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://linjunya.github.io//favicon.ico?v=1723624590115">
+<link rel="stylesheet" href="https://linjunya.github.io//styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="接口
+接口中是抽象的，要通过子类里的函数来实现具体功能
+
+接口是Java中的一种特殊的数据类型
+定义接口的关键字是interface
+接口不可以被实例化，即不可以new一个新接口，
+接口中不可以有成员变量、构造函数、成员函数
+接口中只能有抽..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://linjunya.github.io/">
+        <img src="https://linjunya.github.io//images/avatar.png?v=1723624590115" class="site-logo">
+        <h1 class="site-title">林君需要温习</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      温故而知新
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://linjunya.github.io//atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">Java -04</h2>
+            <div class="post-date">2024-07-12</div>
+            
+            <div class="post-content" v-pre>
+              <h1 id="接口">接口</h1>
+<p>接口中是抽象的，要通过子类里的函数来实现具体功能</p>
+<ol>
+<li>接口是Java中的一种特殊的数据类型</li>
+<li>定义接口的关键字是interface</li>
+<li>接口不可以被实例化，即不可以new一个新接口，</li>
+<li>接口中不可以有成员变量、构造函数、成员函数</li>
+<li>接口中只能有抽象函数（虚函数）</li>
+<li>接口的作用用于定义两个组件之间的组合对接标准</li>
+<li>接口用于数据类型（可以用接口作为成员变量的类型、方法参数的类型等）</li>
+<li>接口可以定义子类实现接口，关键字是implement</li>
+<li>子类实现接口后，必须实现接口中的所有抽象函数</li>
+<li>JDK8以后接口的新特性：接口中可以定义default默认函数和static静态函数</li>
+</ol>
+<h1 id="什么是抽象函数">什么是抽象函数</h1>
+<p>抽象函数指定函数没有大括号函数体，即函数没有实现过程<br>
+具体实现指的就是对抽象函数给出实现过程</p>
+<p>如果父类中的函数不能帮子类实现任何流程，去除这个函数就会造成向上后必须向下。<br>
+所以你必须要定义这个函数，而这个函数就是抽象函数，他不实现任何功能，却参与了功能的实现。</p>
+<ul>
+<li>抽象函数用关键字abstract修饰，后米娜不可以写大括号，在参数的小括号后面分号结束</li>
+<li>如果父类中出现了抽象函数，则父类必须用abstract来修饰抽象类</li>
+<li>父类的抽象函数子类必须重写，不然要你子类有何用？子类需要帮助父类来完成父类没有实现的功能。</li>
+<li>父类的成员函数子类可以不用重写，因为可以继承</li>
+</ul>
+<h1 id="子类继承父类与子类实现接口有什么区别">子类继承父类与子类实现接口有什么区别</h1>
+<ol>
+<li>
+<p>继承父类的关键字extends，实现接口的关键字用implements</p>
+</li>
+<li>
+<p>一个子类只能<em>继承</em><strong>一个父类</strong>，一个子类可以实现<strong>多个接口</strong></p>
+<p>public class A extends B{}<br>
+//继承一个父类是对的</p>
+<p>//同时结成两个父类是错的</p>
+<p>//实现一个接口需要A实现B里面的抽象方法</p>
+<p>//可以同时实现两个接口，此时A可以当作B，也可以当作C使用<br>
+public class A implements B，C{}</p>
+</li>
+</ol>
+<h1 id="多态">多态</h1>
+<h2 id="向上转型">向上转型</h2>
+<ul>
+<li>向上转型时java中内置的一种机制，多态的运行离不开向上转型的机制</li>
+<li>运行向上转型的前提是传递的对象与目标类型存在继承或者实现关系</li>
+</ul>
+<ol>
+<li>子类对象可以转化为父类的类型</li>
+<li>子类对象可以转化为接口的类型<br>
+<strong>eg</strong></li>
+<li>new Dog对象传递给Pet类型</li>
+<li>new WeiXinPay对象 传递给Pay类型</li>
+</ol>
+<h3 id="向上后不用向下转型的前提">向上后不用向下转型的前提</h3>
+<p><strong>condition</strong></p>
+<ol>
+<li>父类有这个函数</li>
+<li>子类要对这个函数进行重写</li>
+</ol>
+<p>父类没有，就成为了子类的特殊函数，<br>
+子类不重写，就成了子类直接继承父类</p>
+<h2 id="抽象类和抽象函数的关系">抽象类和抽象函数的关系</h2>
+<ul>
+<li>抽象类可以不包含抽象函数</li>
+<li>但是类有抽象函数，那你肯定是抽象类</li>
+</ul>
+<h2 id="抽象类和接口的区别">抽象类和接口的区别</h2>
+<ul>
+<li>抽象类和接口都不可以被实例化（就是创建对象）</li>
+<li>抽象类是一个类</li>
+</ul>
+<h1 id="四大权限修饰符">四大权限修饰符</h1>
+<table>
+<thead>
+<tr>
+<th>权限修饰符</th>
+<th>当前类</th>
+<th>同包的类</th>
+<th>子类</th>
+<th>不同包的类</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>private</td>
+<td>不可见</td>
+<td>不可见</td>
+<td>不可见</td>
+<td>不可见</td>
+</tr>
+<tr>
+<td>（default）</td>
+<td>可见</td>
+<td>不可见</td>
+<td>不可见</td>
+<td>不可见</td>
+</tr>
+<tr>
+<td>protected</td>
+<td>可见</td>
+<td>可见</td>
+<td>不可见</td>
+<td>不可见</td>
+</tr>
+<tr>
+<td>public</td>
+<td>可见</td>
+<td>可见</td>
+<td>可见</td>
+<td>可见</td>
+</tr>
+</tbody>
+</table>
+<h2 id="权限修饰符的注意事项">权限修饰符的注意事项</h2>
+<ol>
+<li>子类继承父类，子类只能继承父类中非私有的成员</li>
+<li>抽象函数的权限不能用private，用了之后就不能重写</li>
+<li>构造函数可以用private修饰，对外不可见，外部就不可以创建这个类的对象了</li>
+<li>不是所有的类都可以用private修饰，内部类可以被私有<br>
+可见 = 暴露<br>
+不可见 = 隐藏</li>
+</ol>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://linjunya.github.io/post/mian-xiang-dui-xiang/">
+                  <h3 class="post-title">
+                    面向对象
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>

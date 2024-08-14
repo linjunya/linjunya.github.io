@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>cloud-5 | 林君需要温习</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://linjunya.github.io//favicon.ico?v=1723624590115">
+<link rel="stylesheet" href="https://linjunya.github.io//styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="四层结构中的每一层结构分别有哪些协议
+二层协议：arp   ，rarp（arp和逆arp） stp（生成树协议，防止环路）（都是通过，网卡实现）
+三层协议：icmp（ping包）为什么没有传输层信封，因为他就是保证ping之后，确定能到达，..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://linjunya.github.io/">
+        <img src="https://linjunya.github.io//images/avatar.png?v=1723624590115" class="site-logo">
+        <h1 class="site-title">林君需要温习</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      温故而知新
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://linjunya.github.io//atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">cloud-5</h2>
+            <div class="post-date">2024-08-02</div>
+            
+            <div class="post-content" v-pre>
+              <h1 id="四层结构中的每一层结构分别有哪些协议">四层结构中的每一层结构分别有哪些协议</h1>
+<p>二层协议：arp   ，rarp（arp和逆arp） stp（生成树协议，防止环路）（都是通过，网卡实现）<br>
+三层协议：icmp（ping包）为什么没有传输层信封，因为他就是保证ping之后，确定能到达，igmp，ip<br>
+四层（传输层）：tcp udp</p>
+<h1 id="考证">考证</h1>
+<ol>
+<li>h3c</li>
+<li>hcie<br>
+(作为资质，不然不卖设备)</li>
+</ol>
+<h1 id="模拟器">模拟器</h1>
+<p>思科 cisco</p>
+<h1 id="单工双工半双工全双工">单工双工，半双工，全双工</h1>
+<h1 id="交换机和hub的区别">交换机和Hub的区别</h1>
+<p>Hub群发，交换机要学习只发给一个人，第一次是广播，Hub一直群发。</p>
+<p>以前手摇交换机，是人工，</p>
+<p>二层转发表，交换机</p>
+<p>三层转发表，路由器</p>
+<p>交换机为什么不广播，而是群发</p>
+<h1 id="vlan技术">VLAN技术</h1>
+<p>交换机，物理局域网，分裂成两个更小的逻辑局域网</p>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://linjunya.github.io/post/cloud-4/">
+                  <h3 class="post-title">
+                    cloud-4
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>

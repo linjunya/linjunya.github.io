@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>面试题0616 | 林君需要温习</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://linjunya.github.io//favicon.ico?v=1723624590115">
+<link rel="stylesheet" href="https://linjunya.github.io//styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="
+数据库设计的三范式和反范式
+数据库设计的三范式（Normal Forms）是关系型数据库设计的重要理论基础，目的在于减少数据冗余和更新异常，提高数据库的性能和可靠性
+
+第一范式是最基本的范式，要求数据库表中的每个列都是不可分割的原子性数据..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://linjunya.github.io/">
+        <img src="https://linjunya.github.io//images/avatar.png?v=1723624590115" class="site-logo">
+        <h1 class="site-title">林君需要温习</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      温故而知新
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://linjunya.github.io//atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">面试题0616</h2>
+            <div class="post-date">2024-06-16</div>
+            
+            <div class="post-content" v-pre>
+              <ol>
+<li>数据库设计的三范式和反范式<br>
+数据库设计的三范式（Normal Forms）是关系型数据库设计的重要理论基础，目的在于减少数据冗余和更新异常，提高数据库的性能和可靠性</li>
+</ol>
+<p>第一范式是最基本的范式，要求数据库表中的每个列都是不可分割的原子性数据项</p>
+<p>第二范式在1NF的基础上进一步要求，表中的每个非主键列必须完全依赖于整个主键，而不是主键的一部分</p>
+<p>第三范式在2NF的基础上进一步要求，表中的非主键列必须直接依赖于主键，不能存在传递依赖。</p>
+<ol start="2">
+<li>存储过程和函数的区别</li>
+</ol>
+<ul>
+<li>返回值: 存储过程可以返回多个结果集，而函数只能返回一个标量值或者表对象。</li>
+<li>使用限制: 函数有许多限制，例如不能直接用于执行一组修改全局数据库状态的复杂操作。</li>
+<li>调用方式: 存储过程通常作为一个独立的部分来执行，而函数可以作为查询语句的一部分来调用。</li>
+<li>参数类型: 存储过程的参数可以是IN、OUT或INOUT类型，而函数的参数只能是IN类型。</li>
+<li>执行环境: 存储过程在数据库服务器上执行，而函数可以在客户端或服务器端执行。</li>
+<li>调试和维护: 存储过程的调试和维护相对复杂，因为它们通常包含更多的逻辑和控制流程</li>
+</ul>
+<ol start="3">
+<li>什么是游标<br>
+就是一个查询结果集的一种机制，作用就是可以在结果集中逐行访问和操作数据</li>
+<li>什么是序列<br>
+在MySQL数据库中，序列（Sequence）通常指的是使用属性的列，它可以自动为每一行生成一个唯一的、递增的整数值，通常用作表的主键。序列的主要作用是保证表中每一条记录都有一个独一无二的标识，便于管理和定位数据</li>
+<li>数据的冷备份和热备份<br>
+冷备份，又称离线备份，是指在数据库关闭状态下进行的完整备份。<br>
+热备份，又称在线备份，是指在数据库运行状态下进行的备份。</li>
+</ol>
+<p>冷备份和热备份的主要区别在于备份时数据库的服务状态，冷备份需要停止服务，而热备份则不需要。</p>
+<p><strong>冷备份的优点</strong><br>
+快速：仅需拷贝文件，无需数据库运行。<br>
+易于归档，可恢复到特定时间点。<br>
+与归档方法相结合，可进行数据库最新状态的恢复。<br>
+维护简单，安全性高。<br>
+<strong>冷备份的缺点</strong><br>
+只能提供到某一时间点的恢复。<br>
+在备份过程中数据库必须关闭。<br>
+若磁盘空间有限，拷贝速度较慢。<br>
+不能按表或按用户恢复，只能整体恢复。<br>
+<strong>热备份的优点</strong><br>
+可在表空间或数据文件级别备份，备份时间短。<br>
+备份时数据库仍可使用。<br>
+可达到秒级恢复，恢复到某一时间点上。<br>
+对几乎所有数据库实体均可恢复。<br>
+<strong>热备份的缺点</strong><br>
+不能备份失败，否则后果严重。<br>
+如果热备份不成功，结果不可用于时间点恢复。<br>
+维护工作较为困难，需要特别小心。<br>
+6. redolog undolog binlog 的区别<br>
+<strong>redo log 是物理日志</strong>，记录了某个数据页做了什么修改。它用于保证事务的持久性，即使在数据库崩溃或发生故障时，也能通过重做日志中的记录来恢复未写入磁盘的数据，保证数据的一致性和持久性。<br>
+<strong>undo log 是逻辑日志</strong>，记录了事务执行前的数据状态，用于事务回滚和 MVCC（多版本并发控制）<br>
+<strong>binlog 是 MySQL 服务器层面的日志</strong>，记录了所有修改了数据库数据的 SQL 语句，具有完整的事务信息。</p>
+<ol>
+<li>存储过程的优点缺点<br>
+存储过程的优缺点<br>
+优点<br>
+性能优化：存储过程在数据库服务器上编译并缓存，避免了每次执行时的重复编译，因此通常比单独的SQL语句更快。1213141720</li>
+</ol>
+<p>安全性：存储过程可以封装敏感操作，限制对基础表的直接访问，只允许通过预定的接口进行访问，从而提高数据库的安全性。1213141720</p>
+<p>可维护性：存储过程将常用的业务逻辑封装在数据库层，减少了代码的冗余，更易于维护和更新。1213141720</p>
+<p>事务管理：存储过程可用于管理复杂的事务逻辑，确保数据的一致性和完整性。20</p>
+<p>减少网络延迟：存储过程在数据库服务器上运行，可以减少与客户端之间的网络通信。20</p>
+<p>缺点<br>
+复杂性：编写和维护复杂的存储过程可能会变得困难，特别是对于不熟悉存储过程的开发人员来说。20</p>
+<p>移植性：存储过程的语法和功能在不同的数据库系统中有所不同，因此可能不够移植。20</p>
+<p>难以调试：调试存储过程可能比调试应用程序代码更具挑战性，因为它们在数据库中执行。20</p>
+<p>可移植性差：存储过程通常定制化于特定的数据库上，当切换到其他数据库系统时，需要重写原有的存储过程。117</p>
+<p>调试困难：多数DBMS不支持存储过程的调试，所以对于复杂的存储过程，其开发和维护都比较困难。116</p>
+<p>版本管理困难：存储过程本身没有版本控制，在迭代更新时会比较麻烦。116</p>
+<p>不适合高并发：对于分库分表的并发查询，很难维护<br>
+2. 数据库优化方案<br>
+硬件优化<br>
+查询优化<br>
+索引设计<br>
+分区策略<br>
+监控与维护<br>
+性能评估</p>
+<ol start="3">
+<li>sql优化方案  DQL和DML的优化<br>
+DQL（数据查询语言）优化<br>
+DQL主要用于从数据库中检索数据，其核心命令是SELECT。DQL优化的目标是使查询更加高效，减少数据库的负担。常见的优化措施包括：</li>
+</ol>
+<p>避免使用SELECT：尽量避免使用SELECT *，而是指定具体的列，这样可以减少网络传输量并缩短查询时间。36<br>
+使用索引：为经常作为查询条件的列创建索引，可以大幅度提高查询性能。18<br>
+减少全表扫描：通过使用索引或优化查询语句来避免全表扫描，减少数据库的I/O操作。18<br>
+合理使用JOIN：在可能的情况下，使用连接（JOIN）操作代替子查询，因为连接操作通常可以更好地利用索引。311<br>
+分析执行计划：通过分析查询的执行计划，了解数据库是如何执行查询的，并根据执行计划进行优化。6<br>
+DML（数据操纵语言）优化<br>
+DML主要用于对数据库中的数据进行增加、删除、修改等操作，包括INSERT、UPDATE和DELETE等命令。DML优化的目的是减少数据操作的时间和资源消耗：1117</p>
+<p>批量操作：对于大批量的数据操作，采用批量插入或批量更新的方式，可以显著提高效率。215<br>
+减少锁的持有时间：在进行大批量数据操作时，通过分解成小批次操作，减少锁的持有时间，降低对其他事务的影响。2<br>
+使用合适的DML语句：根据具体需求选择最适合的DML语句，例如在只需要删除数据的场景下使用TRUNCATE而非DELETE<br>
+4.  字段锁 间隙锁 临键锁的区别 和 插入意向锁的作用<br>
+<strong>记录锁</strong>是指针对特定的索引记录加锁，仅当查询条件精确匹配索引记录时才会使用记录锁<br>
+<strong>间隙锁</strong>是锁在索引记录之间的间隙上，用于防止其他事务在这些位置插入新的记录，从而解决幻读问题。间隙锁仅在可重复读（REPEATABLE READ）隔离级别下使用。<br>
+<strong>临键锁</strong>是记录锁和间隙锁的组合，用于同时锁定某条记录及其之前的间隙。它能够防止幻读，并且在可重复读隔离级别下使用<br>
+<strong>插入意向锁</strong>是当一个事务准备在一个间隙中插入新记录时获取的一种锁，它告诉其他事务，当前事务打算在这个间隙中插入新记录，但不阻止其他事务也在这个间隙中插入记录，只要它们的插入位置不冲突。</p>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://linjunya.github.io/post/db-6-0616-oracle/">
+                  <h3 class="post-title">
+                    db-6 0616 (oracle)
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>

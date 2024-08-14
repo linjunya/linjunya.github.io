@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>Java面试题 | 林君需要温习</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://linjunya.github.io//favicon.ico?v=1723624590115">
+<link rel="stylesheet" href="https://linjunya.github.io//styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="面试题
+
+Java的三个平台 （要说除3个平台的名字、英文和中文）
+
+
+Java SE 标准版（Java Platform, Standard Edition）
+Java EE 企业版 （Java Platform, Enterprise ..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://linjunya.github.io/">
+        <img src="https://linjunya.github.io//images/avatar.png?v=1723624590115" class="site-logo">
+        <h1 class="site-title">林君需要温习</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      温故而知新
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://linjunya.github.io//atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">Java面试题</h2>
+            <div class="post-date">2024-07-07</div>
+            
+            <div class="post-content" v-pre>
+              <h1 id="面试题">面试题</h1>
+<ol>
+<li>Java的三个平台 （要说除3个平台的名字、英文和中文）</li>
+</ol>
+<ul>
+<li>Java SE 标准版（Java Platform, Standard Edition）</li>
+<li>Java EE 企业版 （Java Platform, Enterprise Edition）</li>
+<li>Java ME 微型版 （Java Platform, Micro Edition）</li>
+</ul>
+<ol start="2">
+<li>JDK、JRE、JVM的关系 （要说出3者的名字、英文和中文、以及包含关系）<br>
+<strong>JDK（Java Development Kit</strong>）JDK是Java开发工具包，是Java程序员进行Java开发的核心环境。它包含了Java编译器（javac）、Java虚拟机（JVM）、Java类库（APIs）以及其他开发工具，如调试器（jdb）和文档生成器（javadoc）等。<br>
+**JRE（Java Runtime Environment）**JRE是Java运行时环境，它包含了Java虚拟机（JVM）和Java核心类库。<br>
+**JVM（Java Virtual Machine）**JVM是Java虚拟机，是Java平台的核心。它是一个抽象的计算机，能够执行Java字节码，实现Java程序的跨平台特性</li>
+</ol>
+<p><strong>JDK</strong>&gt;<strong>JRE</strong>&gt;<strong>JVM</strong></p>
+<ol start="3">
+<li>Java跨平台的原理 （至少要说出字节码技术，虚拟机技术，一次编译到处运行的原理）</li>
+</ol>
+<p><strong>Java跨平台原理概述</strong><br>
+Java作为一种广泛应用的编程语言，其最大的特点之一就是“一次编译，到处运行”(Write Once, Run Anywhere, WOLA)的能力。这种能力主要得益于Java字节码技术和Java虚拟机(JVM)的设计。Java源代码首先被编译成字节码，然后在任何安装了Java虚拟机的环境中都可以不加修改地运行，从而实现了跨平台的特性。</p>
+<p><strong>字节码技术</strong><br>
+Java源代码在被编译成字节码(.class文件)后，这些字节码不依赖于特定的硬件平台，因为它们是中间形式的代码，介于源代码和机器代码之间。字节码文件由一系列指令组成，这些指令在不同的平台上由Java虚拟机解释执行。</p>
+<p><strong>Java虚拟机技术</strong><br>
+Java虚拟机是一个软件，它提供了一种运行Java字节码的环境。JVM在不同的操作系统上提供了相同的接口，因此编译后的字节码可以在任何支持JVM的系统上运行。JVM负责将字节码转换为特定平台的机器指令，这样就屏蔽了不同硬件和操作系统之间的差异。</p>
+<p><strong>结论</strong><br>
+Java的跨平台性是通过Java字节码技术和Java虚拟机技术共同实现的。字节码技术允许Java源代码编译成中间形式的代码，而JVM技术则负责将这些字节码转换为可在各种硬件和操作系统上执行的机器指令。这种设计使得Java程序可以在几乎所有支持JVM的平台上无缝运行，大大提高了Java语言的普及度和实用性</p>
+<ol start="4">
+<li>JDK常用命令 （至少说出编译器和解释器）<br>
+javac：用于编译Java源代码，将.java文件编译成.class文件。<br>
+java：用于运行编译好的Java字节码文件，启动Java应用程序。<br>
+jar：用于打包和解包Java类和资源文件，常用于构建和部署Java应用程序。<br>
+javadoc：根据Java源代码生成API文档的工具。<br>
+jdb：Java调试器，用于在运行时检查Java程序的状态和变量。<br>
+jconsole：Java监视和管理控制台，用于监控和管理Java应用程序。<br>
+jvisualvm：多功能集成开发工具，可用于性能分析、内存泄漏检测等。</li>
+<li>8大基本类型 （至少说出8个类型的名字，以及占用的空间大小，整数类型的取值范围，正多少次方到负多少次方）<br>
+整数类型<br>
+byte: 8位，有符号，范围为-128到127。<br>
+short: 16位，有符号，范围为-32768到32767。<br>
+int: 32位，有符号，范围为-2<sup>31到2</sup>31-1。<br>
+long: 64位，有符号，范围为-2<sup>63到2</sup>63-1。<br>
+浮点类型<br>
+float: 32位，单精度浮点数，范围为1.4E-45到3.4028235E38。<br>
+double: 64位，双精度浮点数，范围为4.9E-324到1.7976931348623157E308。<br>
+字符类型<br>
+char: 16位，用于表示Unicode字符，范围为\u0000到\uFFFF。<br>
+布尔类型<br>
+boolean: 1位，表示true或false。</li>
+<li>计算机存储字符和字符串的原理 （至少说出字符用char存储，机器底层存储的是字符编号的原理，字符串用字符序列存储）</li>
+</ol>
+<ul>
+<li>在计算机中，字符的存储是通过字符编码完成的。</li>
+<li>字符串在计算机中是以字符序列的形式存储的。</li>
+</ul>
+<p><strong>如何存储字符串</strong></p>
+<ol>
+<li>
+<p>字符串是一个字符的序列或者集合</p>
+</li>
+<li>
+<p>char只能存储单字符，字符串用String类型存储</p>
+</li>
+<li>
+<p>String s = &quot;Hello&quot;;实际上是存取一个序列[ 'H','e','l','l','o']</p>
+</li>
+<li>
+<p>char用单引号存储，string用双引号存储</p>
+</li>
+<li>
+<p>char属于8大基本类型之一，String不属于基本类型</p>
+</li>
+<li>
+<p>&amp;&amp; 与 &amp;的区别<br>
+&amp;是不短路，I也是不短路，就是真假如何都还要把逻辑运算，判断完<br>
+&amp;&amp;就是如果第一组已经出了结果就不用管后面的运算了，所以后面的就不算了</p>
+</li>
+<li>
+<p>x++与++x的区别<br>
+主要的区别在于递增操作的执行顺序和它们返回的值：x++ 返回 x 的原始值，然后递增；而 ++x 先递增 x，然后返回新值。</p>
+</li>
+<li>
+<p>解释什么是原码、反码、补码，以及他们的换算过程<br>
+原码 (Sign-Magnitude Representation)<br>
+原码是最直接的表示方法，它简单地使用最高位表示符号位（0 表示正数，1 表示负数），其余位表示数值部分。例如：</p>
+</li>
+</ol>
+<p>正数 5 的原码：00000101<br>
+负数 -5 的原码：10000101<br>
+换算过程：</p>
+<p>将一个十进制整数转换为原码，直接用二进制表示，符号位为 0 表示正数，1 表示负数。<br>
+反码 (One's Complement)<br>
+反码是将原码中正数保持不变，负数的各位取反（0 变为 1，1 变为 0）得到的结果。例如：</p>
+<p>正数 5 的反码：00000101<br>
+负数 -5 的反码：11111010<br>
+换算过程：</p>
+<p>正数的反码和原码相同。<br>
+负数的反码可以通过将原码的符号位保持不变，其余位取反得到。<br>
+补码 (Two's Complement)<br>
+补码是计算机中最常用的表示有符号整数的方式，它解决了原码和反码的一些问题，例如在加法运算中的简便性。补码的表示方法是将反码表示法中负数部分的最低有效位加 1。例如：</p>
+<p>正数 5 的补码：00000101<br>
+负数 -5 的补码：11111011<br>
+换算过程：</p>
+<p>正数的补码和原码相同。<br>
+负数的补码可以通过将反码中的各位取反，然后在末位加 1 而得到。<br>
+换算示例<br>
+以整数 -5 为例：</p>
+<p>原码：10000101<br>
+反码：11111010<br>
+补码：11111011<br>
+从补码转回原码或反码，同样是按照相反的过程进行计算，即补码减 1 后，反码中各位取反。<br>
+10.   解释什么是自动转换，什么是强制转换</p>
+<p><strong>自动转换（Implicit Conversion）：</strong></p>
+<p>自动转换指的是在不需要显式指示的情况下，由编程语言自动完成的数据类型转换过程。这种转换是安全的，不会导致数据丢失或不一致。例如，将一个整数赋值给一个浮点数变量，或者将一个较小的整数类型赋值给一个较大的整数类型变量时，编程语言会自动执行类型转换以确保兼容性。<br>
+<strong>强制转换（Explicit Conversion）：</strong></p>
+<p>强制转换是程序员有意识地指示编译器或解释器执行的数据类型转换。这种转换通常需要使用特定的语法或函数来明确表明数据类型的转换意图。强制转换可能会导致数据丢失或截断，因此需要谨慎使用，确保转换的安全性和合理性。</p>
+<p><em>规则</em></p>
+<ol>
+<li>byte -&gt; short -&gt; int -&gt; long -&gt; float -&gt; double</li>
+<li>char -&gt; int -&gt; long -&gt; float -&gt; double</li>
+</ol>
+<p><strong><em>从左到右是自动转换</em>，<em>从右到左得强制转换</em></strong></p>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://linjunya.github.io/post/622/">
+                  <h3 class="post-title">
+                    6.22 Java基础
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>

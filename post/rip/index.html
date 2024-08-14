@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>RIP | 林君需要温习</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://linjunya.github.io//favicon.ico?v=1723624590115">
+<link rel="stylesheet" href="https://linjunya.github.io//styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="RIP
+RIP是个啥
+RIP协议（Routing Information Protocol，路由信息协议）是一种基于距离矢量的内部网关协议，即根据跳数来度量路由开销，进行路由选择。
+相比于其它路由协议（如OSPF、ISIS等），RIP协议实..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://linjunya.github.io/">
+        <img src="https://linjunya.github.io//images/avatar.png?v=1723624590115" class="site-logo">
+        <h1 class="site-title">林君需要温习</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      温故而知新
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://linjunya.github.io//atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">RIP</h2>
+            <div class="post-date">2024-08-07</div>
+            
+            <div class="post-content" v-pre>
+              <h1 id="rip">RIP</h1>
+<h2 id="rip是个啥">RIP是个啥</h2>
+<p>RIP协议（Routing Information Protocol，路由信息协议）是一种基于距离矢量的内部网关协议，即根据跳数来度量路由开销，进行路由选择。</p>
+<p>相比于其它路由协议（如OSPF、ISIS等），RIP协议实现更简单，对带宽、配置和管理等要求也更低，但受到路由跳数和收敛速度的限制，跳数大于15就认为网络不可达，所以无法用在大型复杂网络中。</p>
+<p>原文链接：https://blog.csdn.net/m0_73995538/article/details/131095351</p>
+<h2 id="用处">用处</h2>
+<p>作为动态路由还有点用，能解决一些静态路由做不到的。</p>
+<p>在出现动态路由之前，静态路由有几个问题无法解决：</p>
+<p>**<em>问题一：<em><strong>当网络拓扑结构和链路状态发生变化，需要对路由器的静态路由信息</strong>进行大范围修改，工作复杂度高。</em></em></p>
+<p>***问题二：***网络发生故障时，<strong>不能重选路由</strong>，很可能使路由失败。</p>
+<h2 id="限制">限制</h2>
+<p>RIP适用于<strong>中小型网络</strong>，因为RIP是基于距离矢量的算法(D-V算法)。由于其<strong>只能支持0-15跳,<strong>第十六跳会被标记成无限大或不可达。所以在整个网络中，只能有16个路由器相互成为rip邻居路由器，由于以上原因，所以RIP只能</strong>应用于中小型网络</strong></p>
+<h2 id="思科模拟器命令">思科模拟器命令</h2>
+<ol>
+<li>router rip</li>
+<li>network 192.168.1.0</li>
+<li>network 192.168.2.0</li>
+</ol>
+<h2 id="做法">做法</h2>
+<ol>
+<li>启动rip</li>
+<li>把身边的邻居加入进去，开始散布谣言，让路由上的每个人都知道，who is我的邻居</li>
+</ol>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://linjunya.github.io/post/linux-2/">
+                  <h3 class="post-title">
+                    linux -2
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>

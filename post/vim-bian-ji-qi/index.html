@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>vim编辑器 | 林君需要温习</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://linjunya.github.io//favicon.ico?v=1723624590115">
+<link rel="stylesheet" href="https://linjunya.github.io//styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="所有的 Unix Like 系统都会内建 vi 文书编辑器，其他的文书编辑器则不一定会存在。
+但是目前我们使用比较多的是 vim 编辑器。
+vim 具有程序编辑的能力，可以主动的以字体颜色辨别语法的正确性，方便程序设计。
+一、什么是vim
+..." />
+    <meta name="keywords" content="linux基本指令" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://linjunya.github.io/">
+        <img src="https://linjunya.github.io//images/avatar.png?v=1723624590115" class="site-logo">
+        <h1 class="site-title">林君需要温习</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      温故而知新
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://linjunya.github.io//atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">vim编辑器</h2>
+            <div class="post-date">2024-04-04</div>
+            
+            <div class="post-content" v-pre>
+              <p>所有的 Unix Like 系统都会内建 vi 文书编辑器，其他的文书编辑器则不一定会存在。</p>
+<p>但是目前我们使用比较多的是 vim 编辑器。</p>
+<p>vim 具有程序编辑的能力，可以主动的以字体颜色辨别语法的正确性，方便程序设计。</p>
+<h1 id="一-什么是vim">一、什么是vim</h1>
+<p>Vim是从 vi 发展出来的一个文本编辑器。代码补完、编译及错误跳转等方便编程的功能特别丰富，在程序员中被广泛使用。</p>
+<p>简单的来说， vi 是老式的字处理器，不过功能已经很齐全了，但是还是有可以进步的地方。 vim 则可以说是程序开发者的一项很好用的工具。</p>
+<p>连 vim 的官方网站 (http://www.vim.org) 自己也说 vim 是一个程序开发工具而不是文字处理软件。</p>
+<h1 id="二-vim-键盘图">二、vim 键盘图：</h1>
+<figure data-type="image" tabindex="1"><img src="https://img-blog.csdnimg.cn/20200801230940999.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDEzNjQ0Ng==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" loading="lazy"></figure>
+<h1 id="三-vivim-的基本使用">三、vi/vim 的基本使用</h1>
+<p>基本上 vi/vim 共分为三种模式，分别是<strong>命令模式（Command mode）</strong>，<strong>输入模式（Insert mode）<strong>和</strong>底线命令模式（Last line mode）</strong>。</p>
+<ul>
+<li>简单的说，我们可以将这三个模式想成底下的图标来表示：</li>
+</ul>
+<figure data-type="image" tabindex="2"><img src="https://img-blog.csdnimg.cn/20200801231120495.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDEzNjQ0Ng==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" loading="lazy"></figure>
+<h2 id="31-命令模式">3.1、命令模式：</h2>
+<p>用户刚刚启动 vi/vim，便进入了命令模式。</p>
+<p>此状态下敲击键盘动作会被Vim识别为命令，而非输入字符。比如我们此时按下i，并不会输入一个字符，i被当作了一个命令。</p>
+<p>以下是常用的几个命令：</p>
+<ul>
+<li><strong>i</strong> 切换到输入模式，以输入字符。</li>
+<li><strong>x</strong> 删除当前光标所在处的字符。</li>
+<li><strong>:</strong> 切换到底线命令模式，以在最底一行输入命令。</li>
+</ul>
+<p>若想要编辑文本：启动Vim，进入了命令模式，按下i，切换到输入模式。</p>
+<p>命令模式只有一些最基本的命令，因此仍要依靠底线命令模式输入更多命令。</p>
+<h3 id="311-命令模式常用快捷键">3.1.1、命令模式常用快捷键</h3>
+<table>
+<thead>
+<tr>
+<th><strong>命令模式操作快捷键</strong></th>
+<th><strong>功能描述</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>x</strong></td>
+<td><strong>删除光标当前所在位置的字符</strong></td>
+</tr>
+<tr>
+<td><strong>dd</strong></td>
+<td><strong>删除光标当前所在的行</strong></td>
+</tr>
+<tr>
+<td><strong>ndd</strong></td>
+<td><strong>(n为数字)删除包括光标所在行的后n行</strong></td>
+</tr>
+<tr>
+<td><strong>d$  或   D</strong></td>
+<td><strong>删除光标位置至行尾的内容，同时删除光标所在位置的字符</strong></td>
+</tr>
+<tr>
+<td><strong>C</strong></td>
+<td><strong>删除光标位置至行尾的内容，并进入插入模式</strong></td>
+</tr>
+<tr>
+<td><strong>d^</strong></td>
+<td><strong>删除光标位置至行首的内容，不删除光标所在位置的字符</strong></td>
+</tr>
+<tr>
+<td><strong>J</strong></td>
+<td><strong>删除换行符号，将两行合并为一行</strong></td>
+</tr>
+<tr>
+<td><strong>u</strong></td>
+<td><strong>撤销上一步操作，可以多次使用</strong></td>
+</tr>
+<tr>
+<td><strong>r(x)</strong></td>
+<td><strong>将光标所在位置的字符替换为（x），（x）可以为任意字符</strong></td>
+</tr>
+<tr>
+<td><strong>yy</strong></td>
+<td><strong>复制当前行</strong></td>
+</tr>
+<tr>
+<td><strong>p（小写）</strong></td>
+<td><strong>粘贴至光标所在行的下一行</strong></td>
+</tr>
+<tr>
+<td><strong>P（大写）</strong></td>
+<td><strong>粘贴至光标所在行的上一行</strong></td>
+</tr>
+<tr>
+<td><strong>nyy</strong></td>
+<td><strong>复制n行</strong></td>
+</tr>
+<tr>
+<td><strong>gg</strong></td>
+<td><strong>跳转到首行</strong></td>
+</tr>
+<tr>
+<td><strong>G</strong></td>
+<td><strong>跳转到尾行</strong></td>
+</tr>
+<tr>
+<td><strong>ngg</strong></td>
+<td><strong>跳转到第n行</strong></td>
+</tr>
+<tr>
+<td><strong>^  或  Home</strong></td>
+<td><strong>跳转到行首</strong></td>
+</tr>
+<tr>
+<td><strong>$  或   End</strong></td>
+<td><strong>跳转到行尾</strong></td>
+</tr>
+<tr>
+<td><strong>n|</strong></td>
+<td><strong>跳转到n列，n表示列号</strong></td>
+</tr>
+<tr>
+<td><strong>ZZ</strong></td>
+<td><strong>保存退出</strong></td>
+</tr>
+</tbody>
+</table>
+<h2 id="32-输入模式">3.2、输入模式</h2>
+<p>在命令模式下按下<strong>i</strong>就进入了输入模式。</p>
+<p>在输入模式中，可以使用以下按键：</p>
+<ul>
+<li><strong>字符按键以及Shift组合</strong>，输入字符</li>
+<li><strong>ENTER</strong>，回车键，换行</li>
+<li><strong>BACK SPACE</strong>，退格键，删除光标前一个字符</li>
+<li><strong>DEL</strong>，删除键，删除光标后一个字符</li>
+<li><strong>方向键</strong>，在文本中移动光标</li>
+<li><strong>HOME</strong>/<strong>END</strong>，移动光标到行首/行尾</li>
+<li><strong>Page Up</strong>/<strong>Page Down</strong>，上/下翻页</li>
+<li><strong>Insert</strong>，切换光标为输入/替换模式，光标将变成竖线/下划线</li>
+<li><strong>ESC</strong>，退出输入模式，切换到命令模式</li>
+</ul>
+<h3 id="321-进入输入模式的按键及功能">3.2.1、进入输入模式的按键及功能</h3>
+<table>
+<thead>
+<tr>
+<th>按键</th>
+<th>功能描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>a</td>
+<td>进入输入模式，后续输入内容将插入至当前光标的后面</td>
+</tr>
+<tr>
+<td>A</td>
+<td>进入插入模式，后续输入的内容将插入至当前段落的段尾</td>
+</tr>
+<tr>
+<td>i</td>
+<td>进入插入模式，后续输入的内容将插入至当前光标的前面</td>
+</tr>
+<tr>
+<td>I</td>
+<td>进入插入模式，后续输入的内容将插入至当前段落的行首</td>
+</tr>
+<tr>
+<td>o</td>
+<td>进入插入模式，并在当前行的后面创建新的空白行</td>
+</tr>
+<tr>
+<td>O</td>
+<td>进入插入模式并在当前行的前面创建新的空白行</td>
+</tr>
+</tbody>
+</table>
+<h2 id="33-底线命令模式又叫做末行模式">3.3、底线命令模式（又叫做末行模式）</h2>
+<p>在命令模式下按下:（英文冒号）就进入了底线命令模式。</p>
+<p>底线命令模式可以输入单个或多个字符的命令，可用的命令非常多。</p>
+<p>在底线命令模式中，基本的命令：</p>
+<table>
+<thead>
+<tr>
+<th>命令写法</th>
+<th>功能描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>:q</td>
+<td>退出程序</td>
+</tr>
+<tr>
+<td>:w</td>
+<td>保存文件</td>
+</tr>
+<tr>
+<td>:wq</td>
+<td>保存并退出</td>
+</tr>
+<tr>
+<td>:q!</td>
+<td>放弃更改并且退出</td>
+</tr>
+<tr>
+<td>:w    /目标文件路径</td>
+<td>另存为</td>
+</tr>
+<tr>
+<td>:r   目标文件</td>
+<td>读入其它文件内容</td>
+</tr>
+<tr>
+<td>:set nu  | nonu</td>
+<td>显示和不显示行号</td>
+</tr>
+<tr>
+<td>:set ai | noai</td>
+<td>启用和关闭自动缩进</td>
+</tr>
+</tbody>
+</table>
+<p>按ESC键可随时退出底线命令模式。</p>
+<h1 id="四-vim的查找">四、vim的查找</h1>
+<h2 id="41-自上往下的查找功能">4.1、自上往下的查找功能</h2>
+<p>在命令模式下输入   <strong>/</strong></p>
+<p>例如：</p>
+<pre><code class="language-bash">[root@proxy ~]# head -5 /etc/passwd &gt; /opt/passwd
+[root@proxy ~]# vim /opt/passwd
+</code></pre>
+<figure data-type="image" tabindex="3"><img src="https://img-blog.csdnimg.cn/20200808144318185.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDEzNjQ0Ng==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" loading="lazy"></figure>
+<ul>
+<li>如果个文件中有多个root的字符<br>
+可以通过n跳转至下一个匹配的关键词处<br>
+通过N跳转至上一个关键词处</li>
+</ul>
+<h2 id="42-实现自下往上的查找">4.2、实现自下往上的查找</h2>
+<p>在命令模式输入  <strong>？</strong></p>
+<p>例如：</p>
+<pre><code class="language-bash">[root@proxy ~]# head -5 /etc/passwd &gt; /opt/passwd
+[root@proxy ~]# vim /opt/passwd
+</code></pre>
+<figure data-type="image" tabindex="4"><img src="https://img-blog.csdnimg.cn/20200808144859334.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDEzNjQ0Ng==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" loading="lazy"></figure>
+<ul>
+<li>此时快捷键N表示查看下一匹配的关键词</li>
+<li>n表示查看上一匹配的关键词</li>
+</ul>
+<h2 id="43-忽略大小写">4.3、忽略大小写</h2>
+<p>在vim中查找时，可能不清楚关键字的大小写，没办法进行精确的查找时。可以通过命令模式输入：</p>
+<pre><code class="language-bash">:set ignorecase				#回车，再输入/ 进行查找
+</code></pre>
+<figure data-type="image" tabindex="5"><img src="https://img-blog.csdnimg.cn/20200808153902131.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDEzNjQ0Ng==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" loading="lazy"></figure>
+<p>此时可以通过大写的BIN来查找对应的内容</p>
+<h1 id="五-vim的替换">五、vim的替换</h1>
+<h2 id="51-行内替换">5.1、行内替换</h2>
+<table>
+<thead>
+<tr>
+<th>指令</th>
+<th>功能描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>: s   /old/new</td>
+<td>替换当前行第一个“old”</td>
+</tr>
+<tr>
+<td>: s   /old/new/g</td>
+<td>替换当前行所有的“old”</td>
+</tr>
+</tbody>
+</table>
+<h2 id="52-区域内替换">5.2、区域内替换</h2>
+<table>
+<thead>
+<tr>
+<th>指令</th>
+<th>功能描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>:n,m  s/old/new/g</td>
+<td>替换n到m行所有的old</td>
+</tr>
+<tr>
+<td>:%  s/old/new/g</td>
+<td>替换文件内所有的old</td>
+</tr>
+</tbody>
+</table>
+<h1 id="六-vim多窗口编辑">六、vim多窗口编辑</h1>
+<p>当需要同时编辑多个文档时，分隔窗口可以起到很大的作用。</p>
+<ul>
+<li>素材准备</li>
+</ul>
+<pre><code class="language-bash">[root@proxy opt]# cat test01.txt 
+我是测试文档一
+[root@proxy opt]# cat test02.txt 
+我是测试文档二
+[root@proxy opt]# cat test03.txt 
+我是测试文档三
+[root@proxy opt]# cat test04.txt 
+我是测试文档四
+</code></pre>
+<h2 id="61-横向分隔窗口">6.1、横向分隔窗口</h2>
+<p>先用vim  打开  test01.txt</p>
+<pre><code class="language-bash">[root@proxy opt]# vim test01.txt 
+</code></pre>
+<p>末行模式输入  :split /opt/test02.txt      回车</p>
+<figure data-type="image" tabindex="6"><img src="https://img-blog.csdnimg.cn/20200808155450742.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDEzNjQ0Ng==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" loading="lazy"></figure>
+<ul>
+<li>
+<p>可以通过  <kbd>Ctrl</kbd>+<kbd>W</kbd><kbd>W</kbd>切换光标所在位置</p>
+</li>
+<li>
+<p>在末行模式输入   :close    回车   可以关闭光标所在的文档</p>
+</li>
+</ul>
+<h2 id="62-纵向分隔窗口">6.2、纵向分隔窗口</h2>
+<p>先用vim  打开  test01.txt</p>
+<p>末行模式输入 :vsplit /opt/test02.txt   回车</p>
+<figure data-type="image" tabindex="7"><img src="https://img-blog.csdnimg.cn/20200808160515187.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDEzNjQ0Ng==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" loading="lazy"></figure>
+<ul>
+<li>可以通过  <kbd>Ctrl</kbd>+<kbd>W</kbd><kbd>W</kbd>切换光标所在位置</li>
+<li>在末行模式输入   :close    回车   可以关闭光标所在的文档</li>
+</ul>
+<h1 id="63-开四个窗口玩一下">6.3、开四个窗口玩一下</h1>
+<figure data-type="image" tabindex="8"><img src="https://img-blog.csdnimg.cn/20200808160744513.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDEzNjQ0Ng==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述" loading="lazy"></figure>
+<ul>
+<li>切换窗口的快捷键</li>
+</ul>
+<p>依然可以通过  <kbd>Ctrl</kbd>+<kbd>W</kbd><kbd>W</kbd>切换光标所在位置，但切换顺序是按照上图中1、2、3、4的顺序依次切换</p>
+<p><kbd>Ctrl</kbd>+<kbd>W</kbd><kbd>h</kbd>跳转到左边的窗口</p>
+<p><kbd>Ctrl</kbd>+<kbd>W</kbd><kbd>l</kbd>跳转到右边的窗口</p>
+<p><kbd>Ctrl</kbd>+<kbd>W</kbd><kbd>j</kbd>跳转到下面的窗口</p>
+<p><kbd>Ctrl</kbd>+<kbd>W</kbd><kbd>k</kbd>跳转到上面一个窗口</p>
+<p>呀</p>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://linjunya.github.io/tag/hj50pd5LA/" class="tag">
+                    linux基本指令
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://linjunya.github.io/post/cha-kan-wen-jian-nei-rong-de-ge-chong-ming-ling/">
+                  <h3 class="post-title">
+                    查看文件内容的各种命令
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>

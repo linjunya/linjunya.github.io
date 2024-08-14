@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>面试题的恶补 | 林君需要温习</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://linjunya.github.io//favicon.ico?v=1723624590115">
+<link rel="stylesheet" href="https://linjunya.github.io//styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="Mysql基础
+为什么选择数据库作存储工具
+数据保存在内存里
+存取快，但不能永久保存
+保存在文件里
+可以永久保存，速度比内存慢，查询不方便
+数据库的话
+数据可以永久保存，用sql语句查询，方便得一比，管理数据也方便。
+SQL
+结构化查询语言..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://linjunya.github.io/">
+        <img src="https://linjunya.github.io//images/avatar.png?v=1723624590115" class="site-logo">
+        <h1 class="site-title">林君需要温习</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      温故而知新
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://linjunya.github.io//atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">面试题的恶补</h2>
+            <div class="post-date">2024-07-25</div>
+            
+            <div class="post-content" v-pre>
+              <h1 id="mysql基础">Mysql基础</h1>
+<h1 id="为什么选择数据库作存储工具">为什么选择数据库作存储工具</h1>
+<h2 id="数据保存在内存里">数据保存在内存里</h2>
+<p>存取快，但不能永久保存</p>
+<h2 id="保存在文件里">保存在文件里</h2>
+<p>可以永久保存，速度比内存慢，查询不方便</p>
+<h2 id="数据库的话">数据库的话</h2>
+<p>数据可以永久保存，用sql语句查询，方便得一比，管理数据也方便。</p>
+<h2 id="sql">SQL</h2>
+<p>结构化查询语言，数据库查询语言</p>
+<h2 id="数据库的三大范式"><strong>数据库的三大范式</strong></h2>
+<ol>
+<li>第一范式：每个列都不可以再拆分</li>
+<li>第二范式：非主键列完全依赖于主键，而不能是依赖主键的一部分</li>
+<li>第三范式：非主键列只依赖于主键，不依赖于其他非主键。</li>
+</ol>
+<h2 id="mysql有关权限的表有哪几个">mysql有关权限的表有哪几个</h2>
+<ul>
+<li>user</li>
+<li>db</li>
+<li>table_priv</li>
+<li>columns_priv</li>
+<li>host</li>
+</ul>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://linjunya.github.io/post/xian-cheng/">
+                  <h3 class="post-title">
+                    线程
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>

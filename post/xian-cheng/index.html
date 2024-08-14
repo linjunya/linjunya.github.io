@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>线程 | 林君需要温习</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://linjunya.github.io//favicon.ico?v=1723624590115">
+<link rel="stylesheet" href="https://linjunya.github.io//styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="单线程
+代码运行在pu一个核心上
+多线程
+代码运行在不同核心上
+阻塞
+一个线程在执行过程中因为某种原因而暂停执行，直到某个条件被满足后才会继续执行。
+多线程（）
+创建线程的四种方式
+继承Thread父类，重写run方法
+
+这段程序中有2个1..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://linjunya.github.io/">
+        <img src="https://linjunya.github.io//images/avatar.png?v=1723624590115" class="site-logo">
+        <h1 class="site-title">林君需要温习</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      温故而知新
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://linjunya.github.io//atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">线程</h2>
+            <div class="post-date">2024-07-23</div>
+            
+            <div class="post-content" v-pre>
+              <h1 id="单线程">单线程</h1>
+<p>代码运行在pu一个核心上</p>
+<h1 id="多线程">多线程</h1>
+<p>代码运行在不同核心上</p>
+<h1 id="阻塞">阻塞</h1>
+<p>一个线程在执行过程中因为某种原因而暂停执行，直到某个条件被满足后才会继续执行。</p>
+<h1 id="多线程-2">多线程（）</h1>
+<h2 id="创建线程的四种方式">创建线程的四种方式</h2>
+<h3 id="继承thread父类重写run方法">继承Thread父类，重写run方法</h3>
+<ul>
+<li>这段程序中有2个1万次的循环，假设我们把一个循环看作是一个耗时的任务，如果是单线程执行，前一个任务会阻塞后面的任务，多个任务需要排队执行，也叫做“串行执行”</li>
+<li>这里使用了多线程技术，让两个任务分别运行在两个不同的线程中，两个任务不会阻塞，多个任务同时执行，也叫做“并行执行</li>
+</ul>
+<pre><code>// 自定义线程类, 继承官方提供的线程父类
+public class CounterThread extends Thread {
+    // 重写run方法
+    @Override
+    public void run() {
+        // 10000次循环, 打印循环变量i
+        // Thread.currentThread().getName() 返回当前线程的名字
+        for (int i = 0; i &lt; 10000; i++) {
+            System.out.println(Thread.currentThread().getName() + &quot;:&quot; + i);
+        }
+    }
+
+    public static void main(String[] args) {
+        // 创建线程对象
+        CounterThread t = new CounterThread();
+        // 设置线程名字 (非必须)
+        t.setName(&quot;CounterThread&quot;);
+        // 启动start方法启动线程
+        // 虽然我们重写的是父类的run方法, 但必须调用父类的start方法
+        // start方法执行后, 会向系统申请CPU线程资源, 然后回调我们写的run方法
+        // 如果直接调用run方法,则run方法不会在新的线程执行,而是在当前线程执行
+        t.start();
+
+        for (int i = 0; i &lt; 10000; i++) {
+            System.out.println(Thread.currentThread().getName() + &quot;:&quot; + i);
+        }
+    }
+}
+</code></pre>
+<h3 id="方法二实现runnable接口重写run方法">方法二：实现Runnable接口，重写run方法</h3>
+<pre><code>// 自定义类, 实现Runnable接口
+public class CounterRunnable implements Runnable{
+    // 重新run方法
+    @Override
+    public void run() {
+        // 在run方法中编写子线程需要执行的任务
+        for (int i = 0; i &lt; 10000; i++) {
+            System.out.println(Thread.currentThread().getName() + &quot;:&quot; + i);
+        }
+    }
+
+    public static void main(String[] args) {
+        // 创建runnable对象
+        CounterRunnable runnable = new CounterRunnable();
+        // 创建Thread对象, 用runnable对象入参, 还可以指定线程名
+        Thread t = new Thread(runnable, &quot;CounterRunnable&quot;);
+        // 启动线程 (1. 申请CPU线程 2. 回调run)
+        t.start();
+
+        // 主线程的任务 (测试并行执行)
+        for (int i = 0; i &lt; 10000; i++) {
+            System.out.println(Thread.currentThread().getName() + &quot;:&quot; + i);
+        }
+    }
+}
+</code></pre>
+<h3 id="方式三实现callable接口重写call方法">方式三：实现Callable接口，重写call方法</h3>
+<ul>
+<li>如果子线程运行结束后，没有返回值，可以用第一种或者第二种</li>
+<li>如果子线程运行结束后，有返回值需要返回给主线程，可以用第三种方式</li>
+</ul>
+<pre><code>// 自定义类, 实现Callable接口 
+// 需要指定泛型 (该泛型就是返回值的类型)
+public class CounterCallable implements Callable&lt;Integer&gt; {
+    // 重新call方法 
+    // run方法不可以有返回值 (void)
+    @Override
+    public Integer call() throws Exception {
+        int sum = 0;
+        for (int i = 0; i &lt; 10000; i++) {
+            sum += i;
+        }
+        return sum;
+    }
+
+    public static void main(String[] args) {
+        // 需要组合3个对象启动线程: callable对象 + task对象 + thread对象
+        
+        // 创建callable对象 (自定义的类)
+        CounterCallable callable = new CounterCallable();
+        // 创建task对象, 入参callable对象
+        FutureTask&lt;Integer&gt; task = new FutureTask&lt;&gt;(callable);
+        // 创建thread对象, 入参task对象
+        Thread t = new Thread(task);
+        // 启动线程
+        t.start();
+
+        try {
+            // 在主线程中可以调用task.get()方法获取子线程的返回值
+            // 如果此时子线程已经结束了, 那么这么可以立刻拿到子线程的返回值
+            // 如果此时子线程还没有结束, 这里会阻塞一会, 等待子线程运行结束后, 才会返回
+            Integer result = task.get();
+            System.out.println(&quot;子线程返回: &quot; + result);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        } catch (ExecutionException e) {
+            throw new RuntimeException(e);
+        }
+    }
+}
+</code></pre>
+<h3 id="方式四使用线程池">方式四：使用线程池</h3>
+<h4 id="1-单线程的线程池">1. 单线程的线程池</h4>
+<pre><code>// 线程池
+public class ThreadPool {
+    public static void main(String[] args) {
+        // 创建一个单线程的线程池
+        ExecutorService executor = Executors.newSingleThreadExecutor();
+        // executor线程池有一个功能submit, 用于提交一个任务对象给线程池
+        // 任务对象可以是Runnable类型或者Callable类型
+        // 如果任务对象是Runnable类型,线程池会自动回调其run方法
+        // 如果任务对象是Callable类型,线程池会自动回调其call方法
+        CounterRunnable runnable = new CounterRunnable();
+        executor.submit(runnable);
+        executor.submit(runnable);
+        executor.submit(runnable);
+        // 接口不可以被实例化
+        // 必须定义子类实现接口, 实例化子类对象
+        // 这里new Runnable是一种特殊写法 (匿名内部类)
+        // 相当于临时实现一下Runnable接口, 重新run方法, 不可以被其他地方复用
+        executor.submit(new Runnable() {
+            @Override
+            public void run() {
+                for (int i = 0; i &lt; 10000; i++) {
+                    System.out.println(&quot;匿名内部类方式:&quot; + i);
+                }
+            }
+        });
+        // 用lambda表达式 (函数式接口) 替代匿名内部类
+        // 隐式实现Runnable接口
+        // 隐式重写run方法
+        // 简化了匿名内部类的语法, 同样是一种临时实现, 不可以被服用
+        executor.submit(() -&gt; {
+            for (int i = 0; i &lt; 10000; i++) {
+                System.out.println(&quot;函数式接口方式:&quot; + i);
+            }
+        });
+    }
+}
+</code></pre>
+<h4 id="固定大小的线程池">固定大小的线程池</h4>
+<pre><code>// 线程池
+public class ThreadPool2 {
+    public static void main(String[] args) {
+
+        // 创建固定大小的线程池, 此处指定最大线程数 = 5
+        // 在创建线程池的时候, 池中还没有线程
+        ExecutorService executor = Executors.newFixedThreadPool(5);
+
+        // 循环10次提交10个任务给线程池
+        for (int i = 0; i &lt; 10; i++) {
+            // 调用submit方法提交任务给线程池 (用的是函数式接口的方式)
+            // 当线程池中每个线程都处于运行状态
+            // 新的任务提交进来后,需要等待空闲线程
+            executor.submit(() -&gt; {
+                // 任务是什么不重要
+                System.out.println(Thread.currentThread().getName());
+            });
+        }
+
+    }
+}
+</code></pre>
+<h2 id="线程锁">线程锁</h2>
+<h3 id="synchronized锁">synchronized锁</h3>
+<ul>
+<li>锁代码块</li>
+<li>锁方法</li>
+</ul>
+<pre><code>// 抢票线程
+public class TicketRunnable implements Runnable {
+    // 成员变量ticket = 总票数
+    int ticket = 10000;
+    @Override
+    public void run() {
+        synchronized (this) {
+            ticket --;
+            System.out.println(Thread.currentThread().getName() + &quot;抢到了:&quot; + ticket);
+        }
+    }
+
+    public static void main(String[] args) {
+        ScheduledExecutorService executor = Executors.newScheduledThreadPool(10000);
+        TicketRunnable ticketRunnable = new TicketRunnable();
+        for (int i = 0; i &lt; 10000; i++) {
+            // 提交10000个抢票任务给线程池
+            executor.submit(ticketRunnable);
+        }
+    }
+}
+</code></pre>
+<h3 id="lock锁">Lock锁</h3>
+<pre><code>// 抢票线程
+public class TicketRunnable implements Runnable {
+    // 成员变量ticket = 总票数
+    Integer ticket = 10000;
+    Lock lock = new ReentrantLock();
+    @Override
+    public void run() {
+        lock.lock();
+        ticket --;
+        System.out.println(Thread.currentThread().getName() + &quot;抢到了:&quot; + ticket);
+        lock.unlock();
+    }
+
+    public static void main(String[] args) {
+        ScheduledExecutorService executor = Executors.newScheduledThreadPool(10000);
+        TicketRunnable ticketRunnable = new TicketRunnable();
+        for (int i = 0; i &lt; 10000; i++) {
+            // 提交10000个抢票任务给线程池
+            executor.submit(ticketRunnable);
+        }
+    }
+}
+</code></pre>
+<h3 id="死锁">死锁</h3>
+<pre><code>
+public class GoodsRunnable implements Runnable{
+    Goods goods1;
+    Goods goods2;
+
+    public GoodsRunnable(Goods goods1, Goods goods2) {
+        this.goods1 = goods1;
+        this.goods2 = goods2;
+    }
+
+    @Override
+    public void run() {
+        // 锁第一个goods对象
+        synchronized (goods1) {
+            // 库存-1
+            goods1.setStock(goods1.getStock() - 1);
+            System.out.println(Thread.currentThread().getName() + &quot;线程扣good1商品库存成功&quot;);
+            try {
+                // 故意休眠一秒, 让他丢失CPU
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            // 锁第二个goods对象
+            synchronized (goods2) {
+                // 库存-1
+                goods2.setStock(goods2.getStock() - 1);
+                System.out.println(Thread.currentThread().getName() + &quot;线程扣good2商品库存成功&quot;);
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        Goods goods1 = new Goods(1, &quot;华为手机&quot;, 100);
+        Goods goods2 = new Goods(2, &quot;苹果电脑&quot;, 100);
+        // 在线程1的眼里：goods1=goods1，goods2=goods2
+        GoodsRunnable runnable1 = new GoodsRunnable(goods1, goods2);
+        // 在线程2的眼里：goods1=goods2，goods2=goods1
+        GoodsRunnable runnable2 = new GoodsRunnable(goods2, goods1);
+        Thread t1 = new Thread(runnable1, &quot;张三&quot;);
+        Thread t2 = new Thread(runnable2, &quot;李四&quot;);
+        t1.start();
+        t2.start();
+    }
+}
+
+</code></pre>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://linjunya.github.io/post/io-liu/">
+                  <h3 class="post-title">
+                    I/O流
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>

@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>面向对象 | 林君需要温习</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://linjunya.github.io//favicon.ico?v=1723624590115">
+<link rel="stylesheet" href="https://linjunya.github.io//styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="类的组成
+成员变量
+
+
+不定义在函数中，直接定义在类中
+
+
+成员变量用于描述某一种结构的组成
+public class Book {
+int id;
+String name;
+String author;
+double price;
+}
+
+..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://linjunya.github.io/">
+        <img src="https://linjunya.github.io//images/avatar.png?v=1723624590115" class="site-logo">
+        <h1 class="site-title">林君需要温习</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      温故而知新
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://linjunya.github.io//atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">面向对象</h2>
+            <div class="post-date">2024-07-11</div>
+            
+            <div class="post-content" v-pre>
+              <h1 id="类的组成">类的组成</h1>
+<h2 id="成员变量">成员变量</h2>
+<ul>
+<li>
+<p>不定义在函数中，直接定义在类中</p>
+</li>
+<li>
+<p>成员变量用于描述某一种结构的组成</p>
+<p>public class Book {<br>
+int id;<br>
+String name;<br>
+String author;<br>
+double price;<br>
+}</p>
+</li>
+</ul>
+<h2 id="成员函数">成员函数</h2>
+<pre><code>Book① book = new Book()②;
+</code></pre>
+<p><strong>①Book</strong>是我们自定义的一个类型，不属于八大类型中的任何一种属于引用类型<br>
+而引用类型又有三种</p>
+<ol>
+<li>数组</li>
+<li>类</li>
+<li>接口</li>
+</ol>
+<p><strong>②Book</strong>是构造函数<br>
+<strong>book</strong>是指针</p>
+<ul>
+<li>成员函数必须用对象的指针调用()</li>
+<li>成员函数内部的this用于区分当前对象</li>
+</ul>
+<p>eg.<br>
+book1.show();    则this=book1<br>
+book2.show();    则this=book2</p>
+<p>关于成员函数，由成员变量我们给予的定义来看，我们的成员函数也是定义在类中的<br>
+// 成员函数<br>
+public void show() {<br>
+System.out.println(&quot;************&quot;);<br>
+System.out.println(&quot;编号:&quot; + this.id);<br>
+System.out.println(&quot;书名:&quot; + this.name);<br>
+System.out.println(&quot;作者:&quot; + this.author);<br>
+System.out.println(&quot;价格:&quot; + this.price);<br>
+}</p>
+<h2 id="构造函数">构造函数</h2>
+<h3 id="构造函数的作用">构造函数的作用</h3>
+<ul>
+<li>用于构造对象</li>
+</ul>
+<p>eg.<br>
+Book book = new Book()</p>
+<p><em>看到了吧，这条指令就是用来构造对象的，<br>
+在成员函数中有对这句的详细解析。</em></p>
+<pre><code>public class Example {
+private int value;
+
+// 无参构造函数
+public Example() {
+    value = 0;
+}
+
+// 带参数的构造函数
+public Example(int value) {
+    this.value = value;
+}
+
+// 其他初始化方法...
+
+public void setValue(int value) {
+    this.value = value;
+}
+
+public int getValue() {
+    return this.value;
+}
+
+public static void main(String[] args) {
+    Example e1 = new Example(); // 调用无参构造函数
+    Example e2 = new Example(10); // 调用带参数的构造函数
+    e1.setValue(20);
+    e2.setValue(30);
+    System.out.println(e1.getValue()); // 输出 20
+    System.out.println(e2.getValue()); // 输出 30
+}
+</code></pre>
+<p>}</p>
+<p><em>在这个例子中，Example类有两个构造函数，一个是无参构造函数，另一个是带整型参数的构造函数。这两个构造函数共同完成了对新创建对象的初始化工作。通过重载构造函数，Example类能够根据不同的创建场景提供不同的初始化选项。</em></p>
+<h2 id="构造函数的调用方式">构造函数的调用方式</h2>
+<p><em>构造函数必须使用关键字new调用</em><br>
+Example e1 = new Example(); // 调用无参构造函数<br>
+Example e2 = new Example(10); // 调用带参数的构造函数</p>
+<h2 id="构造函数的命名">构造函数的命名</h2>
+<ul>
+<li>编译器对源代码进行编译后，自动生成的构造函数，出现在字节码里面，可以在target/classes里面找到字节码，然后用idea打开查看（会自动反编译成你能看懂的java）</li>
+</ul>
+<h2 id="什么时候会默认生成构造函数">什么时候会默认生成构造函数</h2>
+<ol>
+<li>类中没有定义任何构造函数：如果开发者没有显式地为类编写构造函数，编译器便会自动提供一个无参的默认构造函数。</li>
+<li>类中没有final类型的字段：final字段必须在构造函数中初始化，否则编译器不会为其提供默认值，因此也不会自动生成构造函数。</li>
+<li>类中没有明确的构造函数重载：如果有定义了其他的构造函数，编译器便不会再自动生成构造函数。</li>
+</ol>
+<p>默认的构造函数可以创建一个对象，但能在创建对象的成员</p>
+<pre><code>class DefaultConstructorExample {
+// 编译器自动生成的默认构造函数
+public DefaultConstructorExample() {
+    // 默认构造函数体
+}
+
+// 显式定义的其他构造函数
+public DefaultConstructorExample(int value) {
+    // 显式初始化
+}
+}
+</code></pre>
+<h2 id="自定义构造函数">自定义构造函数</h2>
+<ul>
+<li>自定义构造函数可以设置对象的初始化</li>
+<li>当编译器发现你自己写了构造函数后，，就不会提供默认的构造函数</li>
+<li>如果还想继续保留默认的构造方式，需要手动把默认构造函数写出</li>
+</ul>
+<h2 id="构造函数的执行流程">构造函数的执行流程</h2>
+<ol>
+<li>申请内存空间，准备构造对象结构</li>
+<li>阅读类的成员变量列表，初始化在对象结构中</li>
+<li>返回对象结构的内存地址</li>
+</ol>
+<h1 id="关键字new的作用">关键字new的作用</h1>
+<ul>
+<li>
+<p>关键字new用于新建一个对象结构</p>
+</li>
+<li>
+<p>后面跟构造函数</p>
+<p>new Book();</p>
+</li>
+</ul>
+<h1 id="关键字this作用">关键字this作用</h1>
+<ul>
+<li>关键字用于指向当前对象</li>
+</ul>
+<h1 id="对象构造和数组构造的区别">对象构造和数组构造的区别</h1>
+<h2 id="共同点">共同点</h2>
+<p>都使用关键字new新建</p>
+<h2 id="不同点">不同点</h2>
+<h3 id="右边括号的区别">右边括号的区别</h3>
+<ol>
+<li>新建对象要使用对象的构造函数，后面是小括号</li>
+</ol>
+<ul>
+<li>可以在小括号里传递参数初始化对象成员</li>
+<li>也可以使用默认无参构造函数</li>
+</ul>
+<ol start="2">
+<li>新建数组要使用数组的构造函数，后面是中括号</li>
+</ol>
+<ul>
+<li>必须在[ ]里面指定数组的长度</li>
+</ul>
+<h3 id="左边指针的区别">左边指针的区别</h3>
+<ul>
+<li>
+<p>book用于指向对象，他的类型就是Book</p>
+</li>
+<li>
+<p>books用于指向数组，他的类型就是Book[]</p>
+<p>Book book = new Book();<br>
+Book[] books = new Book[3];</p>
+</li>
+</ul>
+<p><strong>注意</strong>：不要认为Book[] books = new Book[3];就是创建了3个Book对象</p>
+<h1 id="寻址符">寻址符</h1>
+<ul>
+<li>对象的寻址符，是一个点.</li>
+<li>数组的寻址符，是一个中括号[]</li>
+</ul>
+<h1 id="空指针问题">空指针问题</h1>
+<ol>
+<li>
+<p>用空指针寻址会编译器直接报错<br>
+Book book;<br>
+System.out.println(book.id);</p>
+</li>
+<li>
+<p>用空指针寻址运行时报错</p>
+<p>//Book book = new Book();<br>
+Book[] books = new Book [3]；<br>
+System.out.println(books[0].id);</p>
+</li>
+</ol>
+<p><strong>错误</strong><br>
+NullPointerException</p>
+<h1 id="null关键字">null关键字</h1>
+<p>null关键字在程序代表空地址或者空指针，代表指针没有指向任何地址</p>
+<h1 id="静态变量">静态变量</h1>
+<p><em>静态变量写在类的全局</em>，<em>与对象无关</em></p>
+<p>没有被static修饰的变量会被识别为对象的成员变量，反之，被static修饰的属于对象的成员变量</p>
+<pre><code>// 图书编号
+int id;
+// 图书名称
+String name;
+// 图书作者
+String author;
+// 图书价格
+double price;
+// 图书数组 (加static修饰, 这个变量与对象无关)
+static Book[] books;
+</code></pre>
+<h1 id="静态代码块">静态代码块</h1>
+<p>构造函数用于初始化非静态变量（对象的成员）<br>
+而静态代码块则是用于初始化静态变量，不需要调用会自动执行<br>
+// 图书数组 (加static修饰, 这个变量与对象无关)<br>
+static Book[] books; // books是一个空指针</p>
+<pre><code>static {
+// 在运行时自动初始化books
+books = new Book[5];
+}
+</code></pre>
+<h1 id="静态函数">静态函数</h1>
+<p>静态函数不属于对象，函数用static修饰</p>
+<p>成员函数属于对象，必须用对象的指针调用，比如：Book类的show函数</p>
+<h1 id="用基本类型定义成员变量的问题">用基本类型定义成员变量的问题</h1>
+<ol>
+<li>int默认是0，改为使用Integer默认是null</li>
+<li>double默认是0.0，改为使用Double默认是null</li>
+<li>boolean默认是false，改为使用Boolean默认是null</li>
+</ol>
+<h1 id="练习">练习</h1>
+<ol>
+<li>创建Book类，定义以下成员变量 （属于对象的结构）</li>
+<li>提供无参构造函数</li>
+<li>提供了带参数的构造函数</li>
+<li>提供成员函数，用于计算总租金</li>
+<li>提供成员函数，用于租赁图书</li>
+<li>提供成员函数，用于归还图书</li>
+<li>定义静态变量</li>
+<li>静态代码块初始化</li>
+<li>提供静态函数：打印系统菜单</li>
+<li>提供静态函数：实现添加图书到图书的数组里面</li>
+<li>提供静态函数：实现删除图书</li>
+<li>提供静态函数：实现查看图书</li>
+<li>提供静态函数：实现租赁图书</li>
+<li>提供静态函数：实现归还图书并结算</li>
+</ol>
+<pre><code>package p02;
+
+import java.util.Scanner;
+
+public class Book {
+    /****************************成员变量*******************************/
+    // 编号
+    private Integer id;
+    // 书名
+    private String name;
+    // 作者
+    private String author;
+    // 日租金
+    private Double dailyRent;
+    // 租赁天数
+    private Integer dayCount;
+    // 租借人姓名
+    private String username;
+    // 租赁状态
+    private Boolean status;
+
+    /****************************构造函数*******************************/
+    // 用于无参初始化
+    public Book() {
+    }
+    // 用于带参初始化
+    public Book(String name, String author, Double dailyRent) {
+        this.name = name;
+        this.author = author;
+        this.dailyRent = dailyRent;
+    }
+
+    /****************************成员函数*******************************/
+    // 打印当前图书信息 (用打印对象的字符串表示形式)
+    @Override
+    public String toString() {
+        return &quot;书名:&quot; + name + &quot;\t&quot;
+                + &quot;作者:&quot; + author + &quot;\t&quot;
+                + &quot;日租金:&quot; + dailyRent + &quot;\t&quot;
+                + &quot;租金天数:&quot; + (dayCount == null ? &quot;无&quot; : dayCount) + &quot;\t&quot;
+                + &quot;租赁人:&quot; + (username == null ? &quot;无&quot; : username) + &quot;\t&quot;
+                + &quot;租赁状态:&quot; + (status == null || !status ? &quot;未出租&quot; : &quot;已出租&quot;) + &quot;\t&quot;;
+    }
+
+    // 租赁当前图书
+    public boolean rent (Integer dayCount, String username) {
+        // 判断这本书的状态是否为已出租
+        if (status != null &amp;&amp; status) {
+            // 如果已出租, 返回false, 代表租赁失败!
+            return false;
+        }
+        // 未出租: 设置租赁天数和租赁人,把租赁状态改为已出租
+        this.dayCount = dayCount;
+        this.username = username;
+        this.status = true;
+        // 返回true代表租赁成功
+        return true;
+    }
+
+    // 归还当前图书
+    public int back (Double pay) {
+        // 如果这本书的状态是未出租
+        if (this.status == null || !status) {
+            // 返回归还失败, 先租后还
+            return -1;
+        }
+        // 如果支付金额 &lt; 总租金
+        if (pay &lt; total()) {
+            // 返回归还失败
+            return -2;
+        }
+        System.out.println(&quot;*****打印小票*****&quot;);
+        System.out.println(&quot;书名：&quot; + name);
+        System.out.println(&quot;作者：&quot; + author);
+        System.out.println(&quot;日租金:&quot; + dailyRent);
+        System.out.println(&quot;租赁天数:&quot; + dayCount);
+        System.out.println(&quot;租赁人:&quot; + username);
+        System.out.println(&quot;需支付:&quot; + total());
+        System.out.println(&quot;实际支付:&quot; + pay);
+        System.out.println(&quot;找零:&quot; + (pay - total()));
+        // 把书的状态改为未出租
+        status = false;
+        // 租赁人改为null
+        username = null;
+        // 天数改为null
+        dayCount = null;
+        // 返回true代表归还成功!
+        return 1;
+    }
+
+    // 计算当前图书的租金
+    public Double total() {
+        // 省略this
+        if (dailyRent == null || dayCount == null) {
+            return  null;
+        }
+        return dailyRent * dayCount;
+    }
+
+
+    /****************************静态变量*******************************/
+    // 图书数组
+    private static Book[] books;
+    // 记录图书个数
+    private static int size;
+    // 控制台扫描器
+    private static Scanner scanner = new Scanner(System.in);;
+
+    /****************************静态代码块*******************************/
+    static {
+        // 初始化静态数组
+        books = new Book[5];
+        books[0] = new Book(&quot;《三国演义》&quot;, &quot;罗贯中&quot;,  0.5);
+        size ++;
+        books[1] = new Book(&quot;《水浒传》&quot;, &quot;施耐庵&quot;,  0.6);
+        size ++;
+        books[2] = new Book(&quot;《西游记》&quot;, &quot;吴承恩&quot;,  0.7);
+        size ++;
+        books[3] = new Book(&quot;《红楼梦》&quot;, &quot;曹雪芹&quot;,  0.8);
+        size ++;
+    }
+
+    /****************************静态函数*******************************/
+    // 租赁图书
+    static void rentBook () {
+        System.out.println(&quot;*****进入出租图书页面*****&quot;);
+        // 先展示图书列表
+        displayBooks();
+        System.out.println(&quot;请输入需要出租的图书编号:&quot;);
+        int id = scanner.nextInt();
+        if (id &lt; 1 || id &gt; size + 1) {
+            System.out.println(&quot;图书不存在!&quot;);
+            return;
+        }
+        Book book = books[id - 1];
+        System.out.println(&quot;请输入需要出租的天数:&quot;);
+        int dayCount = scanner.nextInt();
+        System.out.println(&quot;请输入租赁人姓名:&quot;);
+        String username = scanner.next();
+        if (book.rent(dayCount, username)) {
+            System.out.println(&quot;出租成功!&quot;);
+        } else {
+            System.out.println(String.format(&quot;出租失败,%s已被%s租赁!&quot;, book.name, book.username));
+        }
+    }
+
+    // 归还图书
+    static void backBook () {
+        System.out.println(&quot;*****进入归还图书页面*****&quot;);
+        // 先展示图书列表
+        displayBooks();
+        System.out.println(&quot;请输入需要归还的图书编号:&quot;);
+        int id = scanner.nextInt();
+        if (id &lt; 1 || id &gt; size + 1) {
+            System.out.println(&quot;图书不存在!&quot;);
+            return;
+        }
+        Book book = books[id -1];
+        System.out.println(&quot;请输入支付金额:&quot;);
+        double pay = scanner.nextDouble();
+        switch (book.back(pay)) {
+            case -1:
+                System.out.println(String.format(&quot;归还失败,%s未被租赁&quot;, book.name));
+                break;
+            case -2:
+                System.out.println(String.format(&quot;归还失败,支付金额不足,需要支付%.2f, 实际支付%.2f&quot;, book.total(), pay));
+                break;
+            case 1:
+                System.out.println(&quot;归还成功!&quot;);
+                break;
+        }
+    }
+
+    // 添加图书
+    static void addBook() {
+        System.out.println(&quot;*****进入添加图书页面*****&quot;);
+        Book book = new Book();
+        System.out.println(&quot;请输入书名:&quot;);
+        book.name = scanner.next();
+        System.out.println(&quot;请输入作者:&quot;);
+        book.author = scanner.next();
+        System.out.println(&quot;请输入日租金:&quot;);
+        book.dailyRent = scanner.nextDouble();
+        books[size ++] = book;
+        System.out.println(&quot;添加图书成功!&quot;);
+    }
+
+    // 删除图书
+    static void removeBook() {
+        System.out.println(&quot;*****进入删除图书页面*****&quot;);
+        // 先展示图书列表
+        displayBooks();
+        System.out.println(&quot;请输入需要删除的图书编号:&quot;);
+        int id = scanner.nextInt();
+        if (id &lt; 1 || id &gt; size + 1) {
+            System.out.println(&quot;图书不存在!&quot;);
+            return;
+        }
+        for (int i = id -1; i &lt; size; i++) {
+            books[i] = books[i + 1];
+        }
+        size --;
+        System.out.println(&quot;删除成功!&quot;);
+    }
+
+    // 查看图书
+    static boolean displayBooks() {
+        if (size == 0) {
+            System.out.println(&quot;书架中暂无图书!&quot;);
+            return false;
+        }
+        for (int i = 0; i &lt; size; i++) {
+            // 隐式调用Book的toString方法
+            System.out.println(&quot;图书编号:&quot; + (i + 1) + &quot;\t&quot; + books[i]);
+        }
+        return true;
+    }
+
+    // 系统菜单
+    static void showSystemMenu () {
+        boolean exit = false; // 菜单循环退出标识
+        do{
+            System.out.println(&quot;*****欢迎进入通达图书馆*****&quot;);
+            System.out.println(&quot;1.添加图书&quot;);
+            System.out.println(&quot;2.删除图书&quot;);
+            System.out.println(&quot;3.租赁图书&quot;);
+            System.out.println(&quot;4.归还图书&quot;);
+            System.out.println(&quot;5.查看图书&quot;);
+            System.out.println(&quot;0.退出&quot;);
+            System.out.println(&quot;请选择菜单编号:&quot;);
+            int choice = scanner.nextInt(); // 定义变量choice记录用户选择的菜单编号
+            switch (choice) {
+                case 1:
+                    // 静态调用添加图书的方法
+                    addBook();
+                    break;
+                case 2:
+                    // 静态调用删除图书的方法
+                    removeBook();
+                    break;
+                case 3:
+                    // 静态调用出租图书的方法
+                    rentBook();
+                    break;
+                case 4:
+                    // 静态调用归还图书的方法
+                    backBook();
+                    break;
+                case 5:
+                    // 静态调用查看图书的方法
+                    displayBooks();
+                    break;
+                case 0:
+                    exit = true;
+                    break;
+            }
+        } while (!exit);
+        System.out.println(&quot;*****感谢使用, 再见!*****&quot;);
+    }
+
+    // 主函数
+    public static void main(String[] args) {
+        showSystemMenu();
+    }
+}
+</code></pre>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://linjunya.github.io/post/abc/">
+                  <h3 class="post-title">
+                    Java -03
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>

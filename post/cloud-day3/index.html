@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>Cloud day3 | 林君需要温习</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://linjunya.github.io//favicon.ico?v=1723624590115">
+<link rel="stylesheet" href="https://linjunya.github.io//styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="云（第三节云计算课）
+电脑里的几个重要配置文件
+
+host（代理配置）
+services（服务配置）
+protocol（协议配置）
+
+这几个配置非常重要，不能让人家轻易修改，
+比如service里配置的有一些常用端口，本地端口https 4..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://linjunya.github.io/">
+        <img src="https://linjunya.github.io//images/avatar.png?v=1723624590115" class="site-logo">
+        <h1 class="site-title">林君需要温习</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      温故而知新
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://linjunya.github.io//atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">Cloud day3</h2>
+            <div class="post-date">2024-07-31</div>
+            
+            <div class="post-content" v-pre>
+              <h1 id="云第三节云计算课">云（第三节云计算课）</h1>
+<h2 id="电脑里的几个重要配置文件">电脑里的几个重要配置文件</h2>
+<ol>
+<li>host（代理配置）</li>
+<li>services（服务配置）</li>
+<li>protocol（协议配置）</li>
+</ol>
+<p>这几个配置非常重要，不能让人家轻易修改，</p>
+<p>比如<strong>service</strong>里配置的有一些常用端口，本地端口https 443，像黑客给你改成80，给成http，以后你上网都是明文。在人家眼里，你就穿了个裤衩，我只要耐心的分析你的明文就能得到你的许多信息，甚至可以用wireshark来捉包，筛选你的信息。</p>
+<h3 id="什么是dns">什么是dns</h3>
+<p>dns，（Domain Name System），域名系统，</p>
+<p>什么东西？Inter网上域名和ip地址互相映射的一个分布式数据库。</p>
+<p>干嘛的？解析域名的。</p>
+<p>具体一点，他会通过主机名，得到主机的ip地址。</p>
+<h4 id="形象的说">形象的说</h4>
+<p>DNS是互联网的电话薄，人类通过域名在线访问信息。Web浏览器通过IP地址进行交互。</p>
+<p>而<strong>host</strong>里可以修改你的dns，你的电脑怎么解析你的域名是看host里面怎么写，假如你的电脑里，www.baidu.com，这个域名对应的ip你设置的是其他ip，比如，你的网络号192.168.72.0，那你上个毛线的网。</p>
+<p>而Protocols这个文件，根据我搜到的资料。以及我用记事本打开了这段代码。</p>
+<pre><code class="language-Protocol"># Copyright (c) 1993-2006 Microsoft Corp.
+#
+# This file contains the Internet protocols as defined by various
+# RFCs.  See http://www.iana.org/assignments/protocol-numbers 
+#
+# Format:
+#
+# &lt;protocol name&gt;  &lt;assigned number&gt;  [aliases...]   [#&lt;comment&gt;]
+
+ip         0     IP           # Internet protocol
+icmp       1     ICMP         # Internet control message protocol
+ggp        3     GGP          # Gateway-gateway protocol
+tcp        6     TCP          # Transmission control protocol
+egp        8     EGP          # Exterior gateway protocol
+pup        12    PUP          # PARC universal packet protocol
+udp        17    UDP          # User datagram protocol
+hmp        20    HMP          # Host monitoring protocol
+xns-idp    22    XNS-IDP      # Xerox NS IDP
+rdp        27    RDP          # &quot;reliable datagram&quot; protocol
+ipv6       41    IPv6         # Internet protocol IPv6
+ipv6-route 43    IPv6-Route   # Routing header for IPv6
+ipv6-frag  44    IPv6-Frag    # Fragment header for IPv6
+esp        50    ESP          # Encapsulating security payload
+ah         51    AH           # Authentication header
+ipv6-icmp  58    IPv6-ICMP    # ICMP for IPv6
+ipv6-nonxt 59    IPv6-NoNxt   # No next header for IPv6
+ipv6-opts  60    IPv6-Opts    # Destination options for IPv6
+rvd        66    RVD          # MIT remote virtual disk
+</code></pre>
+<p>这是用来写互联网协议（Internet Protocols）的编号和名称。</p>
+<ul>
+<li><strong>IP (0)</strong>: Internet Protocol，互联网协议。这是TCP/IP协议族中最为核心的协议之一，负责将数据包从一个网络传送到另一个网络。</li>
+<li><strong>ICMP (1)</strong>: Internet Control Message Protocol，互联网控制消息协议。用于在IP主机、路由器之间传递控制消息，例如目标不可达、时间超过等。</li>
+<li><strong>GGP (3)</strong>: Gateway-Gateway Protocol，网关到网关协议。这是一个早期的路由协议，用于网关之间的路由信息交换，但现在已经很少使用。</li>
+<li><strong>TCP (6)</strong>: Transmission Control Protocol，传输控制协议。它是一种面向连接的、可靠的、基于字节流的传输层通信协议，用于在IP网络上传输数据。</li>
+<li><strong>EGP (8)</strong>: Exterior Gateway Protocol，外部网关协议。这是一个用于在自治系统（AS）之间交换路由信息的协议，但已经被BGP（边界网关协议）所取代。</li>
+<li><strong>PUP (12)</strong>: PARC Universal Packet Protocol，PARC通用数据包协议。这是一个由PARC（Palo Alto Research Center）开发的实验性协议，现在已经不再使用。</li>
+<li><strong>UDP (17)</strong>: User Datagram Protocol，用户数据报协议。它是一种无连接的传输层协议，用于在IP网络上传输数据报。</li>
+<li><strong>HMP (20)</strong>: Host Monitoring Protocol，主机监控协议。这是一个用于监控主机状态的协议，但现在已经不再广泛使用。</li>
+<li><strong>XNS-IDP (22)</strong>: Xerox NS IDP，Xerox网络系统IDP（Internet Datagram Protocol）。这是Xerox网络系统的一部分，现在已经不再使用。</li>
+<li><strong>RDP (27)</strong>: Reliable Datagram Protocol，可靠数据报协议。这是一个尝试提供可靠传输的协议，但并未广泛采用。</li>
+<li><strong>IPv6 (41)</strong>: Internet Protocol version 6，互联网协议第6版。它是IP的下一代版本，旨在解决IPv4面临的一些问题，如地址耗尽等。</li>
+<li><strong>IPv6-Route (43)</strong>, <strong>IPv6-Frag (44)</strong>, <strong>IPv6-ICMP (58)</strong>, <strong>IPv6-NoNxt (59)</strong>, <strong>IPv6-Opts (60)</strong>: 这些是与IPv6相关的协议，分别用于路由、分片、ICMP消息、无下一个头选项和目的地选项。</li>
+<li><strong>ESP (50)</strong>: Encapsulating Security Payload，封装安全载荷。它是IPsec协议族的一部分，用于为IP数据包提供加密和完整性校验。</li>
+<li><strong>AH (51)</strong>: Authentication Header，认证头。同样是IPsec协议族的一部分，用于为IP数据包提供认证服务。</li>
+<li><strong>RVD (66)</strong>: MIT Remote Virtual Disk，MIT远程虚拟磁盘。这是一个用于远程访问虚拟磁盘的协议，但现在已经很少使用。</li>
+</ul>
+<p>**注意:**这个编号不是端口号，而是协议号，由IANA互联网数字分配机构分配给各种标识符。</p>
+<h2 id="域名访问的好处">域名访问的好处</h2>
+<ul>
+<li>第一，你记不住ip那串狗爬的数字</li>
+<li>第二，域名经过了公共的注册和认证，他更安全。而ip看一眼，你不知道。</li>
+</ul>
+<h2 id="家用路由器的访问">家用路由器的访问</h2>
+<p>输入ip，用http访问，不要只输入ip，然后浏览器自动给你加上https，一个普通的家用路由器的访问时不支持加密协议的，一个low得一笔的家用路由器不支持那么庞大的运算。</p>
+<h2 id="公共域名和本地域名">公共域名和本地域名</h2>
+<h3 id="公共域名">公共域名</h3>
+<ul>
+<li><strong>全球覆盖</strong>：公共DNS服务器遍布全球，能够提供快速的解析服务。</li>
+<li><strong>安全性</strong>：一些公共DNS服务提供额外的安全特性，如阻止恶意网站和广告。</li>
+<li><strong>隐私保护</strong>：公共DNS服务通常不会记录用户的查询历史，提供隐私保护。</li>
+</ul>
+<h4 id="什么算公共域名">什么算公共域名</h4>
+<p>公共域名是由大型公司或组织搭建的，具有全球覆盖范围的域名系统。这些域名服务器通常向公众提供域名解析服务，如Google Public DNS、Cloudflare DNS等。</p>
+<p>像谷歌dns8.8.8.8，电信114.114.114.114，稳得雅痞。</p>
+<h4 id="优缺点">优缺点</h4>
+<ul>
+<li>
+<p>优点</p>
+<p>：</p>
+<ul>
+<li>全球覆盖，解析速度快。</li>
+<li>安全性高，可防止访问恶意网站。</li>
+<li>提供隐私保护，不记录用户查询历史。</li>
+</ul>
+</li>
+<li>
+<p>缺点</p>
+<p>：</p>
+<ul>
+<li>解析到的IP可能不是最快的，因为服务器可能不位于用户附近。</li>
+<li>使用公共DNS可能无法获得最优的CDN节点IP，影响访问速度。</li>
+<li>尽管提供隐私保护，但用户数据仍可能被分析整理。</li>
+</ul>
+</li>
+<li>
+<p>所以其实我们在使用DNS自动配置的时候，他就会选择离他最近的DNS服务器，附近的方便。</p>
+</li>
+</ul>
+<h3 id="本地域名">本地域名</h3>
+<ul>
+<li><strong>本地部署</strong>：每个运营商在几乎每个城市都部署了自己的DNS服务器。</li>
+<li><strong>内容分发网络（CDN）优化</strong>：运营商DNS通常更了解本地网络和CDN的位置，能够提供最优的访问路径。</li>
+<li><strong>稳定性</strong>：运营商DNS通常具有较高的稳定性和可靠性。</li>
+</ul>
+<h4 id="本地域名是什么">本地域名是什么</h4>
+<p>本地域名通常指的是由本地运营商（如电信、联通等）部署的DNS服务器提供的域名解析服务。这些服务器通常部署在本地网络中，为本地用户提供解析服务。</p>
+<h4 id="优缺点-2">优缺点</h4>
+<ul>
+<li>
+<p>优点</p>
+<p>：</p>
+<ul>
+<li>响应时间短，解析速度快。</li>
+<li>CDN优化，访问速度快。</li>
+<li>稳定性高，可靠性好。</li>
+</ul>
+</li>
+<li>
+<p>缺点</p>
+<p>：</p>
+<ul>
+<li>维护本地DNS服务器需要成本，运营商可能会在DNS结果上进行改动以减少成本。</li>
+<li>服务限制，运营商DNS可能不会提供额外的功能，如广告拦截或隐私保护。</li>
+<li>DNS劫持风险，运营商DNS可能受到劫持，导致广告植入或访问错误。</li>
+<li>缓存问题，Local DNS可能会缓存旧的域名解析结果，导致访问出错。</li>
+</ul>
+</li>
+<li>
+<p>所以我们说，千万别让黑客给你host文件改了，造成dns劫持。你输入www.baidu.com,到达www.4399.com的ip地址，你歇逼了，boy~</p>
+</li>
+</ul>
+<h2 id="dns的结构">DNS的结构</h2>
+<figure data-type="image" tabindex="1"><img src="C:%5CUsers%5Clinjun%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20240731153844040.png" alt="image-20240731153844040" loading="lazy"></figure>
+<p>类似于树状结构</p>
+<h2 id="中国那堵墙">中国那堵墙</h2>
+<h3 id="一代滤霸">一代滤霸</h3>
+<p>原理是dns服务器拦截过滤了外国的色情网站，各种违法黑网的域名，对会一点网络基础的人来说，没叼用。</p>
+<p>改个dns服务器就行了，自动分配会就近选择，但是你指定一个国外的dns服务器，比如谷歌的8.8.8.8。</p>
+<h3 id="二代三代滤霸">二代三代滤霸</h3>
+<p>过滤的是目标ip地址，设置黑名单放在国内出口的DNS服务器上。嘿嘿，</p>
+<h4 id="but">but</h4>
+<p>肯定有办法的嘛，俩！</p>
+<ul>
+<li>VPN</li>
+<li>代理网站</li>
+</ul>
+<h5 id="代理网站实现">代理网站实现</h5>
+<p>不访问目标ip地址，访问代理网站，代理网站收到我的报文，解析报文中附加的代理信息，知道真正想访问的目标ip，代理网站替我访问，把我想要的信息传给我。而此时，在滤霸眼里我只是才访问代理网站，没有任何僭越的行为。</p>
+<p>新加波，香港的代理网站很多，这种方式网警会经常去查封，这些代理网站</p>
+<h5 id="vpn原理是什么">VPN原理是什么</h5>
+<p>请看下级分解</p>
+<h2 id="dns">DNS</h2>
+<h3 id="dns的配置">DNS的配置</h3>
+<ul>
+<li>网络适配器，配ip的地方，一般用114.114.114，电信的，还可以。</li>
+<li>DNS配成网关，会被局域网村长网关转接给其他服务器（也相当于自动分配，就近选择）</li>
+</ul>
+<h3 id="dns的几个常用命令">DNS的几个常用命令</h3>
+<ul>
+<li>ipconfig /flushdns 清除DNS（域名系统）解析缓存</li>
+<li>ipconfig /displaydns 显示当前系统的DNS解析缓存内容</li>
+<li>ipconfig /？记不得了就问一下他吧，呆瓜</li>
+</ul>
+<figure data-type="image" tabindex="2"><img src="C:%5CUsers%5Clinjun%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20240731163700114.png" alt="image-20240731163700114" loading="lazy"></figure>
+<p>实际上也客串了一下抓包工具，看看这个域名对应的ip，当然你获取的ip肯定是要跟你的服务器相近的，这个ip只是这个域名对应的一个。</p>
+<h2 id="虚拟机的配置以及wireshark的安装">虚拟机的配置，以及wireshark的安装</h2>
+<ol>
+<li>新建那些就不说了，一直finish，开机一直到打开，配置静态网络（自己去编辑那栏去看主机给虚拟机分配的什么网关，选个空的用，.0.1这俩别用，别瞎几把乱搞）虚拟机的网关设置成2.</li>
+<li>打开本地连接，属性，Internet协议也点属性</li>
+<li></li>
+</ol>
+<figure data-type="image" tabindex="3"><img src="C:%5CUsers%5Clinjun%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20240731165312235.png" alt="1" loading="lazy"></figure>
+<figure data-type="image" tabindex="4"><img src="C:%5CUsers%5Clinjun%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20240731165414597.png" alt="2" loading="lazy"></figure>
+<figure data-type="image" tabindex="5"><img src="C:%5CUsers%5Clinjun%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20240731165755949.png" alt="image-20240731165755949" loading="lazy"></figure>
+<p>看到没，这个选中了肯定弹个安装包出来，不然就是没勾选好条件。ok了，混蛋，收工~</p>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://linjunya.github.io/post/cloud-2/">
+                  <h3 class="post-title">
+                    cloud-2
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>

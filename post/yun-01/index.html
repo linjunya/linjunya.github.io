@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>cloud-01 | 林君需要温习</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://linjunya.github.io//favicon.ico?v=1723624590115">
+<link rel="stylesheet" href="https://linjunya.github.io//styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="
+内存和cpu之间如何通信
+什么是计算机的背板总线
+带宽，网速，和下载速度有什么关系？
+
+网速指的是车辆在道路上行驶的速度，ping fps，ping值就是网速，毫秒级的单位
+游戏开始，进入聊天室服务器，排位之后开始进入游戏服务器，动态选择..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://linjunya.github.io/">
+        <img src="https://linjunya.github.io//images/avatar.png?v=1723624590115" class="site-logo">
+        <h1 class="site-title">林君需要温习</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      温故而知新
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://linjunya.github.io//atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">cloud-01</h2>
+            <div class="post-date">2024-07-29</div>
+            
+            <div class="post-content" v-pre>
+              <ol>
+<li>内存和cpu之间如何通信</li>
+<li>什么是计算机的背板总线</li>
+<li>带宽，网速，和下载速度有什么关系？</li>
+</ol>
+<p>网速指的是车辆在道路上行驶的速度，ping fps，ping值就是网速，毫秒级的单位<br>
+游戏开始，进入聊天室服务器，排位之后开始进入游戏服务器，动态选择服务器优先最近的。</p>
+<p>路程，路由器优劣，影响网速，<br>
+带宽影响网速，数据积压。<br>
+带宽就是行驶公路<br>
+网速的车辆行驶速度</p>
+<p>下载速度，吞吐量<br>
+吞吐量=网速*带宽<br>
+路由器造成网络延迟，经过得越多，就越慢<br>
+网速0.125mbps，带宽100M</p>
+<p>总线带宽</p>
+<ol>
+<li>地址带宽</li>
+<li>数据带宽</li>
+<li>控制带宽</li>
+</ol>
+<p>get(0x143b)<br>
+32位总线带宽和64位总线带宽</p>
+<p><strong>为什么一个8G内存条的电脑，安装了win7 32位系统，开机后只能看到4G内存</strong><br>
+32位操作系统使用32位地址总线来访问内存，这意味着它可以访问的内存地址空间是2的32次方，即4GB。这是32位系统内存限制的根本原因。</p>
+<p>字节对齐标准<br>
+最小的传输运算单位是字节，最小的存储的单位是比特<br>
+内存和cpu以字节对齐，不能只传一个二进制位。</p>
+<p>0x403b，这个指的是行地址，要传输最小的就是字节，一般8位，现在技术一般16位</p>
+<p>ipv4，256进制</p>
+<p>进制<br>
+装箱，打包，东西<br>
+进制就是装箱规则</p>
+<p>如果6<em>6=40，那么12</em>5=？<br>
+6(n) <em>6(n)=40(n)<br>
+6</em> 6 =4n+0=36 ,n=9<br>
+55 =61(9)</p>
+<p>若4<em>5=26，那么23</em>14=？</p>
+<p>1字节8bit<br>
+ipv4和mac地址分别多少字节<br>
+4</p>
+<p>字符的诞生<br>
+使用手册+一卷纸带</p>
+<p>键盘第一代，16，BCD码</p>
+<p>键盘输入122#<br>
+实际上0001 0010 0010 1010</p>
+<p>GBK GB2312<br>
+BIG5</p>
+<p>0 48<br>
+A 65<br>
+a 97<br>
+三大类字符的顺序<br>
+字符串可以比大小<br>
+规则：abc，adf，比首字母编码，然后顺延，一直比到出结果为之<br>
+字符串后自带\0,\0就是ascll码0<br>
+字典的本质，字符集，编码相当于文字的页码，<br>
+文字的外形，相当于   这一页种的文字的笔画<br>
+16位文字的点阵字符集，外形</p>
+<p>宋体<br>
+16*16 矩阵，=256个点，不在笔画上用0表示，1表示在笔画上。</p>
+<p>一个16*16的汉字点阵字库文件在数据未压缩的情况下，其文件大小是多少？</p>
+<p>15000汉字<em>256bit（32byte）=15</em>32k</p>
+<p>文化壁垒：文字转码问题，用Unicode编码解决的</p>
+<p>Unicode，一开始印度没提交自己的文字编码。两个字节编码，两代加入，4个字节。<br>
+美国英国用这个编码，会增加负担<br>
+定长编码，很快，变长编码慢，<br>
+utf-8简体中文占3个字节，但是生僻字在第四个字节里</p>
+<p>要会说，且要说范围</p>
+<ol>
+<li>ascii 2</li>
+<li>gb2312 2</li>
+<li>big5  2</li>
+<li>unicode  4</li>
+<li>utf-8  3byte</li>
+</ol>
+<p>utf编码规则，判断是几个字节</p>
+<p>工业编码 BCD 8421 2421 余三码 格雷码</p>
+<p>utf-16是两个字节两个字节对齐，没必要，现在只是作为一种标准了</p>
+<p>16*16位点阵字符</p>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://linjunya.github.io/post/fan-she-he-zhu-jie-xian-jie-kuang-jia-de-ji-zhu/">
+                  <h3 class="post-title">
+                    反射和注解（衔接框架的技术）
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>

@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>I/O流 | 林君需要温习</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://linjunya.github.io//favicon.ico?v=1723624590115">
+<link rel="stylesheet" href="https://linjunya.github.io//styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="介绍
+
+IO指的是Input和Output，即输入和输出
+流指的是数据流Stream
+
+注：api应用程序变成接口
+java中有相关实现
+IO流的分类
+按照流的方向分
+输入流
+从目标设备读取数据到当前设备
+输出流
+从当前设备输出数据到目标设..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://linjunya.github.io/">
+        <img src="https://linjunya.github.io//images/avatar.png?v=1723624590115" class="site-logo">
+        <h1 class="site-title">林君需要温习</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      温故而知新
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://linjunya.github.io//atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">I/O流</h2>
+            <div class="post-date">2024-07-22</div>
+            
+            <div class="post-content" v-pre>
+              <h1 id="介绍">介绍</h1>
+<ul>
+<li>IO指的是Input和Output，即输入和输出</li>
+<li>流指的是数据流Stream</li>
+</ul>
+<p><strong>注：api应用程序变成接口</strong><br>
+java中有相关实现</p>
+<h1 id="io流的分类">IO流的分类</h1>
+<h2 id="按照流的方向分">按照流的方向分</h2>
+<p><strong>输入流</strong><br>
+从目标设备读取数据到当前设备<br>
+<strong>输出流</strong><br>
+从当前设备输出数据到目标设备</p>
+<h2 id="按流的单位分">按流的单位分</h2>
+<p><strong>字节流</strong><br>
+数据以字节为单位传输<br>
+<strong>字符流</strong><br>
+数据以字符为单位传输</p>
+<p><em>共同点</em>：流中传输数据都是0和1<br>
+<em>不同点</em>：字节流传输单位是byte，字符流传输单位是char</p>
+<h1 id="字节输入流的使用">字节输入流的使用</h1>
+<p>举例：从磁盘中读取一个文件到内存<br>
+目标设备磁盘（永久存储文件，磁盘中一切皆文件），当前设备内存（临时存储对象，内存中一切皆对象），传输单位,字节</p>
+<h2 id="创建流">创建流</h2>
+<pre><code>try {
+    // 定义文件路径 (正斜杠用一个,反斜杠用两个)
+    String name = &quot;D:\\01\\test222.dat&quot;;
+    // 根据给定的路径, 建立与该文件的输入流
+    InputStream in = new FileInputStream(name);
+    System.out.println(&quot;创建输入流成功&quot;);
+} catch (FileNotFoundException e) {
+    System.out.println(&quot;创建输入流失败&quot;);
+    e.printStackTrace();
+}
+
+</code></pre>
+<h2 id="调用流的功能">调用流的功能</h2>
+<h3 id="一次读一个字节性能慢">一次读一个字节（性能慢）</h3>
+<pre><code>InputStream in = null;
+try {
+    // 定义文件路径 (正斜杠用一个,反斜杠用两个)
+    String name = &quot;D:\\01\\test.dat&quot;;
+    // 根据给定的路径, 建立与该文件的输入流
+    in = new FileInputStream(name);
+    System.out.println(&quot;创建输入流成功&quot;);
+    // 调用流的功能 (输入流的功能是读)
+    int c;
+    while ((c = in.read()) != -1) {
+        System.out.print((char) c);
+    }
+    System.out.println(&quot;文件读取完毕&quot;);
+} catch (Exception e) {
+    System.out.println(&quot;读取文件失败,可能是文件不存在或者文件被损坏&quot;);
+    e.printStackTrace();
+} finally {
+    // 关闭流
+    try {
+        if (in != null) {
+            in.close();
+        }
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+}
+</code></pre>
+<h3 id="一次读一个字节数组">一次读一个字节数组</h3>
+<p>读100MB的文件：1KB的buf和1MB的buf分别需要多长时间<br>
+缓冲区越大越快的原理：减少用户态到内核态的转换次数，空间换时间<br>
+<strong>但是并不是缓冲区越大越好，太大内存扛不住，通常设置1MB即可</strong></p>
+<pre><code>InputStream in = null;
+try {
+    // 定义文件路径 (正斜杠用一个,反斜杠用两个)
+    String name = &quot;D:\\01\\test_02.dat&quot;;
+    // 根据给定的路径, 建立与该文件的输入流
+    in = new FileInputStream(name);
+    System.out.println(&quot;创建输入流成功&quot;);
+    // 调用流的功能 (输入流的功能是读)
+    // 100MB 循环读多少次?  100 * 1024 * 1024 ≈ 1亿次
+    long s = System.currentTimeMillis();
+    // 缓冲区, 用于一次读取1024个字节
+    byte[] buf = new byte[5];
+    // 记录读取到的字节长度
+    int len = -1;
+    // 把读取到的字节内存放入buf数组中
+    // 返回读取到的字节长度 1.返回1024 2.返回&lt;1024 3.返回-1
+    String str = &quot;&quot;;
+    while ((len = in.read(buf)) != -1) {
+        // 把buf转换为字符串 (要指定0-len,防止最后一次的残留)
+        str += new String(buf, 0, len);
+    }
+    System.out.println(str);
+    long e = System.currentTimeMillis();
+    System.out.println(&quot;文件读取完毕,耗时:&quot; + (e - s) + &quot;/ms&quot;);
+} catch (Exception e) {
+    System.out.println(&quot;读取文件失败,可能是文件不存在或者文件被损坏&quot;);
+    e.printStackTrace();
+} finally {
+    // 关闭流
+    try {
+        if (in != null) {
+            in.close();
+        }
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+}
+</code></pre>
+<h2 id="字节流的问题读破中文字符造成乱码">字节流的问题：读破中文字符造成乱码</h2>
+<p>英文字符在文件中用1个字节（8个bit）存储<br>
+中午字符在文件中用2个字节（16个bit）或者3个字节（24个bit）存储<br>
+字节流的传输单位是字节（8个bit），可能会把中文破开读写，造成乱码<br>
+结论：字节流适合读纯字节文件，不适合读带中文的文件</p>
+<h3 id="纯字节文件">纯字节文件</h3>
+<ul>
+<li>纯英文文档</li>
+<li>图片</li>
+<li>视频、音频</li>
+<li>其他</li>
+</ul>
+<h2 id="字节输出流的使用">字节输出流的使用</h2>
+<h3 id="两种写入模式">两种写入模式</h3>
+<ul>
+<li>覆盖写</li>
+<li>追加写</li>
+</ul>
+<pre><code>OutputStream out = null;
+try {
+    String name = &quot;D:\\01\\test_out.dat&quot;;
+    // 输出流会自动帮我创建此文件
+    // 那为什么他还会抛出FileNotFoundException
+    // 有一个前提：文件名前面的目录必须存在
+    // 两种写入方式：1.默认覆盖写 2.追加写
+    // out = new FileOutputStream(name);  // 覆盖写
+    out = new FileOutputStream(name, true); // 追加写
+    String data = &quot;hello,world!&quot;;
+    out.write(data.getBytes());
+} catch (Exception e) {
+    e.printStackTrace();
+} finally {
+    try {
+        if (out != null) {
+            out.close();
+        }
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+}
+</code></pre>
+<h2 id="网络io流">网络IO流</h2>
+<p>网络IO编程步骤比本地IO多一步：建立网络连接</p>
+<ul>
+<li>内网互联</li>
+<li>外网互联</li>
+</ul>
+<pre><code>// 客户端类
+public class Client {
+    public static void main(String[] args) {
+        try {
+            // 创建客户端Socket对象
+            // 入参1: 对方的IP
+            // 如果对方是自己, 可以写localhost或者127.0.0.1
+            // 如果对方是另一台机器,要确保对方与自己在同一个网络
+            // 入参2: 对方的端口
+            // 对方必须开放此端口, 或者关闭防火墙
+            Socket socket = new Socket(&quot;localhost&quot;, 8888);
+            System.out.println(&quot;连接建立成功&quot;);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+</code></pre>
+<pre><code>package p15;
+
+import java.io.IOException;
+import java.net.ServerSocket;
+import java.net.Socket;
+
+// 服务端类
+public class Server {
+    public static void main(String[] args) {
+        try {
+            // 创建一个服务端对象,并监听8888端口
+            ServerSocket server = new ServerSocket(8888);
+            // 等待客户端socket接入
+            Socket socket = server.accept();
+            System.out.println(&quot;客户端接入成功!&quot;);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+</code></pre>
+<h3 id="一次网络连接有几个阶段">一次网络连接有几个阶段</h3>
+<p>● 第一阶段：客户端准备数据包<br>
+○ 源IP：不需要在代码中指定，机器会自动查自己本机IP作为源IP<br>
+○ 源端口：不需要在代码中指定，机器会随机使用一个本机的空闲端口作为源端口<br>
+○ 目标IP：需要在代码中指定<br>
+○ 目标端口：需要在代码中指定<br>
+● 第二阶段：子网掩码对齐阶段<br>
+○ 拿数据包里面的源IP和目标IP与子网掩码做对齐运算<br>
+○ 目的：判断两者的IP是否属于邻居 （同一网络）<br>
+○ 情况1：是邻居，走内网广播找对方机器<br>
+○ 情况2：不是邻居，走网关出去，找运营商<br>
+● 第三阶段：内网广播<br>
+○ 广播程序在路由器中<br>
+○ 路由会给当前局域网中每一台机器进行广播消息<br>
+○ 机器认领消息，不是找我的消息就扔掉，不处理<br>
+● 第四阶段：进入目标机器端口<br>
+○ 机器B(被请求的机器)检查数据包中的目标端口，来确认对方想要从我的哪个端口进入我这台机器<br>
+○ 检查我的防火墙策略，是否允许对方进入，如果不允许，数据包直接丢掉<br>
+○ 检查目标端口是否正在被某个程序监听，如果目标端口是空闲的，没有被程序监听，数据包还是直接丢掉。最终将数据包交给目标机器上正在监听目标端口的程序进行处理。</p>
+<h3 id="serversocket对象和socket对象有什么区别">ServerSocket对象和Socket对象有什么区别</h3>
+<p>● ServerSocket：称为服务端套接字对象，职责是<br>
+○ 监听端口<br>
+○ 等待接入 （每次接入后都会在服务端生产一个socket对象）<br>
+● Socket：称为客户端套接字对象<br>
+○ 建立网络通信连接<br>
+○ 获取输入流 （插入在网络中的流）<br>
+○ 获取输出流 （插入在网络中的流）<br>
+○ 获取源IP、源端口、目标IP、目标端口等信息</p>
+<pre><code>public class Server {
+    public static void main(String[] args) {
+        try {
+            // 创建一个服务端对象,并监听8888端口
+            ServerSocket server = new ServerSocket(8888);
+            System.out.println(&quot;服务端启动成功,正在监听8888端口&quot;);
+            // 等待客户端socket接入
+            Socket socket = server.accept();
+            System.out.println(&quot;客户端接入成功!&quot;);
+            // 查看对方的源IP和源端口信息
+            // System.out.println(socket.getRemoteSocketAddress());
+            // System.out.println(socket.getPort());
+            // 服务端接收 (输入流, 对接网卡的数据)
+            InputStream in = socket.getInputStream();
+            byte[] buf = new byte[1024];
+            int len = -1;
+            // 如果此时流里面没有内容可以read, read会阻塞等待
+            while ((len = in.read(buf)) != -1) {
+                System.out.println(&quot;接收到一条消息:&quot; + new String(buf, 0, len));
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+</code></pre>
+<pre><code>public class Client {
+    public static void main(String[] args) {
+        try {
+            // 创建客户端Socket对象
+            // 入参1: 对方的IP
+            // 如果对方是自己, 可以写localhost或者127.0.0.1
+            // 如果对方是另一台机器,要确保对方与自己在同一个网络
+            // 入参2: 对方的端口
+            // 对方必须开放此端口, 或者关闭防火墙
+            Socket socket = new Socket(&quot;localhost&quot;, 8888);
+            System.out.println(&quot;连接建立成功&quot;);
+            // 客户端发送 (输出流)
+            OutputStream out = socket.getOutputStream();
+            Scanner scanner = new Scanner(System.in);
+            while (true) {
+                System.out.println(&quot;请输入要发送的消息:&quot;);
+                String message = scanner.next();
+                // 将message转为字节数组写入到输出流
+                // 对方的输入流可以读到这条消息
+                out.write(message.getBytes());
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+</code></pre>
+<h2 id="三次握手">三次握手</h2>
+<p>三次握手的目的：确认通信双方的收发能力<br>
+在机器A（客户端）的眼里<br>
+自己能不能发	自己能不能收	对方能不能发	对方能不能收<br>
+第一次握手	否	否	否	否<br>
+第二次握手	是	是	是	是<br>
+第三次握手	是	是	是	是</p>
+<p>在机器B（服务端）的眼里<br>
+自己能不能发	自己能不能收	对方能不能发	对方能不能收<br>
+第一次握手	否	是	是	否<br>
+第二次握手	否	是	是	是<br>
+第三次握手	是	是	是	是</p>
+<h2 id="四次挥手">四次挥手</h2>
+<ol>
+<li>
+<ol>
+<li>A数据传输结束后，向B发送FIN包，表示想要断开连接</li>
+</ol>
+</li>
+<li>B收到后，会立刻回复ACK包，表示同意，但要等一会 （原因是B的工作还没完成）</li>
+<li>等到B的工作完成后，B会主动给A发送FIN包，表示可以断开连接了</li>
+<li>A回复ACK包，同意断开</li>
+</ol>
+<h2 id="8单工和双工">8.单工和双工</h2>
+<ul>
+<li>单工 （有阻塞）<br>
+只能A给B发，B不能给A发</li>
+<li>双工<br>
+○ 半双工<br>
+■ A可以给B发，B也可以给A发<br>
+■ 但是A给B发的时候，B只能收，不能发<br>
+■ 但是B给A发的时候，A只能收，不能发<br>
+○ 全双工<br>
+■ A可以给B发，B也可以给A发<br>
+■ 双方的收发可以同时进行</li>
+</ul>
+<h2 id="9-基于udp协议实现client和server通信">9. 基于UDP协议实现Client和Server通信</h2>
+<p>tcp协议：用的是Socket对象<br>
+udp：用的是DatagramSocket对象（数据报）<br>
+tcp协议有三次握手和四次挥手<br>
+udp协议没有三次握手和四次挥手</p>
+<pre><code>public class UDPServer {
+  
+    public static void main(String[] args) {  
+        try {  
+            // 创建一个DatagramSocket对象，监听9876端口  
+            DatagramSocket serverSocket = new DatagramSocket(9876);  
+            // 创建一个byte数组来存储接收到的数据  
+            byte[] buf = new byte[1024];  
+            // 创建一个DatagramPacket对象来接收数据  
+            DatagramPacket receivePacket = new DatagramPacket(buf, buf.length);  
+            // 接收客户端发送的数据  
+            serverSocket.receive(receivePacket);
+            // 转换接收到的数据为字符串  
+            String message = new String(receivePacket.getData(), 0, receivePacket.getLength());  
+  
+            System.out.println(&quot;Received:&quot; + message);
+
+  
+        } catch (IOException e) {  
+            e.printStackTrace();  
+        }  
+    }  
+}
+</code></pre>
+<pre><code>public class UDPClient {
+  
+    public static void main(String[] args) {  
+        try {  
+            // 创建一个DatagramSocket对象  
+            DatagramSocket clientSocket = new DatagramSocket();  
+  
+            // 创建一个InetAddress对象，指定服务端IP地址  
+            InetAddress IPAddress = InetAddress.getByName(&quot;192.168.43.161&quot;);
+  
+            // 创建一个byte数组来存储要发送的数据  
+            byte[] sendData = &quot;Hello&quot;.getBytes();
+  
+            // 创建一个DatagramPacket对象来发送数据  
+            DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, IPAddress, 8888);
+  
+            // 发送数据  
+            clientSocket.send(sendPacket);  
+  
+            // 关闭DatagramSocket  
+            clientSocket.close();  
+  
+        } catch (IOException e) {  
+            e.printStackTrace();  
+        }  
+    }  
+}
+</code></pre>
+<h1 id="网络io">网络IO</h1>
+<p>网络IO编程步骤比本地IO多一步：建立网络连接</p>
+<ul>
+<li>内网互联</li>
+<li>外网互联</li>
+</ul>
+<p>子网掩码，默认都是255.255.255.0，跟客户端和服务端（数据包里的源ip与目标ip）ip对齐判断对方网络地址是否在同一个网络里（可判断两者ip是否属于邻居，在一个局域网走内网，不在就走网关走运营商来找目标ip）<br>
+运营帮助我们连外网，<br>
+网关，网络出口<br>
+广播，内网广播，走内网广播给一个网络里的机器发消息<br>
+同一台路由器，IP前三段一样</p>
+<h2 id="一次网络连接有几个阶段-2">一次网络连接有几个阶段</h2>
+<ol>
+<li>客户端准备数据包（源ip、源端口、目标ip、目标端口）</li>
+<li>路由器子网掩码对齐阶段</li>
+<li>内网广播</li>
+<li>进入目标机器端口</li>
+</ol>
+<ul>
+<li>
+<p>源ip：不需要指定，机器查本机ip作为源ip</p>
+</li>
+<li>
+<p>源端口：不需要指定，机器随机用本机的空闲端口</p>
+</li>
+<li>
+<p>目标ip：需要再代码中指定(1000以内的端口不使用，系统用了)</p>
+</li>
+<li>
+<p>目标端口：也需要指定</p>
+</li>
+<li>
+<p>拿数据包里面的源IP和目标IP与子网掩码做对齐运算</p>
+</li>
+<li>
+<p>目的：判断两者的IP是否属于邻居 （同一网络）</p>
+</li>
+<li>
+<p>情况1：是邻居，走内网广播找对方机器</p>
+</li>
+<li>
+<p>情况2：不是邻居，走网关出去，找运营商</p>
+</li>
+<li>
+<p>广播程序在路由器里，路由器给当前局域网中每一台机器广播消息，</p>
+</li>
+<li>
+<p>机器自己认领，没人找就不屌他</p>
+</li>
+<li>
+<p>（第一次才内网广播）</p>
+</li>
+<li>
+<p>目标机器，检查数据包中的目标端口，来看看对方想从哪个端口进</p>
+</li>
+<li>
+<p>检查我的防火墙策略，准不准进，不合标准的，都滚，不叼他</p>
+</li>
+<li>
+<p>检查目标端口有没有被程序监听，目标端口空，没被程序监听，也不能接。</p>
+</li>
+<li>
+<p>如果目标端口上有监听的程序，就找到了，就跟那个程序走了</p>
+</li>
+</ul>
+<h2 id="serversocket对象和socket对象有什么区别-2">ServerSocket对象和Socket对象有什么区别</h2>
+<p><strong>ServerSocket</strong>：称为服务端套接字对象，职责是</p>
+<ul>
+<li>监听端口</li>
+<li>等待接入 （每次接入后都会在服务端生产一个socket对象）<br>
+<strong>Socket</strong>：称为客户端套接字对象</li>
+<li>建立网络通信连接</li>
+<li>获取输入流 （插入在网络中的流）</li>
+<li>获取输出流 （插入在网络中的流）</li>
+<li>获取源IP、源端口、目标IP、目标端口等信息</li>
+</ul>
+<h1 id="网络和流的面试题">网络和流的面试题</h1>
+<h2 id="网络的分层模型">网络的分层模型</h2>
+<p>● 七层模型（OSI七层模型，OSI是开放式系统互联的意思）<br>
+○ 1980年由国际标准化组织（ISO）提出<br>
+○ 为了规范异种网络和设备之间的通信标准 （所有的网络运营商、硬件制造厂商）<br>
+○ 七层从上到下分别是：<br>
+○ 1. 应用层：<br>
+■ HTTP协议（超文本传输协议）<br>
+● 开发各种web网站<br>
+■ SMTP协议 （邮件传输协议）<br>
+● 开发各种邮件系统<br>
+■ FTP协议 （文件传输协议）<br>
+● 各种云盘、文件存储服务器<br>
+○ 2. 表示层：负责数据压缩、解压缩、加密、解密等<br>
+○ 3. 会话层：负责建立、管理、终止会话<br>
+○ 4. 传输层：负责数据传输的方式<br>
+■ TCP协议 （Transmission Control Protocol）传输控制协议<br>
+● 用JDBC连接MySQL数据库<br>
+■ UDP协议 （User Datagram Protocol）用户数据报协议<br>
+○ 5. 网络层：负责数据包从源机器到目标机器的IP寻址，路由和转发<br>
+■ IP协议<br>
+○ 6. 数据链路层：负责将比特组合为帧，以及局域网的MAC地址寻址<br>
+○ 7. 物理层：负责比特流的物理传输（光纤、电缆）<br>
+● 四层模型 （TCP/IP网络模型）<br>
+○ 七层模型将网络中的每一层分的特别细，过于复杂，并不受厂商们的青睐<br>
+○ 因此推出了四层模型对七层模型进行了简化<br>
+○ 1. 应用层 （应用层+表示层+会话层）<br>
+○ 2. 传输层 （原传输层）<br>
+○ 3. 网络互联层 （原网络层）<br>
+○ 4. 网络接口层 （数据链路层+物理层）<br>
+要求<br>
+● 为什么要设定网络分层模型<br>
+● 七层、四层分别是怎么来的？<br>
+● 七层是哪七层，四层是哪四层，关系<br>
+● 要知道表示层、传输层、网络层有哪些协议</p>
+<h2 id="tcp协议和udp协议的区别">TCP协议和UDP协议的区别</h2>
+<p>传输层的两大协议<br>
+首先要知道，这两个协议是传输层的协议<br>
+其次要知道这两个协议的名字（说不出英文至少能说出中文）<br>
+● 连接性：<br>
+○ TCP是一种面向连接的协议<br>
+○ UDP是一种无连接的协议<br>
+● 传输方式：<br>
+○ TCP基于IO流<br>
+○ UDP基于数据报<br>
+● 可靠性：<br>
+○ TCP对数据的可靠性要求非常严格。它在传输过程中使用确认机制和重传机制和拥塞机制来确保数据的完整性和正确性<br>
+○ UDP不可靠, 追求的是传输速度和实时性<br>
+● 应用场景<br>
+○ TCP协议用于传输对数据完整性要求比较高的场景<br>
+○ UDP协议用于传输对实时性和速度要求比较高的场景<br>
+■ 视频会议<br>
+■ 在线直播<br>
+■ 游戏画面</p>
+<h2 id="三次握手和四次挥手">三次握手和四次挥手</h2>
+<p>三次握手的过程如下：<br>
+● 第一次握手：客户端向服务器发送一个SYN数据包，请求建立连接。这个数据包中包含了客户端的初始序列号。<br>
+● 第二次握手：服务器收到SYN数据包后，会向客户端发送一个ACK确认包，表示已经收到客户端的请求，并同时发送一个SYN数据包，请求客户端确认。这个ACK确认包的确认号是客户端初始序列号加1，表示期望收到下一个数据包从这个序列号开始。服务器的SYN数据包也包含了自己的初始序列号。<br>
+● 第三次握手：客户端收到服务器的SYN+ACK数据包后，会向服务器发送一个ACK确认包，表示已经收到并确认服务器的请求。这个ACK确认包的确认号是服务器初始序列号加1，表示期望收到下一个数据包从这个序列号开始。至此，三次握手完成，客户端和服务器之间成功建立了TCP连接。<br>
+四次挥手的过程如下：<br>
+● 第一次挥手：当客户端完成数据传输后，会向服务器发送一个FIN数据包，表示希望断开连接。<br>
+● 第二次挥手：服务器收到FIN数据包后，会向客户端发送一个ACK确认包，表示已经收到客户端的断开请求。<br>
+● 第三次挥手：当服务器也完成数据传输时，会向客户端发送一个FIN数据包。表示可以断开连接了<br>
+● 第四次挥手：客户端收到服务器的FIN数据包后，会向服务器发送一个ACK确认包，表示已经收到并确认服务器的断开请求。此时连接完全关闭。<br>
+挥手比握手多一次的原因是：服务器在接收到断开连接的请求后，要先把自己的事情处理完后再同意断开</p>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://linjunya.github.io/post/shu-ju-ku-bian-cheng/">
+                  <h3 class="post-title">
+                    数据库编程
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>

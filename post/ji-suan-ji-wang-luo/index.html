@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>计算机网络 | 林君需要温习</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://linjunya.github.io//favicon.ico?v=1723624590115">
+<link rel="stylesheet" href="https://linjunya.github.io//styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="计算机网络
+
+网络适配器，以前最开始是做的信号放大器，这个用来通信发送信号，
+cpu编号用来，软件安装的时候，用调试码，得到你的cpu主板编码，用密钥软件计算一个密钥，然后这个软件只能给你用了。
+网络适配器
+mac地址（物理地址， phys..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://linjunya.github.io/">
+        <img src="https://linjunya.github.io//images/avatar.png?v=1723624590115" class="site-logo">
+        <h1 class="site-title">林君需要温习</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      温故而知新
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://linjunya.github.io//atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">计算机网络</h2>
+            <div class="post-date">2024-07-29</div>
+            
+            <div class="post-content" v-pre>
+              <h1 id="计算机网络">计算机网络</h1>
+<!-- 南桥芯片，北桥芯片，买硬盘要连接M2接口，要买M2的。
+
+总线比较短，玩游戏的时候总线会比较热，在电脑在左边一点，散热口一般在背面或者底部。
+
+
+空调的外机都要通风，内机才好制冷，机房这些地方通常需要好的散热，不然要降频。
+
+
+运维中的温度是一个特别重要的指标，实施工程师布施一定要布施好，否则运维工程师骂死你个sb。 -->
+<p>网络适配器，以前最开始是做的信号放大器，这个用来通信发送信号，</p>
+<p>cpu编号用来，软件安装的时候，用调试码，得到你的cpu主板编码，用密钥软件计算一个密钥，然后这个软件只能给你用了。</p>
+<h1 id="网络适配器">网络适配器</h1>
+<p>mac地址（物理地址， physical地址）<br>
+制定一个标准，来分配地址<br>
+申请物理地址，前三字节，后三字节则手机厂商则可以随意用，<br>
+物理地址是唯一识别自己身份的地址<br>
+比如华为，58-CE-2A<br>
+电话实际上是一串标识号</p>
+<p>红米5手机采用物理地址复用，直接减少交钱</p>
+<p>华为有段时间也是。被制裁。</p>
+<p>万能WiFi钥匙，实际上是共享WiFi密码，进了一次，留有后门，你就胁逼了<br>
+路由器黑名单，可以记录黑客的物理地址，但一般不知道黑客，此时就用白名单来搞定，就不会被搞了<br>
+访问网关/默认ip地址，访问路由器登录，然后你可以设置白名单了，但是访问不能用https，只能用http来访问。</p>
+<p>cpu和内存通信，高速缓存用来内存携带数据给cpu处理，携带处理好的出去，像是老板和秘书一样。</p>
+<p>mac地址欺骗攻击（要是邻居）<br>
+报文高频率到达靶机cpu让cpu过热。<br>
+数据包单调要被刷出去，<br>
+伪造被攻击者的物理地址，然后跟世界上的不同人打招呼，然后让他们回应，就不会报文重复了（ddos）</p>
+<p>单播包<br>
+组播包 遥控电视 带宽融合  IGMP组播协议<br>
+直播本质上都是组播<br>
+申请组播有条件，申请发到有线电视台，用专门的机顶盒，手机号作为账户名，机顶盒有专门的物理地址，报文的尾部带有物理地址。</p>
+<p>ICMP ping，互联网消息管理协议。</p>
+<p>广播包，广播，主播，是我，确定三段报文就接受消息</p>
+<p>广播最牛逼，可以一下攻击一群人。但是影响大，要控制他的区域，这样才能不产生危害。<br>
+局域网的本质就是阻止广播扩散，和外部广播过来。保护效果起来了。<br>
+局域网必须有一个逻辑地址，就是我们的ipv4地址，像是我们给原始人的地址。</p>
+<p>Mac类似人的长相，身份id，指纹，而ip地址像是人的姓名，像后天来的。</p>
+<p>ipv4地址姓名，姓取决于村庄，（路由器），村叫王村，那我必需姓王，名字可以随意。</p>
+<p>姓，代表由来，图腾，战争聚合产生姓<br>
+名， 随意，但不能重复</p>
+<p>网卡没加入路由器只有物理地址，有了路由器，才能有ip地址。</p>
+<p>子网掩码一般用正掩码，而且要么全1，要么全0满足左1右0不能隔着。</p>
+<p>姓就是从子网掩码化成2进制1那边开始都是，0开始就不是了<br>
+名有什么位，代表这个村庄可以容纳多少人。要去头掐尾，-2。</p>
+<p>但是其实连不到那么多人，芯片计算能力也要考虑。<br>
+192.168.2.7/255.255.255.0</p>
+<p>对齐<br>
+11000000 10101000 00000010 00000111<br>
+11111111 11111111 11111111 00000000</p>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://linjunya.github.io/post/yun-01/">
+                  <h3 class="post-title">
+                    cloud-01
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>

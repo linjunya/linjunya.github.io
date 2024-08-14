@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>Java Day01 | 林君需要温习</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://linjunya.github.io//favicon.ico?v=1723624590115">
+<link rel="stylesheet" href="https://linjunya.github.io//styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="Java Day01
+程序执行流程
+1. 顺序结构
+默认的执行结构 从上往下（主函数）
+2. 分支结构
+
+单if分支
+
+condition代表条件
+
+
+boolean类型的变量，eg.Boolean flag = true，flag变量放在..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://linjunya.github.io/">
+        <img src="https://linjunya.github.io//images/avatar.png?v=1723624590115" class="site-logo">
+        <h1 class="site-title">林君需要温习</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      温故而知新
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://linjunya.github.io//atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">Java Day01</h2>
+            <div class="post-date">2024-07-08</div>
+            
+              <div class="feature-container" style="background-image: url('https://linjunya.github.io//post-images/java-0708.jpg')">
+              </div>
+            
+            <div class="post-content" v-pre>
+              <h1 id="java-day01">Java Day01</h1>
+<h2 id="程序执行流程">程序执行流程</h2>
+<h3 id="1-顺序结构"><strong>1. 顺序结构</strong></h3>
+<p>默认的执行结构 从上往下（主函数）</p>
+<h3 id="2-分支结构"><strong>2. 分支结构</strong></h3>
+<ul>
+<li><em>单if分支</em></li>
+</ul>
+<p>condition代表条件</p>
+<ol>
+<li>
+<p>boolean类型的变量，eg.Boolean flag = true，flag变量放在condition处</p>
+</li>
+<li>
+<p>运算结果是Boolean的表达式，x&gt;100</p>
+</li>
+<li>
+<p>返回值结果式boolean类型的函数调用</p>
+</li>
+<li>
+<p>直接给予true或者false（太直白了）</p>
+<p>if (condition) {</p>
+<p>}<br>
+//判断：分支以内的就是分支结构的代码，以外的都是顺序结构</p>
+</li>
+</ol>
+<h3 id="if-else分支"><em>if-else分支</em></h3>
+<pre><code>if (condition) {
+
+} else {
+
+}
+//这个要注意的是条件为真就执行if后面的代码，为假就把else后面的代码执行了。
+</code></pre>
+<h3 id="多路if分支"><em>多路if分支</em></h3>
+<pre><code>// 顺序结构中的代码
+if (condition1) {
+// 分支结构中的代码 （condition1为真执行）
+} else if (condition2) {
+// 分支结构中的代码 （condition2为真执行）
+} else if (condition3) {
+// 分支结构中的代码 （condition3为真执行）
+} else {
+// 分支结构中的代码 （以上condition都不为真执行）
+}
+// 顺序结构中的代码
+
+//多路if分支要注意的就是虽然条件写这么多，实际上是在筛选，把苛刻的条件都放在前面，看起来很多但只会执行一条分支上的代码。
+</code></pre>
+<h3 id="嵌套分支"><em>嵌套分支</em></h3>
+<pre><code>// 顺序结构中的代码
+if (condition1) {
+// 分支结构中的代码 (condition1为真执行)
+if (condition2) {
+// 分支结构中的代码 (condition1为真&amp;&amp;condition2为真执行)
+} else {
+// 分支结构中的代码 (condition1为真&amp;&amp;condition2为假执行)
+} 
+} else {
+// 分支结构中的代码 (condition1为假执行)
+}
+// 顺序结构中的代码
+
+//顾名思义，嵌套，大的分支里面还可以塞一个分支，外面的循环一次，里面的循环一轮
+</code></pre>
+<h3 id="switch-case分支只适合等值判断只执行一个case且一定执行一个casecase后break必须有变量类型-支持整型除了long字符字符串枚举-floatdoubleboolean都不行"><em>switch-case分支</em>（只适合等值判断，只执行一个case，且一定执行一个case，case后break必须有）变量类型 支持整型除了long，..字符，字符串，枚举。float，double，Boolean都不行</h3>
+<pre><code>switch (variable) {
+case 值1:
+// 分支1 （ variable == 值1  ）   if ( variable == 值1)
+break;
+case 值2:
+// 分支2 （ variable == 值2  ）   else if ( variable == 值2)     
+break;
+case 值3:
+// 分支3 （ variable == 值3  ）   else if ( variable == 值3)
+break;
+default:                             
+// 分支4 （ variable 不等于上面任意case中的值  ） else 
+break;    
+}
+
+//switch主要用于等值判断，switch括号里跟着一个变量，case 1，2，3什么乱七八糟的都是跟这个变量有关的条件这个变量等于case后面的值，然后发生的故事，执行的命令。一样的也跟那个多支if一个意思在筛选的感觉。只会执行一个分支上的代码。但是switch的判断主要是**等值！**
+</code></pre>
+<h3 id="3-循环结构"><strong>3. 循环结构</strong></h3>
+<ul>
+<li>循环四要素</li>
+</ul>
+<ol>
+<li>循环的起点（变量，不参与循环）</li>
+<li>循环的终点（条件，满足了就偃旗息鼓）</li>
+<li>循环体（位于循环结构里的代码）</li>
+<li>循环的迭代（每循环一次，循环变量的变化，这里可以是自增自减也可以是一个描述变化的表达式）</li>
+</ol>
+<p>注意：如果循环未完成迭代，一直没变化就会造成死循环。</p>
+<h3 id="while-循环"><em>while 循环</em></h3>
+<pre><code>int x = 0; // 1.定义变量x作为循环的起点
+while (x &lt; 10) { // 2.x &lt; 10 是循环的终点,他是一个condition条件
+System.out.println(x); // 3.循环体
+x ++; // 4.循环的迭代
+}
+
+//感觉跟if很像，括号跟条件，然后一个大括号就放代码（你喜欢的话，就叫循环体也行方便你融入循环这个概念）
+
+// 1-100
+public class Demo07 {
+public static void main(String[] args) {
+// 练习：写一个循环，计算1-100之间的偶数之和，并打印
+int sum = 0; // 用于在循环过程中累加n
+int n = 0;
+while (n &lt;= 100) {
+sum += n; // sum = sum + n;
+n += 2; // n = n + 2;
+}
+System.out.println (&quot;sum:&quot; + sum);
+}
+}
+</code></pre>
+<h3 id="for-循环"><em>for 循环</em></h3>
+<pre><code>for (变量;条件;循环迭代) {
+循环体
+}
+// 用for计算1-100偶数之和
+int sum = 0;
+for (int n = 0; n &lt;= 100; n += 2) {
+sum += n;
+}
+System.out.println (&quot;sum:&quot; + sum);
+</code></pre>
+<h3 id="do-while循环"><em>do-while循环</em></h3>
+<pre><code>变量
+do {
+循环体
+循环的迭代
+} while (条件);
+
+// 用do-while计算1-100偶数之和
+int sum = 0;
+int n = 0;
+do {
+sum += n;
+n += 2;
+} while (n &lt;= 100);
+</code></pre>
+<h3 id="break和continue">break和continue</h3>
+<ul>
+<li>break用于跳出循环</li>
+<li>break用在switch-case结构中用于跳出switch</li>
+<li>break用在循环结构中用于跳出循环 (即在循环终点之前，提前结束循环)</li>
+<li>continue用于结束本次循环 （本次循环后面的代码不执行），继续下次循</li>
+</ul>
+<p><strong>break是直接跳出循环，continue是跳过这一次循环，下一次循环还是要继续循环下去的要把没做完的事儿做完，相比较起来，break更像是撂挑子就不干了，continue像是先递上辞职信，然后再交接工作的感觉。</strong></p>
+<h3 id="就近原则-如果有多层循环作用于最近的一个循环身上">就近原则 (如果有多层循环，作用于最近的一个循环身上)</h3>
+<p>for () {<br>
+for () {<br>
+if () {<br>
+// break在内层循环中, 用于跳出内层循环, 不影响外层循环<br>
+break;<br>
+}<br>
+}<br>
+if () {<br>
+// break在外层循环中, 用于跳出外层循环<br>
+break;<br>
+}<br>
+}</p>
+<h2 id="函数结构">函数结构</h2>
+<h3 id="函数是什么">函数是什么</h3>
+<ol>
+<li>函数的英文单词function，也称为方法method</li>
+<li>函数是程序的最小执行单元</li>
+<li>类是程序的最小文件单元，一个类中可以包含多个函数</li>
+<li>一个函数可以看作是一个可被复用的过程或者一个任务</li>
+<li>函数需要先定义后调用，一次定义，到处调用</li>
+</ol>
+<h3 id="函数的五要素">函数的五要素</h3>
+<ol>
+<li>
+<p>函数名</p>
+</li>
+<li>
+<p>函数的主体</p>
+</li>
+<li>
+<p>函数的参数</p>
+</li>
+<li>
+<p>函数的返回类型</p>
+</li>
+<li>
+<p>函数的返回值</p>
+<p>函数的返回类型④ 函数名① (参数列表③) {<br>
+函数体②<br>
+函数的返回值⑤<br>
+}</p>
+</li>
+</ol>
+<h3 id="定义函数时需要注意的地方">定义函数时需要注意的地方</h3>
+<p><em>一个函数不可以定义在另一个函数的 {} 里面，函数与函数必须是平级关系</em>。</p>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://linjunya.github.io/post/java-mian-shi-ti/">
+                  <h3 class="post-title">
+                    Java面试题
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>

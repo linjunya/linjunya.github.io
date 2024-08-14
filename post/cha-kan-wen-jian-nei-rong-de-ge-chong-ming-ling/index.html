@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>查看文件内容的各种命令 | 林君需要温习</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://linjunya.github.io//favicon.ico?v=1723624590115">
+<link rel="stylesheet" href="https://linjunya.github.io//styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="一、cat命令
+
+
+描述：查看文件内容，将[文件]或标准输入组合输出到标准输出。
+
+
+命令格式：cat [选项]... [文件]...
+
+
+[root@localhost ~]# cat /etc/passwd
+
+常用的选项
+
+
+-n   ..." />
+    <meta name="keywords" content="linux基本指令" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://linjunya.github.io/">
+        <img src="https://linjunya.github.io//images/avatar.png?v=1723624590115" class="site-logo">
+        <h1 class="site-title">林君需要温习</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      温故而知新
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://linjunya.github.io//atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">查看文件内容的各种命令</h2>
+            <div class="post-date">2024-04-04</div>
+            
+            <div class="post-content" v-pre>
+              <h1 id="一-cat命令">一、cat命令</h1>
+<ul>
+<li>
+<p>描述：查看文件内容，将[文件]或标准输入组合输出到标准输出。</p>
+</li>
+<li>
+<p>命令格式：cat [选项]... [文件]...</p>
+</li>
+</ul>
+<pre><code class="language-shell">[root@localhost ~]# cat /etc/passwd
+</code></pre>
+<h5 id="常用的选项">常用的选项</h5>
+<ul>
+<li>
+<p>-n   对输出的所有行编号，包括空白行</p>
+</li>
+<li>
+<p>-b   显示行号，空白行不显示行号</p>
+</li>
+</ul>
+<pre><code class="language-shell">[root@localhost ~]# cat -n /etc/passwd
+[root@localhost ~]# cat -b /etc/passwd
+</code></pre>
+<h1 id="二-head和tail命令">二、head和tail命令</h1>
+<h2 id="21-head命令">2.1、head命令</h2>
+<ul>
+<li>
+<p>查看文件头部内容，默认显示前10行</p>
+</li>
+<li>
+<p>命令格式：head   [-n]  数字  文件名</p>
+<ul>
+<li>默认查看文件前10行</li>
+<li>-n  选项：指定查看的前n行内容</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-shell">[root@localhost ~]# head /etc/passwd		#显示前十行内容
+  
+[root@localhost ~]# head -2 /etc/passwd		#显示前两行内容
+</code></pre>
+<h2 id="22-tail命令">2.2、tail命令</h2>
+<ul>
+<li>
+<p>tail命令格式：  tail   [-n]  数字  文件名</p>
+<ul>
+<li>默认查看文件后10行</li>
+<li>-n 选项：指定查看后n行内容</li>
+<li>-f  选项  动态显示文件内容，常用与查看日志，<kbd>Ctrl</kbd>+<kbd>C</kbd>组合键退出</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-shell">[root@localhost ~]# tail /etc/passwd		#显示后十行内容
+  
+[root@localhost ~]# tail -2 /etc/passwd		#显示后两行内容
+</code></pre>
+<h1 id="三-more">三、more</h1>
+<ul>
+<li>描述：分页查看文件内容，通过空格键查看下一页，<kbd>q</kbd> 键则退出查看</li>
+</ul>
+<pre><code class="language-bash">[root@localhost ~]# more /var/log/messages
+</code></pre>
+<h1 id="四-less">四、less</h1>
+<ul>
+<li>描述：分页查看文件内容，空格（下一页）、方向键（上下回翻）、<kbd>q</kbd>键（退出查看）</li>
+</ul>
+<pre><code class="language-bash">[root@localhost ~]# less /var/log/messages
+</code></pre>
+<h1 id="五-wc">五、wc</h1>
+<ul>
+<li>
+<p>描述：显示文件的行，单词与字节统计信息</p>
+</li>
+<li>
+<p>常用的选项</p>
+<ul>
+<li>-c     显示文件字节统计信息</li>
+<li>-l    显示文件行数统计信息</li>
+<li>-w   显示文件单词统计信息</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-bash">[root@proxy ~]# wc /etc/passwd			##一次显示文件的行数、单词数、字节数
+ 19  27 841 /etc/passwd
+[root@proxy ~]# wc -c /etc/passwd		##显示文件的字节数
+841 /etc/passwd
+[root@proxy ~]# wc -l /etc/passwd		##显示文件的行
+19 /etc/passwd	
+[root@proxy ~]# wc -w /etc/passwd		##显示文件单词 统计信息
+27 /etc/passwd
+</code></pre>
+<h1 id="六-grep工具">六、grep工具</h1>
+<ul>
+<li>输出包含指定字符串的行</li>
+<li>命令格式： grep     查找条件     目标文件</li>
+</ul>
+<pre><code class="language-shell">[root@localhost ~]# grep ^root /etc/passwd		#查询以root开头的行
+
+[root@localhost ~]# grep bash$ /etc/passwd		#查询以bash结尾的行
+</code></pre>
+<ul>
+<li>
+<p>常用选项</p>
+<ul>
+<li>-v    结果取反</li>
+<li>-i    忽略大小写</li>
+<li>-w  匹配单词</li>
+<li>--color  显示颜色</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-shell">[root@localhost ~]# grep -v ^root /etc/passwd   #查询不以root开头的行
+  
+[root@localhost ~]# grep -v bash$ /etc/passwd   #查询不以bash结尾的行
+</code></pre>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://linjunya.github.io/tag/hj50pd5LA/" class="tag">
+                    linux基本指令
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://linjunya.github.io/post/mu-lu-ji-wen-jian-de-ji-ben-cao-zuo/">
+                  <h3 class="post-title">
+                    目录及文件的基本操作
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>

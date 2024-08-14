@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>cloud-4 | 林君需要温习</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://linjunya.github.io//favicon.ico?v=1723624590115">
+<link rel="stylesheet" href="https://linjunya.github.io//styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="ping 127.0.0.1，是回环地址，是ping的自己主机的cpu
+域名就是自己的主机名，效果是一样的
+ping算攻击包，数量大了就能攻击嘞
+windows95版本ping包，可以1秒几千次的ping计算机，发起攻击，现在被改了，1s只..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://linjunya.github.io/">
+        <img src="https://linjunya.github.io//images/avatar.png?v=1723624590115" class="site-logo">
+        <h1 class="site-title">林君需要温习</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      温故而知新
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://linjunya.github.io//atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">cloud-4</h2>
+            <div class="post-date">2024-08-01</div>
+            
+            <div class="post-content" v-pre>
+              <p>ping 127.0.0.1，是回环地址，是ping的自己主机的cpu<br>
+域名就是自己的主机名，效果是一样的</p>
+<p>ping算攻击包，数量大了就能攻击嘞</p>
+<p>windows95版本ping包，可以1秒几千次的ping计算机，发起攻击，现在被改了，1s只能ping1次嘞<br>
+现在要用网上的发包工具来搞</p>
+<p>arp -s来添加哪些不回应的静态沉默设备，不会被arp欺骗。<br>
+arp欺骗，不止一人回应，认错人了，就给错人数据包了。</p>
+<p>虚拟机可以被ping通，是因为作为服务器一般不会阻止。</p>
+<p>掩码永远用自己的，掩码只有自己知道，掩码配不一样的容易看不到对方。</p>
+<p>192.168.3.4/255.255.255.0<br>
+192.168.2.7/255.255.254.0</p>
+<p>桥接的缺点，断了外网桥接的那张网卡，网桥没了，内网也废了</p>
+<p>主机如果拨号，桥接网络无法实现，虚拟机是根据自己的规则发送报文。必须借用主机的规则才行，所以我们需要采用net方式最爽。</p>
+<p>ipv4地址存在复用<br>
+1024以内都是目的端口，1025以外可以是源端口</p>
+<h1 id="ipv4复用">ipv4复用</h1>
+<p>c类 ip地址可被复用，a，b类地址是公用的，来帮c类替换成不重复的地址。<br>
+私网可以访问公网，而公网不能访问私网。</p>
+<p>qq聊天<br>
+男-》女<br>
+男的消息发出，在服务器，女的接受消息，是客户端主动去问服务器，有没有消息是我的。</p>
+<ul>
+<li>A类IP地址<br>
+地址范围：从1.0.0.1到126.255.255.254（注意，0.0.0.0和127.0.0.0/8是特殊地址，不用于普通主机）。<br>
+组成部分：由1字节（8位）的网络地址和3字节（24位）的主机地址组成。<br>
+默认子网掩码：255.0.0.0。这个子网掩码用于指示前8位是网络地址，后24位是主机地址。<br>
+B类IP地址<br>
+地址范围：从128.1.0.1到191.255.255.254（注意，128.0.0.0/16和191.255.0.0/16是特殊地址，不用于普通主机）。<br>
+组成部分：由2字节（16位）的网络地址和2字节（16位）的主机地址组成。<br>
+默认子网掩码：255.255.0.0。这个子网掩码用于指示前16位是网络地址，后16位是主机地址。<br>
+C类IP地址<br>
+地址范围：从192.0.1.1到223.255.255.254（注意，192.0.0.0/24和223.255.255.0/24是特殊地址，不用于普通主机）。<br>
+组成部分：由3字节（24位）的网络地址和1字节（8位）的主机地址组成。<br>
+默认子网掩码：255.255.255.0。这个子网掩码用于指示前24位是网络地址，后8位是主机地址。</li>
+</ul>
+<p>C类地址跟别的电脑，服务器一样没什么，反正会被B类的服务器转化，然后传给A又转化。</p>
+<p>169.254.表示默认地址，dhcp服务器坏了，尝试在申请地址。<br>
+配置好地址后，ipconfig/renew.</p>
+<p>ip协议<br>
+局域网不用把你的ip配成公网地址，那样就会有几个公网你访问不了，协议会先看是不是邻居，不是邻居找村长，虽然大家掩码不一样，地址其实不一样，但是你们看到对方感觉仿佛一样。你就一直arp广播，问，而局域网内没有这个百度。</p>
+<h1 id="面试题">面试题</h1>
+<h2 id="tcpip">TCP/IP</h2>
+<p>TCP/IP是一个协议族，不是协议<br>
+可以7层，5层，4层，5层就是底下加个物理层</p>
+<h2 id="常用端口号">常用端口号</h2>
+<p>21 ftp 文件传输协议<br>
+22 ssh 远程登录控制（加密信息）<br>
+23 telnet 远程控制（明文）<br>
+25  smtp 简单邮件传输协议<br>
+110 pop3 邮件接受协议（pop2不怎么用）<br>
+37 time 时钟<br>
+53 domain（dns）<br>
+67 bootps （dhcp）<br>
+80 http（申请互联网不加密）<br>
+443 https（申请互联网加密）<br>
+tomcat 8080<br>
+nginx 负载均衡，反向代理  80<br>
+mysql 3306<br>
+Oracle 1521<br>
+QQ 8000<br>
+wechat</p>
+<h1 id="tcpudp">TCP/UDP</h1>
+<p>TCP</p>
+<p>QQ用的UDP为主，TCP为辅，用应用程序实现，安全传输。而不是协议<br>
+微信用的是TCP，因为他哥的有钱嘞~.</p>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://linjunya.github.io/post/cloud-day3/">
+                  <h3 class="post-title">
+                    Cloud day3
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>数据通信 | 林君需要温习</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://linjunya.github.io//favicon.ico?v=1723624590115">
+<link rel="stylesheet" href="https://linjunya.github.io//styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="vlan复用 trunk
+接口加入vlan access trunk
+默认路由 特点
+面试题
+
+网线连接方式 分为 交叉线 和 平行线
+交叉方法 1326
+ping ICMP 三种ping的结果  1 time out 请求超时，主机无响应..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://linjunya.github.io/">
+        <img src="https://linjunya.github.io//images/avatar.png?v=1723624590115" class="site-logo">
+        <h1 class="site-title">林君需要温习</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      温故而知新
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://linjunya.github.io//atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">数据通信</h2>
+            <div class="post-date">2024-08-05</div>
+            
+            <div class="post-content" v-pre>
+              <h1 id="vlan复用-trunk">vlan复用 trunk</h1>
+<h1 id="接口加入vlan-access-trunk">接口加入vlan access trunk</h1>
+<h1 id="默认路由-特点">默认路由 特点</h1>
+<h1 id="面试题">面试题</h1>
+<ol>
+<li>网线连接方式 分为 交叉线 和 平行线</li>
+<li>交叉方法 1326</li>
+<li>ping ICMP 三种ping的结果  1 time out 请求超时，主机无响应（邻居无响应，远端设备无响应）  2 could not find host 未知主机，域名解析失败（网是通的，域名解析不存在) 3 dest host unreachable  目标主机不可达（村长不知道往哪发，村长没有路由）（是邻居，开了防火墙，或者不存在）</li>
+</ol>
+<h1 id="动态路由">动态路由</h1>
+<h2 id="rip">RIP</h2>
+<p>router rip<br>
+network 村庄号<br>
+三层网络允许成环，二层网络不允许成环（arp广播循环），路由是三层，交换机是二层。<br>
+路由时允许成环的，会取长度最小值。rip 路由权重是长度。只有长度</p>
+<p>谣言路由，拔出一段网线，路由传一会好了一会坏了。确定好了坏了这个过程叫收敛。<br>
+收敛一般需要十几分钟。rip协议的优点就是简单。</p>
+<h2 id="open-spf">Open SPF</h2>
+<p>ShortPathFirst<br>
+最短路径算法<br>
+直接算出整个拓扑的路线，而rip只有邻居几个才知道，但是这个opsf消耗的cpu，内存会更多，所以只适合不算太大的网络，更新链路状态。</p>
+<h2 id="rip和ospf区别">rip和ospf区别</h2>
+<ol>
+<li>rip通告的是谣言（谣言就是路由，但是网络波动会导致谣言的同步时间很久，所以rip收敛的时间很长）rip基于矢量的协议，矢量路由协议。</li>
+<li>ospf通告的是<strong>链路状态</strong>（获得路由信息通过计算过程，通过各个路由器的链路状态数据库进行路由计算spf才能获得，所以ospf无法支撑较大网络）（ospf的链路状态同步很快，所以ospf基本没什么收敛时间）</li>
+</ol>
+<p>router ospf 进程编号（随意）<br>
+network 192.168.1.0 0.0.0.255 area 1<br>
+router id 192.168.1.1 把第一个占为id<br>
+do show ip ospf neighbro</p>
+<p>通过area 把一群路由器 搞成一个路由器，这样ospf像远端扩展</p>
+<p>路由协议相互独立的。</p>
+<p>redistribute rip<br>
+重分发<br>
+router rip<br>
+redistribute ospf 1 metric 1<br>
+version 2</p>
+<p>一个dns<br>
+两个web服务器 一个学校官网 一个校园论坛bbs<br>
+做一个nat，外网不准访问校园网</p>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://linjunya.github.io/post/cloud-6/">
+                  <h3 class="post-title">
+                    cloud-6
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>

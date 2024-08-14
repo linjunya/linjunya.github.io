@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>cloud-6 | 林君需要温习</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://linjunya.github.io//favicon.ico?v=1723624590115">
+<link rel="stylesheet" href="https://linjunya.github.io//styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="交换机
+spanning tree protocol
+stp
+生成树协议
+在二层进行网络环路探测，将同一个局域网中所有的设备以树状结构进行排布
+消除树状结点横向的环路连接
+树根，mac地址最小的那个交换机就是
+交换机激活的一瞬间，开始竞争树..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://linjunya.github.io/">
+        <img src="https://linjunya.github.io//images/avatar.png?v=1723624590115" class="site-logo">
+        <h1 class="site-title">林君需要温习</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      温故而知新
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://linjunya.github.io//atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">cloud-6</h2>
+            <div class="post-date">2024-08-03</div>
+            
+            <div class="post-content" v-pre>
+              <h1 id="交换机">交换机</h1>
+<p>spanning tree protocol<br>
+stp<br>
+生成树协议<br>
+在二层进行网络环路探测，将同一个局域网中所有的设备以树状结构进行排布<br>
+消除树状结点横向的环路连接</p>
+<p>树根，mac地址最小的那个交换机就是</p>
+<p>交换机激活的一瞬间，开始竞争树根，彼此间开始协商。</p>
+<p>破除环路，防止广播包反复传递</p>
+<p>路由成环可以，交换机不行，组成环是为了分流，保证路径一定要是通的。<br>
+静态路由没问题，动态路由要小心点</p>
+<p>ip/mask 下一跳jump<br>
+取出目的ip地址<br>
+if（目的ip地址==ip&amp;mask）<br>
+使用这条路由的下一条，投递报文<br>
+else<br>
+继续下一条路由诊断</p>
+<p><strong>优先级</strong><br>
+本机路由，直连路由，静态路由（配置的非邻居的）</p>
+<p>L，C，S<br>
+两条静态，先配先生效<br>
+默认路由不一样。<br>
+0.0.0.0 0.0.0.0 （x.x.x.x）经过的网关<br>
+优先等级最烂，有其他的就用其他的路route</p>
+<p>IP routing 启动路由 三层交换机<br>
+config : ip rounting<br>
+切换trunk要先切换模式<br>
+sw tr  en d<br>
+三层交换机，要interface vlan 2 在no shutdown</p>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://linjunya.github.io/post/cloud-5/">
+                  <h3 class="post-title">
+                    cloud-5
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>

@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>Java杂谈 | 林君需要温习</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://linjunya.github.io//favicon.ico?v=1723624590115">
+<link rel="stylesheet" href="https://linjunya.github.io//styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="杂呀
+int和integer区别
+
+int和integer类型都是32位的整数类型
+int是基本类型，他是一个关键字，Integer是引用类型，他是一个类，Integer1可以继承到Object，int则不行
+int没有指针性质，不能指向对..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://linjunya.github.io/">
+        <img src="https://linjunya.github.io//images/avatar.png?v=1723624590115" class="site-logo">
+        <h1 class="site-title">林君需要温习</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      温故而知新
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://linjunya.github.io//atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">Java杂谈</h2>
+            <div class="post-date">2024-07-16</div>
+            
+            <div class="post-content" v-pre>
+              <h1 id="杂呀">杂呀</h1>
+<h2 id="int和integer区别">int和integer区别</h2>
+<ul>
+<li>int和integer类型都是32位的整数类型</li>
+<li>int是基本类型，他是一个关键字，Integer是引用类型，他是一个类，Integer1可以继承到Object，int则不行</li>
+<li>int没有指针性质，不能指向对象，Integer有指针性质，可以指向对象</li>
+<li>int没有null值，默认是0，Integer默认是null</li>
+<li>int性能更好，int一般作局部变量，Integer用作成员变量</li>
+<li>int在栈区赋值，integer在堆区赋值（实际上赋给变量的是指针存的一个地址，在堆区才有具体的值，而栈区存的地址）</li>
+<li>1-127对象之内不会赋值就创建对象，他只会创建一个对象，一个地址，然后他们共用一个地址</li>
+<li>int和integer比较时，会拆掉integer的对象，把堆区中的值移动到栈区跟int比较</li>
+<li>int一直都在栈区不会到堆区</li>
+</ul>
+<pre><code>        int a = 10;
+        int b = 10;
+
+        Integer c =10 ;
+        Integer d =10 ;
+        //1-127范围内，Integer也是分配栈区一个地址，但是这个地址是共用，所以这个地方才会相等
+
+        Integer e =200;
+        //用构造函数初始化一个200，此时这个200被分配在堆区的对象中
+        //f的值不是200，实际上是指向这个对象的地址
+        Integer f =200;
+        //用构造函数初始化一个200，此时这个200被分配在堆区的对象中
+        // 此时f的值不是200，是指向此对象的地址
+        System.out.println(a == b);
+        System.out.println(c == d);
+        System.out.println(e == f);
+</code></pre>
+<h2 id="装箱与拆箱">装箱与拆箱</h2>
+<p>这个过程自动发生</p>
+<pre><code>        Integer b =10 ;
+        //自动装箱 Integer b = new Integer(10);
+        //10在堆区，不装箱就在栈区
+        ```
++ 装箱：把值封装为对象，放入堆区，返回其内存地址
++ 拆箱：反过来
+
+</code></pre>
+<p>public static void main(String[] args) {<br>
+// 不发生装箱<br>
+// 则1000在栈区<br>
+int a = 1000;<br>
+// 发生自动装箱 Integer b = new Integer(1000);<br>
+// 则1000在堆区<br>
+Integer b = 1000;<br>
+// 因为b指向地址,而c的类型不可以指向地址<br>
+// 此时把b赋给c, 在赋值过程中, 发生自动拆箱<br>
+int c = b;<br>
+// a只具备比较数值的能力<br>
+// b具备比较地址和比较数值两种能力<br>
+// 此时在比较的时候, 对b进行拆箱,取出b指向的对象中的数值与a比较<br>
+System.out.println(a == b);<br>
+// 同理<br>
+System.out.println(b == c);<br>
+}</p>
+<pre><code>## boolean和Boolean
+</code></pre>
+<pre><code>    //也是在堆区赋值，在栈区留一个地址
+    Boolean b3 = true;
+    //这里有一个不同的是，这里有缓存不用创建对象，这边直接用他的前面true的地址
+    Boolean b4 = true;
+</code></pre>
+<pre><code>
+## 包装类的parde函数
+所有包装类都有parse函数，用于转换字符串
+Integer.parselnt(）
+Double.parseDouble()
++ 解析纯数字才能成功
+### 解析失败的可能原因
+1. 字符串包含非数字字符
+2. 字符串为空串（“”）
+3. 字符串为空（null）
+
+## 字符串String类的底层分析
++ 无论任何字符串一定是创建指针
+ + 都在堆区，不new的情况下，都在专门堆区中的字符串对象常量池里（称，串池）
+ + 假如new了，就会在堆区专门创建一个地址来存字符串
+
+**问**：创建了几个对象
+String str = new String(&quot;abc&quot;);
+传递给构造函数的“abc”会先从串池中找，如果有就创建一个
+如果没有，此时会先从abc中创建一个abc，再在堆中创建abc，此时就需要创建两个对象。
+
+</code></pre>
+<pre><code>    String a1 =&quot;cc&quot;;
+    String a2 =&quot;cc&quot; ;
+</code></pre>
+<p>//+号拼接字符串和变量，在运行时候完成，需要在堆里完成，新建一个对象完成<br>
+a1 = a1+&quot;a&quot;;<br>
+a2 = a2+&quot;a&quot;;</p>
+<pre><code>    System.out.println(a1 == a2);
+</code></pre>
+<pre><code>
+
+</code></pre>
+<p>//字面量+字面量则是直接在编译时就完成了，不需要再堆里完成，所以他的地址不变，还是在串池里</p>
+<p>String s3 = &quot;abc&quot;+&quot;bcd&quot;;<br>
+String s4 = &quot;abc&quot;+&quot;bcd&quot;;</p>
+<p>System.out.println(s3 == s4);</p>
+<pre><code>
+##第三种情况：字符串用==比较和equals比较的区别
+● 两个字符串内容一样，用==比较不一定一样，有可能地址不一样
+  ○ 如果都指向常量池，那可以用==比较
+  ○ 但如果指向堆，就一定不能用==比较，因为他会比较地址，比较地址是没有意义
+  ○ 有时候无法断定字符串他是指向堆还是指向常量池，所以严禁用==比较字符串
+● 两个字符串内容一样，用equals比较，一定一样，因为比较字符串内容
+● 两个字符串内容一样，其哈希码一定一样，但不能用哈希码一样来判定字符串内容一样，因为存在哈希冲突
+● 综上，字符串的比较一定要用equals
+
+</code></pre>
+<p>public static void main(String[] args) {<br>
+// s1指向常量池<br>
+String s1 = &quot;abc&quot;;<br>
+// s2指向常量池<br>
+String s2 = &quot;abc&quot;;<br>
+s1 = s1 + &quot;123&quot;;<br>
+s2 = s2 + &quot;123&quot;;<br>
+// false (这里比较地址)<br>
+System.out.println(s1 == s2);<br>
+// true (String类重写了equals,不比较地址,改为比较字符内容)<br>
+System.out.println(s1.equals(s2));<br>
+// true (String类重写了hashCode)<br>
+System.out.println(s1.hashCode() == s2.hashCode());<br>
+}</p>
+<pre><code>## String源代码解析
++ 底层是char数组
++ 不可变
+
+
+</code></pre>
+<p>// private final char[] value;<br>
+// 1. 底层用于串池字符串的字符数组<br>
+// 2. 被修饰为private,对外不可见<br>
+// 3. 被修饰为final,不可变 (也解释了为什么每次拼接都要新建对象)<br>
+private final char value[];<br>
+// 存储哈希值<br>
+private int hash;</p>
+<pre><code>## String对象的构造
+String类是唯一支持在两个不同区域构造对象的类
+1. 在串池中构造 （为String类量身打造的区域， 字面量赋值都是用常量池构造）
+2. 在堆中构造 （重载了N种不同形式的构造函数）
+
+
+## 字符串的判空的问题
+### 如果只判断内容，只用.isEmpty，要报错，空指针异常
++ 即使判断空串，也得用equals，==那个空串在栈，前面new了个空串在堆，你可能就找不到，判断不了，或者导致判断出错
+
+</code></pre>
+<p>String str = null;<br>
+// 字符串的判空问题<br>
+if (str.isEmpty()) {</p>
+<p>}</p>
+<pre><code></code></pre>
+<p>String str = null;<br>
+// 字符串的判空问题<br>
+// 短路或, 可以让右边被短路<br>
+if (str == null || str.isEmpty()) {</p>
+<p>}</p>
+<pre><code>
+</code></pre>
+<p>String str = new String(&quot;&quot;);<br>
+// 字符串的判空问题<br>
+// 短路或, 可以让右边被短路<br>
+if (str == null || str.equals(&quot;&quot;)) {<br>
+System.out.println(&quot;str是空&quot;);<br>
+}else {<br>
+System.out.println(&quot;str不是空&quot;);<br>
+}</p>
+<pre><code>+ 用字面量去.equals(变量)，而不要用变量.equals(字面量)
+</code></pre>
+<p>if(str.equals(&quot;abc&quot;))  // 不建议, str有null指针隐患<br>
+if(&quot;abc&quot;.equals(str))  // 建议, 字面量&quot;abc&quot;一定不是null指针</p>
+<pre><code>
+## 字符串编码和解码
+getBytes()函数用于解码：他可以把字符串解码为字节数组
+同时String类有一个入参字节数组的构造函数，用于把字节数组编码为字符串
+</code></pre>
+<pre><code>    String str  =&quot;今晚一起回家&quot;;
+    byte[] bytes = str.getBytes();
+    System.out.println(bytes.length);
+    //解码
+    System.out.println(Arrays.toString(bytes));
+    //编码
+    System.out.println(new String(bytes));
+</code></pre>
+<pre><code>## 值传递和引用传递
+把变量a赋值给变量b（发生了值传递，变量a的值传递给了变量n），修改了变量b，变量a是否会变
++ 直接变量传递
++ 传参数
+
+### 基本类型传递
++ 主函数中那个的x传递给add函数的x，发生值传递，传递的是10这个值，但是主函数里的x还是10，add他自己改自己的x，传递的只是10这个值
++ add中修改x，不会影响到主函数的x
+
+</code></pre>
+<pre><code>public static void main(String[] args) {
+    int x = 10;
+会发现主函数的x依旧是10，而add函数里的x相当于另一个x了，add里面的x改成了11
+    add(x);
+    System.out.println(x);
+
+}
+static  void add(int x){
+    x = x+1;
+    System.out.println(x);
+}
+</code></pre>
+<pre><code>
++ 主函数中创建对象t，并把t传递给add函数，传递的是t的地址
++ add函数如果修改t，对主函数不会产生影响
++ add函数如果修改t.x，对主函数会有影响
+</code></pre>
+<p>public class Test {<br>
+int x =10;<br>
+//而这一段代码t.x涉及到了对象，修改了t.x,堆区里的t.x都改了<br>
+public static void main(String[] args) {<br>
+Test t = new Test();<br>
+t.x = 10;<br>
+add(t);<br>
+System.out.println(t.x);</p>
+<p>}<br>
+static void add(Test t){<br>
+t.x=t.x +1;<br>
+System.out.println(t.x);<br>
+}<br>
+}</p>
+<pre><code>*综上，Java只有值传递，没有引用传递，传引用的本质也是传递。*C#里有引用传递，但是C#大多用来做苹果平台的开发，在国内的话，我觉得没什么用
+**总结**：所以这里看重的是传递的是什么，改的什么，是指针，还是一个值，还是修改这个指针中的成员x。
+
+
+#### 面试题
+1. 如果在main函数中创建一个list，添加3个对象，传递list给另一个函数，另一个函数继续添加3个对象，对main中的函数中的list产生影响吗？请问面函数中的list里面有几个对象？
+
+有影响，6个，虽然变量不是一个变量，但是指针指向的是同一个对象   
+
+**追问**：如何让另一个函数对list的修改对main函数不产生影响？
+如下，在另一个函数中用关键字new创建一个新的list，用main函数传递过来的list作为入参
+这样在新的list中进行修改，对main函数中的list就不会产生影响了
+</code></pre>
+<pre><code>public static void main(String[] args) {
+    ArrayList&lt;String&gt; list = new ArrayList&lt;&gt;();
+    list.add(&quot;aaa&quot;);
+    list.add(&quot;bbb&quot;);
+    list.add(&quot;ccc&quot;);
+    System.out.println(list.size());
+    add(list);
+    System.out.println(list.size());
+
+}
+
+static void add(ArrayList&lt;String&gt; list){
+    //直接在list修改，包有影响的
+    //这样还是原来那样，已经赋值了三个了，再加3个就还是6个
+    list = new ArrayList&lt;&gt;(list);
+    //list = new ArrayList&lt;&gt;();这样改就是三个了
+    list.add(&quot;hhh&quot;);
+    list.add(&quot;jjj&quot;);
+    list.add(&quot;kkk&quot;);
+}
+</code></pre>
+<pre><code>
+2. 一个函数返回运算结果给另一个函数，除了用return还有别的方式吗？
+可以对象传参
+通过参数返回运算结果
+</code></pre>
+<pre><code>int x;
+int y;
+ int result;
+
+ public Test(int x, int y){
+     this.x = x;
+     this.y = y;
+
+ }
+
+
+public static void main(String[] args) {
+    Test t = new Test(10,20);
+    System.out.println(t.result);
+}
+
+static void add(Test t){
+     t.result = t.x + t.y;
+}
+</code></pre>
+<pre><code>## final关键字的作用
+1. 修饰类
+最终类，不可被继承
+2. 修饰方法，不可被子类重写
+最终方法，不可被子类重写
+3. 修饰变量
+常量，值不可变
+要注意到底什么不可以变，是指针自己不可以变，还是指针中的成员不可以变。看这个final修饰的是谁。
+</code></pre>
+<p>public class TestFinal {<br>
+int x;</p>
+<pre><code>public static void main(String[] args) {
+    final TestFinal t = new TestFinal();
+    //此时t被修饰成final了，x还可以改，但是t歇逼了，这个指针t不能new新的对象了
+    t.x=10;
+    t.x=20;
+    
+}
+</code></pre>
+<p>}</p>
+<pre><code></code></pre>
+<pre><code>public static void main(String[] args) {
+    //final使用arr指针不可变
+    final int[] arr={10,20,30};
+    //不影响修改数组中的元素
+    arr[1] = 200;
+    //arr不可以指向另一个数组
+</code></pre>
+<p>//        arr = new int[100];<br>
+//数组的长度是只读的，本身是final<br>
+}</p>
+<pre><code>
+**数组的长度是只读的**，**本身是final**.
+
+
+
+## 异常
+
+
+### Java官方异常类型图谱
+### 自己使用throw关键字抛出异常对象，携带异常信息
+● throw关键字用于抛出一个异常对象
+● throw后面跟的 new RuntimeException(&quot;未成年人禁止入内&quot;) 用于创建一个 RuntimeException类型的对象
+● 除了RuntimeException类型之外，Java还提供了许多类型可用于创建异常对象
+</code></pre>
+<p>public class Test {<br>
+public static void main(String[] args) {<br>
+foo(15);<br>
+}<br>
+static void foo (int age) {<br>
+if (age &lt; 18) {<br>
+throw new RuntimeException(&quot;未成年人禁止入内&quot;);<br>
+}<br>
+System.out.println(&quot;欢迎光临&quot;);<br>
+}<br>
+}</p>
+<pre><code>### OOM是什么
+OOM是OutOfMemoryError的简称，代表内存溢出，是JVM虚拟机的错误
+他的出现一定会导致程序奔溃
+</code></pre>
+<p>public class TestError {<br>
+public static void main(String[] args) {<br>
+String str = &quot;abc&quot;;<br>
+while (true) {<br>
+str += str;<br>
+}<br>
+}<br>
+}</p>
+<pre><code>
+1. 如果有任何一个函数抛出了一个异常，在主函数以内解决掉，都不会导致程序原地去世
+但如果主函数之内没有给出异常的解决，异常网上抛到了JVM虚拟机
+JVM虚拟机的态度就是原地去世。
+### 捕捉和处理异常
+try和catch起始就是if和else的关系，如果try中代码发生异常，则进行catch执行，如果try中代码不发生异常，则不会进入catch执行.
+
+
+
+</code></pre>
+<p>try {<br>
+// 尝试执行可能会出现异常的代码<br>
+} catch (Exception e) {<br>
+// 编写发生异常时执行的代码<br>
+}</p>
+<pre><code>
+### 函数如果不catch异常，可以用throws抛给上层
+
+
+### 捕捉到的异常对象有哪些功能
+
+
+
+
+# 设计模式
+23种设计方法论，前辈的智慧，为了规范，不必须
+
+## 单例模式
+
+单例模式指的是把类设计为单例类，（单例：类在运行期间有且只有一个对象）
+为了性能考虑
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</code></pre>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://linjunya.github.io/post/ha-xi-biao-zai-ci/">
+                  <h3 class="post-title">
+                    哈希表在此
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>

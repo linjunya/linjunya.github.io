@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>db-4 （5-25） | 林君需要温习</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://linjunya.github.io//favicon.ico?v=1723624590115">
+<link rel="stylesheet" href="https://linjunya.github.io//styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="db-4
+数据库索引
+
+什么是索引
+索引的作用
+怎么使用索引
+
+对一列或者多列的数据进行排序的数据结构
+是一个可以排序的数据结构
+索引是一个存储在磁盘空间上的文件数据
+索引是一个辅助工具（基本概念）
+目录（索引就是数据的目录或者检索辅助目录..." />
+    <meta name="keywords" content="数据库" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://linjunya.github.io/">
+        <img src="https://linjunya.github.io//images/avatar.png?v=1723624590115" class="site-logo">
+        <h1 class="site-title">林君需要温习</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      温故而知新
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://linjunya.github.io//atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">db-4 （5-25）</h2>
+            <div class="post-date">2024-05-25</div>
+            
+            <div class="post-content" v-pre>
+              <h1 id="db-4">db-4</h1>
+<h2 id="数据库索引">数据库索引</h2>
+<ol>
+<li>什么是索引</li>
+<li>索引的作用</li>
+<li>怎么使用索引</li>
+</ol>
+<p>对一列或者多列的数据进行排序的数据结构<br>
+是一个可以排序的数据结构<br>
+索引是一个存储在<strong>磁盘</strong>空间上的文件数据<br>
+索引是一个辅助工具（基本概念）<br>
+目录（索引就是数据的目录或者检索辅助目录）</p>
+<p>什么是目录？<br>
+什么情况下才有目录？篇幅大，篇幅长时候需要有目录，辅助翻阅（少的就不需要）<br>
+所以当数据量特别大的时候就需要有索引来辅助我们浏览数据</p>
+<p>目录是一本书上的实质文本，记录在书的文本里的。目录也需要我们手动维护，情况如下：</p>
+<ol>
+<li>需要手动设置 目录名，和跳转地址（即物理地址，即数据存储在具体的地址）</li>
+<li>手动增加，删除数据</li>
+</ol>
+<p>索引即目录存在的优缺点<br>
+<strong>优</strong></p>
+<ol>
+<li>可快速翻阅到某个章节，即数据存储的地方</li>
+<li>目录（索引）可以得到文章的故事线（数据的用处）<br>
+<strong>缺</strong></li>
+<li>目录的章节名称需要自己定义（索引的数据用处需要自己来定义）</li>
+<li>删减修改文章时，目录需要排序（修改数据时，索引需要排序）拿到的文章不连续（实际数据的地址不连续）</li>
+</ol>
+<p>索引作用<br>
+<strong>索引的结构</strong></p>
+<ul>
+<li>结构 分为两列，索引列，和地址列   K-V</li>
+<li>索引可以加快数据检索的速度，和全表扫描的速度</li>
+</ul>
+<p><em>数据检索</em>，<em>存储的机制是什么？</em><br>
+内存和外存<br>
+内存读写 快速，容易丢失数据<br>
+外存 磁盘，机械 老式 不易丢失，固态 快 易丢失 ，软盘，光碟<br>
+读写的基本单位 扇区，512bit<br>
+对于os来讲（os操作系统），4K 8个扇区，<br>
+对于innodb存储引擎 16K 32个扇区   可以改变，要满足2的n次方</p>
+<p>逻辑顺序<br>
+对于一张表的数据 设置一个主键id1~100<br>
+物理顺序</p>
+<p>顺序IO<br>
+数据在磁盘上，地址是连续的<br>
+随机IO<br>
+数据在磁盘上，地址随机分布</p>
+<p>预读   因一条数据太小，会将数据前后的数据全部都加载进来。</p>
+<p>随机IO的缺点</p>
+<p>全表扫描比较慢    类似：<br>
+select * from stu;</p>
+<p>公司的数据一般以万计，此时数据的读取就会非常慢。<br>
+而大数据则需要数十亿计算才能算大数据。<br>
+一般速度需要达到30-50ms 才好<br>
+家用计算机 一千万数据全表扫描，随机IO不使用索引，需要23s左右才能扫完，有索引则0.2s左右就能完成。</p>
+<p>看存储，要看存储介质，颗粒还是磁盘<br>
+看读写方式，磁盘：转速，颗粒：片</p>
+<p>索引的工作原理（加快检索速度）</p>
+<ol>
+<li>索引真实存在，索引存在于磁盘</li>
+<li>索引比较小</li>
+<li>索引 索引列（数据列） 地址列（数据在磁盘的地址）</li>
+<li>使用索引检索不使用全表扫描，直接进行区间扫描<br>
+走索引的区间扫描 id=3--》得到物理地址，扫到id=3就不向下扫，直接区间找数据了</li>
+<li>区间查询 比索引慢一点点</li>
+</ol>
+<p>索引谁来用？数据库系统自己来使用，查询优化器这个模块来使用。</p>
+<p><strong>索引的结构</strong><br>
+<em>优</em></p>
+<ol>
+<li>加快随机访问和全表扫描的速度</li>
+<li>加快表连接的速度<br>
+<em>缺</em></li>
+<li>存储在磁盘上 占据磁盘空间</li>
+<li>增删改 会影响索引</li>
+</ol>
+<p>eg.有一百万数据，name是索引列，要删除name中姓张的人（2w）怎么删除最快？</p>
+<p>索引适用于查询，不适用DML。</p>
+<p>索引的数据结构</p>
+<!-- 要学（C++ 数据结构以及算法 java)
+eg.递归算法，尾递归算法，排序算法，回溯算法，分治，广度优先，深度优先 -->
+<ol>
+<li>什么结构查询效率最快 数组 数组中哪一种检索方式最快？二分查找法 在一个有序数组中进行二分检索</li>
+</ol>
+<p>二分查找法的缺点<br>
+数组长度固定 千万数据就需要千万数组，对于内存承载的压力太大<br>
+不建议使用数组</p>
+<ol>
+<li>长度固定 在大数据下 存储压力大</li>
+<li>增删上，存储介质压力太大 空间复杂度</li>
+</ol>
+<p>第一种场景</p>
+<p>添加数据 并发 修改集</p>
+<ol>
+<li>磁盘中原有一千数据，想添加100数据</li>
+<li>在磁盘构建新的数组【1100】</li>
+<li>将原数组的1000复制到新数组</li>
+<li>将100数据 添加到新数组</li>
+<li>删除原数组</li>
+<li>数组还要要求地址是连续的</li>
+</ol>
+<p>第二种场景</p>
+<p><strong>链表</strong></p>
+<ol>
+<li>由值域，指针域组成</li>
+<li>做增删改，不会有额外的内存，但是查询性能较差</li>
+</ol>
+<p>第三种结构</p>
+<p><strong>树</strong><br>
+<em>二叉树</em><br>
+左指针和右指针</p>
+<ol>
+<li>比较二叉树，和根节点去比较 大的放右边，小的放左边</li>
+<li>斜树</li>
+<li>二叉平衡刮擦整改三个月<br>
+左子树的深度和右子树的深度差的绝对值小于等于1<br>
+<em>多路树</em><br>
+指针，路degree<br>
+值域，关键字<br>
+关键字+1=degree</li>
+</ol>
+<p>InnoDB 存储引擎一次获取到的数据单元page 也就是16k<br>
+一次IO获取的量也是16k=16*1024=16834bit字节<br>
+B tree</p>
+<ol>
+<li>每一个节点里的可以存多个关键字N</li>
+<li>每一个节点可以有的路树 组多是N+1 Degree</li>
+<li>不稳定的IO次数</li>
+</ol>
+<p>B+tree</p>
+<ol>
+<li>N=Degree</li>
+<li>每个节点只存索引的key 只存关键字 不存地址 不存value</li>
+<li>value 放在叶子节点上</li>
+<li>叶子节点是一个有序的链表</li>
+<li>IO稳定</li>
+<li>可以存更多数据</li>
+<li>扫库扫描更快<br>
+t-tree主存寻找技术<br>
+主存和内存<br>
+主存，线程内存，缓存</li>
+</ol>
+<p>hashIndex 哈希索引<br>
+InnoDB不支持，但可以创建</p>
+<ul>
+<li>哈希结构 数组+链表 只存在内存，不存在磁盘</li>
+<li>支持哈希类型索引一定是内存</li>
+<li>只支持等值查询</li>
+<li>索引列是int类型</li>
+<li>将索引列数据经过hash算法变成数字存入索引列</li>
+</ul>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://linjunya.github.io/tag/lYw4DqVrS/" class="tag">
+                    数据库
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://linjunya.github.io/post/db-35-19/">
+                  <h3 class="post-title">
+                    db-3（5-19）
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>

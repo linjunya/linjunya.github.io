@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>数据库编程 | 林君需要温习</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://linjunya.github.io//favicon.ico?v=1723624590115">
+<link rel="stylesheet" href="https://linjunya.github.io//styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="数据库编程
+jar包
+jar包是java字节码的一个归档文件，一种特殊的Java压缩包，通常把一个jar包称为一个库（Library）或者叫一个依赖（Dependency）。
+一方库：同一个公司，同一个项目中的库
+二方库：同一个公司，不同项..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://linjunya.github.io/">
+        <img src="https://linjunya.github.io//images/avatar.png?v=1723624590115" class="site-logo">
+        <h1 class="site-title">林君需要温习</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      温故而知新
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://linjunya.github.io//atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">数据库编程</h2>
+            <div class="post-date">2024-07-18</div>
+            
+            <div class="post-content" v-pre>
+              <h1 id="数据库编程">数据库编程</h1>
+<h2 id="jar包">jar包</h2>
+<p>jar包是java字节码的一个归档文件，一种特殊的Java压缩包，通常把一个jar包称为一个库（Library）或者叫一个依赖（Dependency）。</p>
+<p>一方库：同一个公司，同一个项目中的库<br>
+二方库：同一个公司，不同项目的库<br>
+三方库：不同公司，其他组织，第三方的，个人提供的库</p>
+<p>现在没进公司，只能用三方库，进了一个公司才有一方库。</p>
+<h2 id="安装数据库驱动包三方库">安装数据库驱动包（三方库）</h2>
+<p>数据库驱动包是各个数据库厂商提供的数据库编程的jar包</p>
+<h3 id="使用maven工具管理库的下载和安装">使用Maven工具管理库的下载和安装</h3>
+<h4 id="远程镜像服务器-本地仓库-项目之间的关系">远程镜像服务器、本地仓库、项目之间的关系</h4>
+<p>下载三方库是从远程镜像服务器里下载，<br>
+包含得有所有的库，本地仓库存储本地的库，开启项目前需要配置好settings.xml，<br>
+配置远程镜像服务器的地址，本地仓库路径/mavern-repo，哪个module需要用到这个库，<br>
+就在哪个module上配置下载，第三方库，下载过的库不需要第二次下载，但是需要通过配置，maven刷新使用</p>
+<h3 id="三方库的坐标系统">三方库的坐标系统</h3>
+<p>三方库的坐标用于在Maven系统中唯一确定一个库<br>
+坐标由3部分组成<br>
+<em>groupid</em>：组ID（公司的域名）<br>
+<em>artifactid</em>：工件ID（项目名）<br>
+<em>version</em>：版本</p>
+<h3 id="maven-search工具">maven-search工具</h3>
+<p>在插件市场可以安装maven-search方便配置安装第三方库，通过maven-search来搜索第三方库，<br>
+可以复制其地址，然后刷新maven可以完成安装</p>
+<h4 id="下载失败后">下载失败后</h4>
+<p>第三方库下载失败之后还是会存在快照，打开你的第三方库存储的地方删除就可以重新安装</p>
+<h2 id="数据库编程步骤">数据库编程步骤</h2>
+<h3 id="加载数据库驱动可缺省">加载数据库驱动（可缺省）</h3>
+<ul>
+<li>如果能过确保项目下有且只有这一个数据库的驱动包，加载驱动这一步可以缺省<br>
+为了检查我们是否成功安装了数据库的驱动包</li>
+<li>Class.forName()用于加载一个类，会自动执行类中的静态代码块</li>
+<li>com.mysql.jdbc.Driver是mysql-connector-java这个驱动包里面的一个类</li>
+</ul>
+<h4 id="通过加载这个类有2个作用">通过加载这个类有2个作用</h4>
+<ul>
+<li>检查有没有安装驱动包</li>
+<li>注册驱动（为了确定当前数据库的类型，使用不同的数据库需要加载不同的驱动包里面的驱动类）</li>
+<li>如果项目下只有一个数据库的驱动包，加载驱动这一步可以省略，它默认会加载这个唯一的驱动包里面的驱动类</li>
+<li>如果项目下有多个不同类型的数据库的去驱动包，那么需要手动指定加载那个驱动包</li>
+</ul>
+<pre><code>try {
+    Class.forName(&quot;com.mysql.jdbc.Driver&quot;);
+} catch (ClassNotFoundException e) {
+    System.out.println(&quot;驱动加载失败&quot;);
+}
+</code></pre>
+<h3 id="建立连接">建立连接</h3>
+<p><strong>提供3个连接信息</strong>（可字符串定义出来）</p>
+<ol>
+<li>url地址:协议+IP地址+端口地址+仓库名称+其他参数</li>
+<li>用户名：root</li>
+<li>密码：root</li>
+</ol>
+<p><strong>组成</strong></p>
+<ol>
+<li>协议部分（jdbc:mysql://）</li>
+<li>IP地址（localhost，本机回环地址127.0.0.1，在云服务器或者虚拟机里要写明确地址）</li>
+<li>端口地址（：3306）</li>
+<li>/test（/仓库名）</li>
+<li>参数部分（以？开始参数名=参数值 多组参数之间用&amp;拼接）</li>
+</ol>
+<pre><code>public static void main(String[] args) {
+    String url = &quot;jdbc:mysql://localhost:3306/test?useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=false&quot;;
+    String user = &quot;root&quot;;
+    String password = &quot;root&quot;;
+
+    try {
+        DriverManager.getConnection(url, user, password);
+        System.out.println(&quot;连接建立成功!&quot;);
+    } catch (SQLException e) {
+        System.out.println(&quot;连接建立失败!&quot;);
+        e.printStackTrace();
+    }
+}
+</code></pre>
+<h3 id="可能存在的问题">可能存在的问题</h3>
+<ol>
+<li>IP地址写错</li>
+<li>服务器（虚拟机）没开机</li>
+<li>数据库没有启动</li>
+<li>防火墙没关</li>
+<li>数据库不存在</li>
+<li>用户名密码写错</li>
+<li>有些用户需要加上时区才行</li>
+<li>保持连接不关闭连接占用到数据库报错”Too many Connections“</li>
+</ol>
+<h2 id="数据库服务器的连接信息查看">数据库服务器的连接信息查看</h2>
+<pre><code># 服务器支持的最大连接数
+SHOW VARIABLES LIKE 'max_connections';
+# 服务器当前正在使用的连接数
+SHOW STATUS LIKE 'Threads_connected';
+# 服务器当前正在使用的连接信息
+SHOW PROCESSLIST;
+</code></pre>
+<h2 id="在代码中手动关闭连接">在代码中手动关闭连接</h2>
+<ul>
+<li>关闭连接的代码必须写在finally块中</li>
+<li>try-catch 后面可以在跟一个finally块，finally的特点：无论是否发送异常，最后都会执行，finally代码块适合编写关闭资源的代码</li>
+<li>DriverManager.getConnection类型的指针接收这个对象，例如conn指针（这）</li>
+<li>如果conn指针定义在try里，则conn只对try代码块可见（变量的块级作用域）</li>
+<li>conn指针选哟定义在try代码块上，这样conn才能被try-catch-finally看见</li>
+</ul>
+<pre><code>
+public class JDBC01 {
+    public static void main(String[] args) {
+        String url = &quot;jdbc:mysql://localhost:3306/test?useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=false&quot;;
+        String user = &quot;root&quot;;
+        String password = &quot;root&quot;;
+        for (int i = 0; i &lt; 20000; i++) {
+            Connection conn = null;
+            try {
+                // 程序退出, 连接自动关闭
+                conn = DriverManager.getConnection(url, user, password);
+                System.out.println(&quot;连接建立成功!&quot;);
+            } catch (SQLException e) {
+                System.out.println(&quot;连接建立失败!&quot;);
+                e.printStackTrace();
+            } finally {
+                if (conn!= null) {
+                    try {
+                        conn.close();
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }
+        while (true) {}
+    }
+}
+
+
+</code></pre>
+<h1 id="sql语句分类">SQL语句分类</h1>
+<ol>
+<li>数据定义语言DDL  crearte、drop、alter</li>
+<li>数据操作语言DML  insert、upadate、delete</li>
+<li>数据查询语言DQL  select form where group order by</li>
+<li>事务控制语言TCL begin commit rollback</li>
+<li>权限控制语言DCL  grant revoke</li>
+</ol>
+<h2 id="用create命令创建一张表就是典型的ddl语句">用create命令创建一张表就是典型的DDL语句</h2>
+<pre><code>
+
+public static void main(String[] args) {
+    String url = &quot;jdbc:mysql://localhost:3306/test?useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=false&quot;;
+    String user = &quot;root&quot;;
+    String password = &quot;123456&quot;;
+    Connection conn = null;
+    try {
+        conn = DriverManager.getConnection(url, user, password);
+        System.out.println(&quot;连接建立成功!&quot;);
+        // 编写SQL语句
+        String sql = &quot;create table book (&quot; +
+        &quot;id int primary key auto_increment,&quot; +
+        &quot;name varchar(50) not null unique,&quot; +
+        &quot;author varchar(50),&quot; +
+        &quot;price decimal(10,2),&quot; +
+        &quot;create_date datetime default now()&quot; +
+        &quot;)&quot;;
+        // 创建执行对象 (用于发送sql语句到数据库服务器)
+        // 执行对象使用连接对象conn创建
+        // 类型Statement
+        Statement statement = conn.createStatement();
+        // 用执行对象调用execute函数,把sql作为参数传入
+        statement.execute(sql);
+        // 如果这个过程中没有出异常，可以认为执行成功
+        System.out.println(&quot;创建book表成功&quot;);
+    } catch (SQLException e) {
+        e.printStackTrace();
+    } finally {
+        if (conn!= null) {
+            try {
+                conn.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+}
+
+
+
+</code></pre>
+<h1 id="用jdbc连接数据库并执行dml语句">用JDBC连接数据库并执行DML语句</h1>
+<h2 id="执行insert-into插入">执行insert into插入</h2>
+<h3 id="插入一行">插入一行</h3>
+<pre><code>
+public static void main(String[] args) {
+    String url = &quot;jdbc:mysql://localhost:3306/test?useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=false&quot;;
+    String user = &quot;root&quot;;
+    String password = &quot;root&quot;;
+    Connection conn = null;
+    try {
+        conn = DriverManager.getConnection(url, user, password);
+        System.out.println(&quot;连接建立成功!&quot;);
+        // 编写SQL语句
+        String sql = &quot;insert into book (name,author,price) &quot; +
+                &quot;values('《三国演义》', '罗贯中', 66.6)&quot;;
+        // 创建执行对象 (用于发送sql语句到数据库服务器)
+        // 执行对象使用连接对象conn创建
+        // 类型Statement
+        Statement statement = conn.createStatement();
+        // 用执行对象调用executeUpdate函数,把sql作为参数传入
+        statement.executeUpdate(sql);
+        System.out.println(&quot;插入成功!&quot;);
+    } catch (SQLException e) {
+        e.printStackTrace();
+    } finally {
+        if (conn!= null) {
+            try {
+                conn.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+}
+
+
+</code></pre>
+<h3 id="插入一行并返回自增长id">插入一行并返回自增长id</h3>
+<pre><code>
+public static void main(String[] args) {
+    String url = &quot;jdbc:mysql://localhost:3306/test?useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=false&quot;;
+    String user = &quot;root&quot;;
+    String password = &quot;root&quot;;
+    Connection conn = null;
+    try {
+        conn = DriverManager.getConnection(url, user, password);
+        System.out.println(&quot;连接建立成功!&quot;);
+        // 编写SQL语句
+        String sql = &quot;insert into book (name,author,price) &quot; +
+                &quot;values('《三国演义》', '罗贯中', 66.6)&quot;;
+        // 创建执行对象 (用于发送sql语句到数据库服务器)
+        // 执行对象使用连接对象conn创建
+        // 类型Statement
+        Statement statement = conn.createStatement();
+        // 用执行对象调用executeUpdate函数,把sql作为参数传入
+        statement.executeUpdate(sql);
+        System.out.println(&quot;插入成功!&quot;);
+    } catch (SQLException e) {
+        e.printStackTrace();
+    } finally {
+        if (conn!= null) {
+            try {
+                conn.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+}
+
+</code></pre>
+<h3 id="一次插入多行">一次插入多行</h3>
+<pre><code>
+public static void main(String[] args) {
+    String url = &quot;jdbc:mysql://localhost:3306/test?useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=false&quot;;
+    String user = &quot;root&quot;;
+    String password = &quot;root&quot;;
+    Connection conn = null;
+    try {
+        conn = DriverManager.getConnection(url, user, password);
+        System.out.println(&quot;连接建立成功!&quot;);
+        // 编写SQL语句
+        String sql = &quot;insert into book (name,author,price) &quot; +
+                &quot;values('《红楼梦》', '曹雪芹', 88.8),&quot; +
+                &quot;('《天龙八部》', '金庸', 88.8),&quot; +
+                &quot;('《神雕侠侣》', '金庸', 88.8)&quot;;
+        // 创建执行对象 (用于发送sql语句到数据库服务器)
+        // 执行对象使用连接对象conn创建
+        // 类型Statement
+        Statement statement = conn.createStatement();
+        // 用执行对象调用executeUpdate函数,把sql作为参数传入
+        int rows = statement.executeUpdate(sql);
+        System.out.println(&quot;插入成功, 受影响行数:&quot; + rows);
+    } catch (SQLException e) {
+        e.printStackTrace();
+    } finally {
+        if (conn!= null) {
+            try {
+                conn.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+}
+
+</code></pre>
+<h2 id="执行update修改">执行update修改</h2>
+<pre><code>
+public static void main(String[] args) {
+    String url = &quot;jdbc:mysql://localhost:3306/test?useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=false&quot;;
+    String user = &quot;root&quot;;
+    String password = &quot;root&quot;;
+    Connection conn = null;
+    try {
+        conn = DriverManager.getConnection(url, user, password);
+        System.out.println(&quot;连接建立成功!&quot;);
+        // 编写SQL语句
+        String sql = &quot;update book set price = 188 where id = 1&quot;;
+        // 创建执行对象 (用于发送sql语句到数据库服务器)
+        // 执行对象使用连接对象conn创建
+        // 类型Statement
+        Statement statement = conn.createStatement();
+        // 用执行对象调用executeUpdate函数,把sql作为参数传入
+        int rows = statement.executeUpdate(sql);
+        System.out.println(&quot;修改成功, 受影响行数:&quot; + rows);
+    } catch (SQLException e) {
+        e.printStackTrace();
+    } finally {
+        if (conn!= null) {
+            try {
+                conn.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+}
+
+</code></pre>
+<h2 id="delete删除">delete删除</h2>
+<pre><code>public static void main(String[] args) {
+    String url = &quot;jdbc:mysql://localhost:3306/test?useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=false&quot;;
+    String user = &quot;root&quot;;
+    String password = &quot;root&quot;;
+    Connection conn = null;
+    try {
+        conn = DriverManager.getConnection(url, user, password);
+        System.out.println(&quot;连接建立成功!&quot;);
+        // 编写SQL语句
+        String sql = &quot;delete from book where id = 6&quot;;
+        // 创建执行对象 (用于发送sql语句到数据库服务器)
+        // 执行对象使用连接对象conn创建
+        // 类型Statement
+        Statement statement = conn.createStatement();
+        // 用执行对象调用executeUpdate函数,把sql作为参数传入
+        int rows = statement.executeUpdate(sql);
+        System.out.println(&quot;删除成功, 受影响行数:&quot; + rows);
+    } catch (SQLException e) {
+        e.printStackTrace();
+    } finally {
+        if (conn!= null) {
+            try {
+                conn.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+}
+
+</code></pre>
+<h1 id="用jdbc连接数据库并执行dml语句-2">用JDBC连接数据库并执行DML语句</h1>
+<h2 id="执行select">执行Select</h2>
+<pre><code>public static void main(String[] args) {
+    String url = &quot;jdbc:mysql://localhost:3306/test?useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=false&quot;;
+    String user = &quot;root&quot;;
+    String password = &quot;root&quot;;
+    Connection conn = null;
+    try {
+        conn = DriverManager.getConnection(url, user, password);
+        System.out.println(&quot;连接建立成功!&quot;);
+        // 编写SQL语句
+        String sql = &quot;select * from book&quot;;
+        // 创建执行对象 (用于发送sql语句到数据库服务器)
+        // 执行对象使用连接对象conn创建
+        // 类型Statement
+        Statement statement = conn.createStatement();
+        // 用执行对象调用executeQuery函数,把sql作为参数传入
+        ResultSet resultSet = statement.executeQuery(sql);
+        // 取结果集数据需要用到while循环, 循环一次移动指针指向结果集下一行, 没有下一行结束循环
+        while (resultSet.next()) {
+            // 用列表作为参数取值, 根据列的类型选择对应的get方法
+            // 并使用对应的Java类型接收取出的值
+            int id = resultSet.getInt(&quot;id&quot;);
+            String name = resultSet.getString(&quot;name&quot;);
+            String author = resultSet.getString(&quot;author&quot;);
+            BigDecimal price = resultSet.getBigDecimal(&quot;price&quot;);
+            String createDate = resultSet.getString(&quot;create_date&quot;);
+            System.out.println(id + &quot;\t&quot; + name + &quot;\t&quot; + author + &quot;\t&quot; + price + &quot;\t&quot; + createDate);
+        }
+    } catch (SQLException e) {
+        e.printStackTrace();
+    } finally {
+        if (conn!= null) {
+            try {
+                conn.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+}
+</code></pre>
+<h2 id="查询结果没有列名如何取值">查询结果没有列名，如何取值</h2>
+<ul>
+<li>可以用列的编号取值</li>
+<li>可以给列取别名，用别名取值</li>
+</ul>
+<pre><code>public static void main(String[] args) {
+    String url = &quot;jdbc:mysql://localhost:3306/test?useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=false&quot;;
+    String user = &quot;root&quot;;
+    String password = &quot;root&quot;;
+    Connection conn = null;
+    try {
+        conn = DriverManager.getConnection(url, user, password);
+        System.out.println(&quot;连接建立成功!&quot;);
+        // 编写SQL语句
+        String sql = &quot;select count(*),max(price),min(price) from book&quot;;
+        // 创建执行对象 (用于发送sql语句到数据库服务器)
+        // 执行对象使用连接对象conn创建
+        // 类型Statement
+        Statement statement = conn.createStatement();
+        // 用执行对象调用executeQuery函数,把sql作为参数传入
+        ResultSet resultSet = statement.executeQuery(sql);
+        // 如果可以确定结果集中最多只有1行，可以用if代替while
+        if (resultSet.next()) {
+            int count = resultSet.getInt(1);
+            BigDecimal maxPrice = resultSet.getBigDecimal(2);
+            BigDecimal minPrice = resultSet.getBigDecimal(3);
+            System.out.println(&quot;总行数:&quot; + count);
+            System.out.println(&quot;最高价格:&quot; + maxPrice);
+            System.out.println(&quot;最低价格:&quot; + minPrice);
+        }
+    } catch (SQLException e) {
+        e.printStackTrace();
+    } finally {
+        if (conn!= null) {
+            try {
+                conn.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+}
+</code></pre>
+<h1 id="执行对象的三种执行方法">执行对象的三种执行方法</h1>
+<h2 id="statement接口的使用">Statement接口的使用</h2>
+<p>Statement接口是Java Database Connectivity（JDBC）API中的一个关键组件，它<strong>提供了执行SQL语句的能力</strong>。Statement对象通常与数据库连接（Connection）相关联，通过调用Connection对象的createStatement()方法创建。<strong>Statement接口的主要用途是向数据库发送SQL语句，并处理返回的结果。</strong></p>
+<p>在使用Statement之前，需要先建立与数据库的连接。这通常涉及以下步骤：</p>
+<p>加载并注册JDBC驱动程序。<br>
+使用DriverManager获取数据库连接。<br>
+通过连接对象创建Statement对象。</p>
+<pre><code>Class.forName(&quot;com.mysql.jdbc.Driver&quot;);
+Connection conn = DriverManager.getConnection(&quot;jdbc:mysql://localhost:3306/数据库名&quot;, &quot;用户名&quot;, &quot;密码&quot;);
+Statement stmt = conn.createStatement();
+</code></pre>
+<!-- Class.forName("com.mysql.jdbc.Driver");
+这行代码的作用是加载MySQL数据库的JDBC驱动程序。Class.forName()方法会尝试加载指定的类，如果这个类在类路径中，JVM（Java虚拟机）就会加载这个类，并执行它的静态初始化代码。对于MySQL JDBC驱动来说，这行代码会注册MySQL驱动到DriverManager中，这样DriverManager就能知道如何使用这个驱动来建立数据库连接了。
+Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/数据库名", "用户名", "密码");
+这行代码用于建立到数据库的连接。DriverManager.getConnection()方法接受数据库的URL、用户名和密码作为参数，返回一个Connection对象，这个对象代表了与数据库的连接。
+"jdbc:mysql://localhost:3306/数据库名"是数据库的URL，其中jdbc:mysql://是JDBC协议，localhost是数据库服务器的地址（在这个例子中，数据库服务器运行在本地机器上），3306是MySQL服务器监听的端口号，数据库名是要连接的数据库的名称。
+Statement stmt = conn.createStatement();
+这行代码用于创建一个Statement对象，这个对象用于执行SQL语句。createStatement()方法是Connection对象的一个方法，它返回一个Statement对象，可以用来执行SQL语句，如查询、更新等 -->
+<h3 id="statement接口的执行方法">Statement接口的执行方法</h3>
+<p>在Java Database Connectivity (JDBC) API中，Statement接口提供了多种执行SQL语句的方法，主要包括**executeQuery()、executeUpdate()和execute()**三种。这些方法分别用于执行不同的SQL语句类型，并处理返回的不同结果。</p>
+<p><strong>executeQuery</strong>() 方法<br>
+executeQuery()方法用于执行返回单个ResultSet对象的SQL语句，通常是查询语句（SELECT）。执行后，该方法返回一个ResultSet对象，该对象包含了查询结果集中的所有行和列。开发者可以通过迭代ResultSet来访问查询结果。</p>
+<p><strong>executeUpdate</strong>() 方法<br>
+executeUpdate()方法用于执行可能影响多个行的SQL语句，如插入（INSERT）、更新（UPDATE）或删除（DELETE）语句，以及数据定义语言（DDL）语句，如创建（CREATE）或删除（DROP）表。此方法返回一个整数，表示受影响的行数。</p>
+<p><strong>execute</strong>() 方法<br>
+execute()方法是一个通用方法，它可以执行任何SQL语句。该方法返回一个布尔值，指示执行的结果是否为一个ResultSet对象。如果返回true，则可以使用getResultSet()方法获取结果集；如果返回false，则可以使用getUpdateCount()方法获取受影响的行数。这种方法适用于执行返回多个结果集或更新计数的语句，但因其复杂性，实际开发中较少使用。</p>
+<h4 id="eg">eg.</h4>
+<pre><code>//执行之前，先把statement对象建立起来，
+Statement statement = conn.createStatement();
+//执行DDL 用execute方法返回boolean类型
+boolean result = statement.execute(sql);
+//执行DML用executeUpdate方法返回int类型，代表受影响行数
+int rows = statement.executeUpdate(sql);
+//执行DQL用executeQuery方法返回ResultSet类型（代表结果集对象）
+
+</code></pre>
+<h1 id="statement对象存在安全隐患可用sql注入攻击">Statement对象存在安全隐患，可用SQL注入攻击</h1>
+<pre><code>String sql = &quot;delete from book where name = &quot; + name;
+</code></pre>
+<h2 id="sql攻击示例">sql攻击示例</h2>
+<pre><code>
+
+public static void main(String[] args) {
+    Scanner scanner = new Scanner(System.in);
+
+    String url = &quot;jdbc:mysql://localhost:3306/test?useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=false&quot;;
+    String user = &quot;root&quot;;
+    String password = &quot;root&quot;;
+    Connection conn = null;
+    try {
+        conn = DriverManager.getConnection(url, user, password);
+        System.out.println(&quot;连接建立成功!&quot;);
+        System.out.println(&quot;请输入要删除的图书名称:&quot;);
+        String name = scanner.next();
+        // 编写SQL语句
+        // delete from book where name = 三国演义;
+        String sql = &quot;delete from book where name = '&quot; + name + &quot;'&quot;;
+        System.out.println(sql);
+        // 创建执行对象 (用于发送sql语句到数据库服务器)
+        // 执行对象使用连接对象conn创建
+        // 类型Statement
+        Statement statement = conn.createStatement();
+        // 用执行对象调用executeUpdate函数,把sql作为参数传入
+        int rows = statement.executeUpdate(sql);
+        System.out.println(&quot;删除成功, 受影响行数:&quot; + rows);
+    } catch (SQLException e) {
+        e.printStackTrace();
+    } finally {
+        if (conn!= null) {
+            try {
+                conn.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+}
+
+
+</code></pre>
+<h2 id="sql注入攻击的原理">SQL注入攻击的原理</h2>
+<p><em>攻击者在输入的内容中，注入SQL片段，该SQL片段会被拼接到SQL语句中执行，使原本不成立的条件变成成立，从而达到攻击数据库的目的</em><br>
+String sql = &quot;delete from book where name = '&quot; + name + &quot;'&quot;;<br>
+//想想怎么让他报废,现在的情况就是左右两边各一个单引号，所以想要攻击，要让sql的右边和闭合，再使用sql里的’闭合右边，输入：任意字符串加一个‘，然后or再加‘1’=‘1<br>
+//比如smart' or '1'='1使得where name = 一个真值，返回为true</p>
+<p>其实就是让用户在输入的时候如果用了引号，可以影响sql语句的正常执行，这是本质上是程序的漏洞，没有考虑用户的使用</p>
+<h2 id="如何解决sql注入攻击的问题">如何解决SQL注入攻击的问题</h2>
+<ol>
+<li>拼接用户输入的数据的时候不使用拼接字符串的方式，改用?占位符的方式</li>
+<li>不使用Statement对象，改用PreparedStatement对象对SQL语句进行编译器</li>
+</ol>
+<h3 id="改动一下">改动一下</h3>
+<h4 id="sql语句改一下">SQL语句改一下</h4>
+<pre><code>//不用加号来拼接name输入
+String sql = &quot;delete from book where name ='”+ name +&quot;'&quot;;
+//预编译SQL语句，采用更好的执行对象类型，PreparedStatement
+PreparedStatement statement = conn.prepareStatement(sql);
+//调用statement指针中setObject方法选中“问号”（其实在这里作占位符使用）
+statement.setObject(1,name);
+//补充：statement.setObject(序号，要替换占位符？的变量)；
+
+//执行时，不用传参
+int rows = statement.executeUpdate();
+</code></pre>
+<h1 id="开事务执行保证数据的一致性">开事务执行：保证数据的一致性</h1>
+<h2 id="情景">情景</h2>
+<p>需求1：更新图书的库存，一次只更新1本书的库存（购物车里面只有1本书），此时不需要开事务更新<br>
+需求2：更新图书的库存，一次只更新&gt;1本书的库存（购物车里面只有多本书），此时必须开事务更新</p>
+<h2 id="开事务的目的">开事务的目的</h2>
+<p>事务内的所有更新，全部成功，才提交数据，有一个没成功，回滚数据，认为事务失败<br>
+要么同时成功，要么同时失败</p>
+<pre><code>public static void main(String[] args) {
+    String url = &quot;jdbc:mysql://localhost:3306/test?useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=false&quot;;
+    String user = &quot;root&quot;;
+    String password = &quot;root&quot;;
+    Connection conn = null;
+    try {
+        conn = DriverManager.getConnection(url, user, password);
+        // 关闭本次连接的自动提交 = 开启事务
+        conn.setAutoCommit(false);
+        System.out.println(&quot;连接建立成功!&quot;);
+        Statement statement = conn.createStatement();
+        String sql = &quot;update book set stock = stock - 1 where id = 7&quot;;
+        statement.executeUpdate(sql);
+        sql = &quot;update book set stock = stock - 1 where id = 8&quot;;
+        int i = 1/0; // 模拟程序异常
+        statement.executeUpdate(sql);
+        sql = &quot;update book set stock = stock - 1 where id = 9&quot;;
+        statement.executeUpdate(sql);
+        System.out.println(&quot;执行成功&quot;);
+        conn.commit();
+    } catch (Exception e) {
+        e.printStackTrace();
+        try {
+            conn.rollback();
+        } catch (SQLException ex) {
+            e.printStackTrace();
+        }
+    } finally {
+        if (conn!= null) {
+            try {
+                conn.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+}
+</code></pre>
+<h1 id="随机500万行数据学习索引优化">随机500万行数据学习索引优化</h1>
+<pre><code>public class JDBC10 {
+    public static void main(String[] args) {
+        String url = &quot;jdbc:mysql://localhost:3306/test?useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=false&quot;;
+        String user = &quot;root&quot;;
+        String password = &quot;root&quot;;
+        Connection conn = null;
+        try {
+            conn = DriverManager.getConnection(url, user, password);
+            String sql = &quot;insert into book (name,author,price,stock) values (?,?,?,?)&quot;;
+            PreparedStatement statement = conn.prepareStatement(sql);
+            for (int i = 0; i &lt; 5000000; i++) {
+                // 随机字符串作为书名
+                statement.setObject(1, randomString());
+                // 随机字符串作为作者
+                statement.setObject(2, randomString());
+                // 随机double作为价格
+                statement.setObject(3, randomDouble());
+                // 随机int作为库存
+                statement.setObject(4, randomInt());
+                int rows = statement.executeUpdate();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if (conn!= null) {
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+    
+    static Random random = new Random();
+    
+    static String randomString() {
+        int len = random.nextInt(5) + 5;
+        char[] data = new char[len];
+        for (int i = 0; i &lt; len; i++) {
+            data[i] = (char) (random.nextInt(26) + 65);
+        }
+        return new String(data);
+    }
+    
+    static Double randomDouble() {
+        return (random.nextInt(10000) + 1000) * 1.0 / 100;
+    }
+    
+    static int randomInt () {
+        return random.nextInt(1000) + 100;
+    }
+}
+
+</code></pre>
+<h1 id="使用索引优化查询">使用索引优化查询</h1>
+<h2 id="数据库">数据库</h2>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://linjunya.github.io/post/java-za-tan/">
+                  <h3 class="post-title">
+                    Java杂谈
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>

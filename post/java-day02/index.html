@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>Java Day02 | 林君需要温习</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://linjunya.github.io//favicon.ico?v=1723624590115">
+<link rel="stylesheet" href="https://linjunya.github.io//styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="函数的调用
+
+链式调用
+递归调用
+
+函数A-&gt;B-&gt;C（-&gt;表示调用）形成链式关系就叫链式调用
+A-&gt;A-&gt;A-&gt;A递归（不停循环调用自己）
+递归调用
+问题
+
+递归调用必须有return出口，否则最后会形..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://linjunya.github.io/">
+        <img src="https://linjunya.github.io//images/avatar.png?v=1723624590115" class="site-logo">
+        <h1 class="site-title">林君需要温习</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      温故而知新
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://linjunya.github.io//atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">Java Day02</h2>
+            <div class="post-date">2024-07-09</div>
+            
+            <div class="post-content" v-pre>
+              <h1 id="函数的调用">函数的调用</h1>
+<ol>
+<li>链式调用</li>
+<li>递归调用</li>
+</ol>
+<p>函数A-&gt;B-&gt;C（-&gt;表示调用）形成链式关系就叫链式调用<br>
+A-&gt;A-&gt;A-&gt;A递归（不停循环调用自己）</p>
+<h2 id="递归调用">递归调用</h2>
+<h3 id="问题">问题</h3>
+<ol>
+<li>递归调用必须有return出口，否则最后会形成死循环导致栈溢出（错误）</li>
+</ol>
+<h3 id="斐波纳契数列">斐波纳契数列</h3>
+<p>1，1，2，3，5，8，13，21，34，55，89</p>
+<p>输入n返回n对应数列中的数。<br>
+n=6,返回8.等</p>
+<pre><code>public class Demo28{
+
+public static void main(String [] args)  {
+	System.out.println(feibo(6));
+System.out.println(feibo(7));
+System.out.println(feibo(8));
+	
+}
+
+
+
+static int feibo (int n) {
+if(n==1|| n ==2){
+    return 1;
+}
+return feibo(n-1) +feibo(n-2);
+}
+}
+</code></pre>
+<h3 id="暴力查找">暴力查找</h3>
+<p>arr = {10个随机数}，查找数组中是否有88这个数字</p>
+<p>暴力查找 -实现方式是用循环进行遍历 + 比较</p>
+<p>写一个search函数<br>
+入参1： 数组int[] arr<br>
+入参2：要查找的值int target<br>
+返回:target在arr中的索引，如果target不存在，返回-1</p>
+<p>代码实现：</p>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://linjunya.github.io/post/java-0708/">
+                  <h3 class="post-title">
+                    Java Day01
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>

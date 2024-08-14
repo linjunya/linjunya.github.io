@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>cloud-2 | 林君需要温习</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://linjunya.github.io//favicon.ico?v=1723624590115">
+<link rel="stylesheet" href="https://linjunya.github.io//styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="判断是否是邻居
+子网掩码要告诉你才能判断，
+192.168.13.4
+255.255.252.0
+前两位不变的，名字是什么也不重要，所以我们开始看第三位。
+00001101
+11111100
+名全0的这个地址，是网络地址，也就是网络号
+最小..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://linjunya.github.io/">
+        <img src="https://linjunya.github.io//images/avatar.png?v=1723624590115" class="site-logo">
+        <h1 class="site-title">林君需要温习</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      温故而知新
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://linjunya.github.io//atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">cloud-2</h2>
+            <div class="post-date">2024-07-30</div>
+            
+            <div class="post-content" v-pre>
+              <h1 id="判断是否是邻居">判断是否是邻居</h1>
+<p>子网掩码要告诉你才能判断，<br>
+192.168.13.4<br>
+255.255.252.0<br>
+前两位不变的，名字是什么也不重要，所以我们开始看第三位。<br>
+00001101<br>
+11111100</p>
+<p>名全0的这个地址，是网络地址，也就是网络号<br>
+最小最大地址，任何情况都要会计算。</p>
+<p>A:192.168.19.4/255.255.252.0<br>
+B:192.168.19.200/255.255.255.192<br>
+C:192.168.19.200/255.255.255.224<br>
+D:192.168.19.150/255.255.255.128</p>
+<p>A:            00010011     16.0~19.255<br>
+11111100</p>
+<p>B:             00010011     11001000          19.192~19.255<br>
+11111111     11000000</p>
+<p>C:             00010011                                19.192~19.223</p>
+<p>D:19.128~19.255</p>
+<p>名全0表示网络号，村庄名<br>
+名全1表示广播号，是这个村庄的广播地址。</p>
+<p>192.168.12.4/255.255.252.0<br>
+192.168.00001100.00000100<br>
+255.255.11111100.00000000<br>
+192.168.00001100.01000000,<br>
+192.168.00001100.10000000<br>
+192.168.00001100.11000000<br>
+去头掐尾加网关，-3，只有255-3=252个地址可以用</p>
+<p>OSI7层结构要会，但一般企业会用TCP/IP四层的，<br>
+不然效率慢得一笔。</p>
+<p>每一层不是信封，就是信件，应用层就是要写的信（一般都是密文）</p>
+<p>DHCP服务（动态主机管理协议），为计算机注册并更新ip地址（连接WiFi时，就是这个在获取ip）<br>
+只在连接WiFi时候被唤醒，给一个广播，问哪个能给我一个ip。<br>
+第一次一般会拿到地址最小的，但这个过程实际上是随机的，就像斗地主随机抽了一张牌的感觉，第二次他可能记住你，给你之前给过你的地址。没给别人就给你。<br>
+动态分配地址，导致每次地址不一样，服务器一定要用静态的，不好记你地址，也可能被别人给你地址抢了，台式机几百年都在这儿，也要用静态地址（不然容易损失网速），只有移动设备用动态没什么叼事儿，台式机要用7类网线。这样你才能一个人用200M。带宽要够才行。<br>
+Dynamic Host Control Protocol。<br>
+网关，村长，是你的邮递员，不然你上不了网,要村长帮你转达才行</p>
+<p>心跳轮询，DHCP给你发请求，问你还活着吗，如果没有，他收回地址。</p>
+<ol>
+<li>广播问有没有人给地址</li>
+<li>几个服务器给你地址</li>
+<li>你选择地址，选哪个offer</li>
+<li>对方收到你的request的，地址归你了</li>
+</ol>
+<p>光猫，调制和解调器，<br>
+网关仅仅是路由器的一个网卡，路由器不仅仅是网关。</p>
+<p>判断是广播？是组播吗？是我吗？else扔掉</p>
+<p>icmp ping包<br>
+arp广播，代理服务器</p>
+<p>ipconfig看ip<br>
+ping对方ip，arp -a看对方物理地址，arp -d删除物理地址（需要管理员权限）<br>
+ping的时候会有一个村长，就是网络号。<br>
+224开头的是组播地址，静态的是，先天就有的</p>
+<p>arp的记忆有时效的，2min，不刷新，不操作就自动删了<br>
+传输层<br>
+链路层<br>
+应用层</p>
+<p>路由器，扮演导航仪，有导航表格，可以寻找怎么去李家村。（知道对方的路由器地址）<br>
+消息传递是一站一站前进（路由器互相是邻居）。后面的路，邮递员不知道，送到邮政中心就不知道了。<br>
+但生活中，不会有路由器发广播找物理地址，因为只有第一次不知道地址，后来知道了就不用广播返地址，然后一直有人用网就不会有arp记忆删除。<br>
+dport sport  目的端口就是你的意图。<br>
+dip     sip<br>
+dmac smac<br>
+1025以后作为本地端口，访问百度，开俩页面，源端口是不一样，只是目的端口是一样的。<br>
+9s内报文回来，还可以回应，9秒之后映射表胁逼了，回应也没有用。<br>
+https：//超文本传输协议<br>
+操作系统不</p>
+<p>端口 IP mac 地址<br>
+网络访问 访问邻居，非邻居，</p>
+<p>dhcp作用，arp作用 知道ip地址不知道mac地址，用这个广播来找物理地址</p>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://linjunya.github.io/post/ji-suan-ji-wang-luo/">
+                  <h3 class="post-title">
+                    计算机网络
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>

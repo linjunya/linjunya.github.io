@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>哈希表在此 | 林君需要温习</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://linjunya.github.io//favicon.ico?v=1723624590115">
+<link rel="stylesheet" href="https://linjunya.github.io//styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="#子类是否在继承时替换父类泛型
+子类继承父类时，子类不替换父类的泛型，此时子类也是泛型类
+public class MyArrayList&lt;E&gt; extends ArrayList&lt;E&gt; {
+
+}
+
+MyArrayL..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://linjunya.github.io/">
+        <img src="https://linjunya.github.io//images/avatar.png?v=1723624590115" class="site-logo">
+        <h1 class="site-title">林君需要温习</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      温故而知新
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://linjunya.github.io//atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">哈希表在此</h2>
+            <div class="post-date">2024-07-15</div>
+            
+            <div class="post-content" v-pre>
+              <p>#子类是否在继承时替换父类泛型</p>
+<h2 id="子类继承父类时子类不替换父类的泛型此时子类也是泛型类">子类继承父类时，子类不替换父类的泛型，此时子类也是泛型类</h2>
+<pre><code>public class MyArrayList&lt;E&gt; extends ArrayList&lt;E&gt; {
+
+}
+
+MyArrayList&lt;ExamResult&gt; list = new MyArrayList&lt;&gt;();
+</code></pre>
+<h2 id="子类继承父类时直接替换掉父类的泛型此时子类不再是泛型类子类不再支持泛型">子类继承父类时，直接替换掉父类的泛型，此时子类不再是泛型类，子类不再支持泛型</h2>
+<pre><code>// 此处子类类名右边不写&lt;E&gt;泛型
+// 父类类名右边写&lt;明确类型&gt;替换掉&lt;E&gt;
+public class ExamResultArrayList extends ArrayList&lt;ExamResult&gt; {
+    
+}
+</code></pre>
+<pre><code>// 此时使用子类创建对象, 不再需要指定泛型 (在继承时指定了)
+ExamResultArrayList examResultArrayList = new ExamResultArrayList();
+</code></pre>
+<h1 id="为什么要重写equals函数的问题">为什么要重写equals函数的问题</h1>
+<h2 id="equals函数是谁的">equals函数是谁的</h2>
+<p>equals函数是Object类中的，Object是所有的类的顶层父类，任何类都可以从Object类继承到这个函数</p>
+<pre><code>// 用于比较当前对象this == 入参的另一个对象obj
+public boolean equals(Object obj) {
+    return (this == obj);
+}
+</code></pre>
+<h2 id="比较什么">== 比较什么？</h2>
+<p><em>如果是基本类型用<mark>比较变量的数值。<br>
+如果是对象用</mark>比较地址（两个new就有两个地址）</em><br>
+<strong>注</strong>：此时两个对象就算各个数值都一样，==比较的时候依旧会false。</p>
+<ul>
+<li>变量是基本类型，值是一个直接量，用直接量比较</li>
+<li>变量是引用类型，值是一个内存地址（也就是指针），用地址比较</li>
+</ul>
+<pre><code>public static void main(String[] args) {
+    int x = 10;
+    int y = 10;
+    System.out.println(x == y);
+    
+    ExamResult examResult1 = new ExamResult(1,88.0, &quot;张飞&quot; );
+    ExamResult examResult2 = new ExamResult(1,88.0, &quot;张飞&quot; );
+    // 即使两个对象的指针指向的对象中的成员中存储的数据是一样的
+    // 但是两个指针用 == 比较的结果是false
+    // 因为每次使用关键字new创建的对象都是新的对象, 内存地址是不一样的
+    System.out.println(examResult1 == examResult2);
+}
+</code></pre>
+<h1 id="indexof函数查询对象是否已存在的时间复杂度">indexOf函数查询对象是否已存在的时间复杂度</h1>
+<p>这个indexOf函数用于返回被查询的对象o在数组elementData中的索引<br>
+每次查找都需要遍历0-size，时间复杂度是O(N)，性能比较差</p>
+<pre><code>public int indexOf(Object o) {
+    // 如果o是null, 用==进行比较
+    if (o == null) {
+        for (int i = 0; i &lt; size; i++)
+            if (elementData[i]==null)
+                return i;
+    // 如果o不是null, 用equals进行比较
+    } else {
+        for (int i = 0; i &lt; size; i++)
+            if (o.equals(elementData[i]))
+                return i;
+    }
+    return -1;
+}
+</code></pre>
+<h1 id="哈希算法">哈希算法</h1>
+<p>同一个数据（可以是字符串，数字，对象），使用这个算法，计算n次，返回的结果（一定是int数字）是一样的，<br>
+不同的数据，用这个算法计算，返回的结果是不一样的，<br>
+这个算法就可以看作是哈希算法。</p>
+<h2 id="官方实现哈希算法">官方实现哈希算法</h2>
+<p>在Object类中，可以被任何类继承。</p>
+<ul>
+<li>可以在Object类的源码中找到这个hashCode函数</li>
+<li>这里只能看到函数名是hashCode，返回类型是int，看不到函数的具体实现过程（无大括号函数体）</li>
+<li>我们之前讲过一种没有大括号函数体的特殊函数，是抽象函数，但这里的hashCode函数不是抽象函数</li>
+<li>我们可以看到这个函数使用了一个新的修饰符native，所有官方源码中用native修饰的函数，成为本地函数或者原生函数，不是没有过程，是过程用C或者C++实现。</li>
+</ul>
+<h2 id="哈希表">哈希表</h2>
+<p>官方给出了一个哈希表的实现：HashMap</p>
+<pre><code>// &lt;K,V&gt; 是HashMap类的两个泛型, 说明这个类中有2个未知类型
+public class HashMap&lt;K,V&gt; extends ... implements ... {
+
+}
+
+</code></pre>
+<p>哈希表是二维结构，数组是第一维度，链表是第二维度，数组只有1个，链表可以有N个。</p>
+<h3 id="哈希表的成员变量">哈希表的成员变量</h3>
+<h3 id="哈希表的内部节点类node源码分析">哈希表的内部节点类Node源码分析</h3>
+<ul>
+<li>节点对象由4个成员组成</li>
+<li>与LinkedList的节点相比，少一个prev指针，说明这个Node只能链接单向链表</li>
+<li>节点中可以存储2个对象，第一个对象名为key，类型是K，第一个对象名为value，类型是V</li>
+<li>节点中还可以存储一个hash值</li>
+</ul>
+<pre><code>static class Node&lt;K,V&gt; implements Map.Entry&lt;K,V&gt; {
+    final int hash;
+    final K key;
+    V value;
+    Node&lt;K,V&gt; next;
+}
+</code></pre>
+<h3 id="哈希表的put函数的执行流程">哈希表的put函数的执行流程</h3>
+<pre><code>    //哈希表回根据对象key实现对象value的去重和覆盖
+    如果希望根据学号去重，那么key的类型应该是Integer
+    如果希望根据姓名去重，那么key的类型应该是String
+    如果希望根据学号+科目去重，那么key的类型应该是自定义类，而这个类包含学号+科目
+public V put(K key,V value){
+    return putVal(hash(Key), key, value,false,true);
+}
+
+//在调用putVal之前，先调用了hash(key)
+//如果对象keu=null，返回0，否则返回key.Code() 异或 key.hashCode &gt;&gt;&gt; 16位
+
+
+</code></pre>
+<h3 id="二次哈希">二次哈希</h3>
+<p>HashMap在使用key1的哈希码计算索引之前，对哈希码进行了二次哈希，官方说是“扰动”，使用哈希码的16低位预期自身16高位做异或运算，可以增加哈希码散列分布的随机性。</p>
+<h3 id="哈希冲突碰撞也行">哈希冲突（碰撞也行）</h3>
+<p>因为int是一个有限的范围，所有哈希码难免会有冲突的情况<br>
+两个不同的值，通过hashCode函数运算出同一个哈希码，就成为发生“哈希冲突”<br>
+哈希码碰撞，是极小概率事件，因为int的范围其实挺大，所以遇到数据规模很大的才容易遇到冲突</p>
+<h3 id="索引冲突碰撞也行">索引冲突（碰撞也行）</h3>
+<ul>
+<li>哈希表不能直接用哈希码当作索引，这回造成空间浪费</li>
+<li>所以官方用的是i = (n-1) &amp; hash，这样运算后，可以保证索引一定在当前数组长度n的范围内，此时俩不同哈希码，可能通过此运算后，冲突在同一索引上，称为“索引冲突”，哈希表使用“拉链法”解决这个冲突。</li>
+</ul>
+<p><em>拉链法</em>： 以槽位中第一个节点作为头部节点，拉开一张连败哦，来组织冲突在同一个槽位上的节点</p>
+<h3 id="哈希表的底层数组的初始化">哈希表的底层数组的初始化</h3>
+<pre><code>// 默认的无参构造函数, 没有指定初始容量, 使用了默认的负载因子0.75
+HashMap&lt;String, String&gt; hashMap1 = new HashMap&lt;&gt;();
+// 指定初始容量, 使用了默认的负载因子0.75
+HashMap&lt;String, String&gt; hashMap2 = new HashMap&lt;&gt;(100);
+// 指定初始容量, 并指定负载因子=0.5
+HashMap&lt;String, String&gt; hashMap3 = new HashMap&lt;&gt;(100, 0.5F);
+</code></pre>
+<p>构造函数中有没有看到初始化table数组的过程,只是初始化了容量<br>
+有没有 table = new Node[初始长度];</p>
+<h3 id="为什么一定要保证数组容量是2的n次方">为什么一定要保证数组容量是2的N次方</h3>
+<p>底层有一个他TableSizeFor函数，能够&gt;=返回任意一个数组最小的2的N次方<br>
+保证哈希表的容量一定是2的N次方<br>
+保证（n-1)&amp;hash的结果一定在n的范围内</p>
+<pre><code>static final int tableSizeFor(int cap) {
+    int n = cap - 1;
+    n |= n &gt;&gt;&gt; 1;
+    n |= n &gt;&gt;&gt; 2;
+    n |= n &gt;&gt;&gt; 4;
+    n |= n &gt;&gt;&gt; 8;
+    n |= n &gt;&gt;&gt; 16;
+    return (n &lt; 0) ? 1 : (n &gt;= MAXIMUM_CAPACITY) ? MAXIMUM_CAPACITY : n + 1;
+}
+</code></pre>
+<h3 id="哈希表的put函数的流程">哈希表的put函数的流程</h3>
+<figure data-type="image" tabindex="1"><img src="https://cdn.nlark.com/yuque/0/2024/png/21501967/1721026671117-3e45e59b-d96b-46e7-8fbb-95bc731b89c2.png?x-oss-process=image%2Fformat%2Cwebp%2Fresize%2Cw_937%2Climit_0" alt="" loading="lazy"></figure>
+<h3 id="哈希表的底层数组的扩容机制">哈希表的底层数组的扩容机制</h3>
+<p>哈希表有一个扩容的阈值</p>
+<pre><code>if (++size &gt; threshold)
+    resize();
+    ```
+
+
+这里threshold是扩容的阈值，++size是节点个数计数器+1，resize()是扩容函数
+    threshold = 数组容量 * 负载因子
+
+如果创建哈希表不指定数组容量，默认初始容量是16
+如果创建哈希表指，但不是2的幂次方定数组容量，默认初始容量向上的2的幂次方
+每次扩容都是扩2倍 （ArrayList每次扩容1.5倍）
+扩容后会根据(n-1)&amp;hash从新计算每个节点的索引，并调整节点的散列位置，在这过程中，也有可能会发生树退化为链表
+
+### 哈希表中的链表进化为红黑树，红黑树退化为链表
+JDK1.8以前，哈希表只使用了链表来解决冲突，没有引入红黑树，红黑树是在JDK1.8之后引入到哈希表里面的
+哈希表中有两个静态常量，分支设置了链表进化为红黑树，红黑树退化为链表的阈值
+链表是时间换空间的结构
+红黑树是空间换时间的结构
+为了不造成频繁的进化和退化，因此进化和退化的阈值是不一样的
+
+
+</code></pre>
+<p>static final int TREEIFY_THRESHOLD = 8;</p>
+<p>static final int UNTREEIFY_THRESHOLD = 6;</p>
+<pre><code>
+
+![](https://cdn.nlark.com/yuque/0/2024/png/21501967/1721029002774-0f701e0b-8d9a-43cb-8f05-af2c60d460a6.png?x-oss-process=image%2Fformat%2Cwebp%2Fresize%2Cw_576%2Climit_0)
+### 哈希表保证key唯一性的原理
+
+
+# 哈希表的总结
++ 哈希表这种数据结构也称为“字典”结构
++ Key是唯一的，插入重复的Key直接赋给Value
++ 增删改查的性能无限接近O(1)
++ 需要key的唯一，且查询性能高的数据结构首选哈希表
+
+
+
+
+
+
+
+
+
+
+
+
+
+</code></pre>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://linjunya.github.io/post/ji-he-rong-qi/">
+                  <h3 class="post-title">
+                    集合容器
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>

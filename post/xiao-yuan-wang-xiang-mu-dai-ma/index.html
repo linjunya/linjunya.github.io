@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>校园网项目代码 | 林君需要温习</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://linjunya.github.io//favicon.ico?v=1723624590115">
+<link rel="stylesheet" href="https://linjunya.github.io//styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="inside outside 漏斗代码
+Router(config)# interface GigabitEthernet0/1  # 假设这是内部接口
+Router(config-if)# ip nat inside
+Router(con..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://linjunya.github.io/">
+        <img src="https://linjunya.github.io//images/avatar.png?v=1723624590115" class="site-logo">
+        <h1 class="site-title">林君需要温习</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      温故而知新
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://linjunya.github.io//atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">校园网项目代码</h2>
+            <div class="post-date">2024-08-06</div>
+            
+            <div class="post-content" v-pre>
+              <h1 id="inside-outside-漏斗代码">inside outside 漏斗代码</h1>
+<p>Router(config)# interface GigabitEthernet0/1  # 假设这是内部接口<br>
+Router(config-if)# ip nat inside<br>
+Router(config)# interface GigabitEthernet0/0  # 假设这是外部接口<br>
+Router(config-if)# ip nat outside</p>
+<p>Router(config)# access-list 10 permit 192.168.1.0 0.0.0.255  # 允许192.168.1.0/24网段的流量</p>
+<p>Router(config)# ip nat pool NAT_POOL 203.0.113.1 203.0.113.10 netmask 255.255.255.0<br>
+Router(config)# ip nat inside source list 10 pool NAT_POOL</p>
+<p>Router(config)# ip nat inside source list 10 interface GigabitEthernet0/0 overload</p>
+<p>Router(config)# ip nat inside source static tcp 192.168.1.10 80 203.0.113.1 8080</p>
+<p>Router(config)# ip route 0.0.0.0 0.0.0.0 203.0.113.1  # 默认路由指向外部网关</p>
+<h2 id="示例扩展acl以拒绝来自特定ip的流量">示例：扩展ACL以拒绝来自特定IP的流量</h2>
+<p>Router(config)# access-list 101 deny   ip host 1.2.3.4 any<br>
+Router(config)# access-list 101 permit ip any any<br>
+Router(config)# interface GigabitEthernet0/0<br>
+Router(config-if)# ip access-group 101 in</p>
+<h1 id="dns服务器的设置">dns服务器的设置</h1>
+<h1 id="dhcp动态分配">dhcp动态分配</h1>
+<h1 id="单臂trunk">单臂trunk</h1>
+<h1 id="重启">重启</h1>
+<p>reload</p>
+<h1 id="ospf">ospf</h1>
+<p>router ospf 进程编号（随意）<br>
+network 192.168.1.0 0.0.0.255 area 1<br>
+router id 192.168.1.1 把第一个占为id<br>
+do show ip ospf neighbro</p>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://linjunya.github.io/post/shu-ju-tong-xin/">
+                  <h3 class="post-title">
+                    数据通信
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>

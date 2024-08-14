@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>网络相关的面试题 | 林君需要温习</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://linjunya.github.io//favicon.ico?v=1723624590115">
+<link rel="stylesheet" href="https://linjunya.github.io//styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="网络
+物理地址几个字节？
+6个字节
+ipv4地址和物理地址分别多少字节
+4个字节 6个字节
+ip地址姓名分界
+子网掩码
+ipv4 ，a类地址特征
+在IP地址的四段号码中，第一段号码为网络号码，剩下的三段号码为本地计算机的号码。
+范围，
+二进..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://linjunya.github.io/">
+        <img src="https://linjunya.github.io//images/avatar.png?v=1723624590115" class="site-logo">
+        <h1 class="site-title">林君需要温习</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      温故而知新
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://linjunya.github.io//atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">网络相关的面试题</h2>
+            <div class="post-date">2024-08-06</div>
+            
+            <div class="post-content" v-pre>
+              <h1 id="网络">网络</h1>
+<h2 id="物理地址几个字节">物理地址几个字节？</h2>
+<p>6个字节</p>
+<h2 id="ipv4地址和物理地址分别多少字节">ipv4地址和物理地址分别多少字节</h2>
+<p>4个字节 6个字节</p>
+<h2 id="ip地址姓名分界">ip地址姓名分界</h2>
+<p>子网掩码</p>
+<h2 id="ipv4-a类地址特征">ipv4 ，a类地址特征</h2>
+<p>在IP地址的四段号码中，第一段号码为网络号码，剩下的三段号码为本地计算机的号码。<br>
+范围，<br>
+二进制特征<br>
+B类10，<br>
+C类110</p>
+<h2 id="交叉线的线序">交叉线的线序</h2>
+<p>13，26交叉</p>
+<h2 id="双工和半双工有什么区别">双工和半双工有什么区别</h2>
+<p>半双工，对讲机<br>
+全双工，电话</p>
+<h2 id="带宽和网速的区别">带宽和网速的区别</h2>
+<p>网速x带宽=下载速度（吞吐量）</p>
+<h2 id="19216832和19216827子网掩码23位是邻居">192.168.3.2和192.168.2.7，子网掩码23位，是邻居</h2>
+<h2 id="村庄的范围是多少32-27">村庄的范围是多少？3.2   2.7</h2>
+<p>192.168.2.0-192.168.3.255</p>
+<h2 id="什么场合电脑通信需要发给网关">什么场合，电脑通信需要发给网关</h2>
+<p>访问外网，通过网关，作邮递员，帮你们访问。</p>
+<h2 id="访问邻居报文里应该有什么">访问邻居，报文里应该有什么</h2>
+<p>目标ip 目标mac 自己的mac，arp呼喊，找到邻居的mac</p>
+<h2 id="arp记忆老化时间-2min">arp记忆（老化）时间 2min</h2>
+<h2 id="怎么获得动态地址">怎么获得动态地址</h2>
+<p>dhcp协议</p>
+<h2 id="动态地址获取不了怎么排查问题">动态地址获取不了，怎么排查问题</h2>
+<ol>
+<li>电脑先发广播，请求地址，检查路由器是否配置，配置之后，必须存盘，电脑中服务是否开启</li>
+<li>看dhcp客户端</li>
+</ol>
+<h2 id="哪些地方获取域名对应的ip地址">哪些地方获取域名对应的ip地址</h2>
+<p>dns 本地域名<br>
+劫持域名 本地域名可以干</p>
+<h2 id="vlan中access-trunk的区别">vlan中access trunk的区别。</h2>
+<p>Access模式：<br>
+当Access接口从主机上收到一个不带VLAN标签的数据帧时，交换机会给这个帧加上一个与PVID（端口VLAN ID）一致的VLAN标签。<br>
+当Access接口要发送一个带VLAN标签的数据帧给主机时，交换机会检查该帧的VLAN ID是否与自己的PVID相同。若相同，则去掉VLAN标签后发送数据帧；若不同，则直接丢弃该数据帧。<br>
+Trunk模式：<br>
+在Trunk模式下，数据帧在传输过程中始终带有VLAN标签，以便目标设备能够识别数据帧所属的VLAN。<br>
+Trunk端口上的数据帧可以来自多个VLAN，因此它们必须被正确地打上VLAN标签以进行区分和转发。</p>
+<h2 id="mac地址表有几个字段">mac地址表有几个字段</h2>
+<p>也叫二层转发表，3，vlan编号，mac地址，在哪个端口学到的。</p>
+<h2 id="三层的路由表中有哪些字段">三层的路由表中有哪些字段</h2>
+<ol>
+<li>网络号</li>
+<li>掩码</li>
+<li>下一跳的接口/地址</li>
+</ol>
+<h2 id="nat技术用来干嘛">nat技术用来干嘛</h2>
+<ol>
+<li>ipv4地址的复用</li>
+<li>地址替换，源ip替换成公网ip</li>
+</ol>
+<h2 id="rip路由协议">rip路由协议</h2>
+<p>基于谣言的协议</p>
+<h2 id="ospf协议">ospf协议</h2>
+<p>基于链路状态的协议</p>
+<h2 id="为什么用思科公用的好转">为什么用思科，公用的，好转。</h2>
+<h2 id="做过什么项目一个简易的校园网的拓扑">做过什么项目，一个简易的校园网的拓扑</h2>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://linjunya.github.io/post/xiao-yuan-wang-xiang-mu-dai-ma/">
+                  <h3 class="post-title">
+                    校园网项目代码
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>

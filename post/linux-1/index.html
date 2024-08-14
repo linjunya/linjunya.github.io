@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>linux -1 | 林君需要温习</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://linjunya.github.io//favicon.ico?v=1723624590115">
+<link rel="stylesheet" href="https://linjunya.github.io//styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="linux
+机械硬盘的结构
+数字信号精准，模拟信号不精准，但方便长距离传播。
+调制  数字--》模拟
+解调 模拟--》数字
+cpu1字节对齐，磁盘扇区512字节对齐。
+磁盘不能拆，不能蒙尘，磁盘再转，就会损坏。
+开机不能乱抖动，也会伤磁盘
+..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://linjunya.github.io/">
+        <img src="https://linjunya.github.io//images/avatar.png?v=1723624590115" class="site-logo">
+        <h1 class="site-title">林君需要温习</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      温故而知新
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://linjunya.github.io//atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">linux -1</h2>
+            <div class="post-date">2024-08-06</div>
+            
+            <div class="post-content" v-pre>
+              <h1 id="linux">linux</h1>
+<h2 id="机械硬盘的结构">机械硬盘的结构</h2>
+<p>数字信号精准，模拟信号不精准，但方便长距离传播。<br>
+调制  数字--》模拟<br>
+解调 模拟--》数字<br>
+cpu1字节对齐，磁盘扇区512字节对齐。<br>
+磁盘不能拆，不能蒙尘，磁盘再转，就会损坏。</p>
+<p>开机不能乱抖动，也会伤磁盘<br>
+读8个扇区，再翻译<br>
+最小读取单位，8个扇区。4k对齐<br>
+文件存储结构，必须是4k的整数倍。<br>
+颗粒度</p>
+<p>磁盘的簇<br>
+最小4k</p>
+<p>格式化，就是摆放文件系统。</p>
+<p>文件系统</p>
+<p>前序后序，运算</p>
+<p>/主分区   30G<br>
+/home 用户分区 剩下所有都分给他<br>
+swap 交互分区  512M<br>
+虚拟内存 工作原理<br>
+用磁盘存储，认为暂时不需要的东西。然后调用内存去存新的，不单纯是存储，经历了一次写。<br>
+/boot引导分区256M  让计算机启动的过程中找到操作系统<br>
+bios 检查硬件 ，寻找操作系统的入口，</p>
+<p>动态服务器，找近的，安排游戏服务器。</p>
+<p>休眠前，先用虚拟内存存储数据，然后开始，关闭内存，cpu等。</p>
+<h1 id="加密">加密</h1>
+<p>md5加密不可逆，保存账号信息时候使用。<br>
+现在qq做的<br>
+所以现在不能找回，只能重置，通过上传到服务器，用另一端密文来覆盖。</p>
+<h2 id="非对称式加密算法">非对称式加密算法</h2>
+<ol>
+<li></li>
+</ol>
+<h1 id="指令">指令</h1>
+<h2 id="系统管理">系统管理</h2>
+<ul>
+<li>帮助</li>
+<li>历史</li>
+<li>开关机</li>
+<li>挂起</li>
+</ul>
+<p>shutdown -r 重启<br>
+shutdown -now 现在关机<br>
+reboot 重启<br>
+init[0-6]0 关机</p>
+<ol>
+<li>重启成单人模式 （一个登录，其他就不能登录）配置环境时候用。</li>
+<li>保留</li>
+<li>默认启动（多人模式）本地终端有6个，还可以再远程连接cpu有多强，你就可以登多少</li>
+<li>保留</li>
+<li>若安装图形界面，默认启动就启动图形界面</li>
+<li>重启</li>
+</ol>
+<h3 id="注销和登录">注销和登录</h3>
+<ol>
+<li>bios对硬件自检</li>
+<li>boot引导操作系统入口启动</li>
+<li>core加载成功（1-3内核流程）</li>
+<li>用户登录</li>
+<li>看到windows的desktop</li>
+</ol>
+<p>注销 logout<br>
+登录  login<br>
+在终端软件，使用都是注销，在linux上都是重新登录<br>
+switch user 可以不注销，进行登录</p>
+<h2 id="历史执行命令">历史执行命令</h2>
+<p>history</p>
+<h2 id="文件系统指令">文件系统指令</h2>
+<ul>
+<li>
+<p>进入目录</p>
+</li>
+<li>
+<p>创建文件，文件夹</p>
+</li>
+<li>
+<p>拷贝文件或目录，剪切，看文件，看目录</p>
+</li>
+<li>
+<p>编辑文件</p>
+<h2 id="账号管理">账号管理</h2>
+<ul>
+<li>新增账号</li>
+<li>删除账号</li>
+<li>修改账号</li>
+</ul>
+</li>
+</ul>
+<h2 id="权限管理">权限管理</h2>
+<p>权限分布，配置权限，配置文件拥有者，文职文案金的基础权限</p>
+<h2 id="进程管理">进程管理</h2>
+<p>查看，查找，杀死进程</p>
+<h2 id="磁盘管理">磁盘管理</h2>
+<p>查看磁盘分区情况，分区，格式化</p>
+<h2 id="内存管理">内存管理</h2>
+<p>查看内存使用情况</p>
+<h2 id="输入输出配置重定向管道运算">输入输出配置，重定向，管道运算</h2>
+<h2 id="文件系统挂载">文件系统挂载</h2>
+<h2 id="等">等</h2>
+<ul>
+<li>定时任务</li>
+<li>软件安装  标准和yum安装，以及yum的本地安装</li>
+<li>远程下载</li>
+<li>压缩和解压缩</li>
+<li>防火墙</li>
+</ul>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://linjunya.github.io/post/wang-luo-xiang-guan-de-mian-shi-ti/">
+                  <h3 class="post-title">
+                    网络相关的面试题
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>

@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>db-4 05-25 afternoon | 林君需要温习</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://linjunya.github.io//favicon.ico?v=1723624590115">
+<link rel="stylesheet" href="https://linjunya.github.io//styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="afternoon
+索引的种类
+
+普通索引
+
+所有构建在非主键字段列的索引都是普通索引
+2. 唯一索引
+唯一索引具有唯一性，索引必须是唯一的且不能为null
+3. 全文索引
+优化模糊查询的
+大文本的模糊匹配检索
+主键跟索引的关系
+
+因为索引..." />
+    <meta name="keywords" content="数据库" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://linjunya.github.io/">
+        <img src="https://linjunya.github.io//images/avatar.png?v=1723624590115" class="site-logo">
+        <h1 class="site-title">林君需要温习</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      温故而知新
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://linjunya.github.io//atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">db-4 05-25 afternoon</h2>
+            <div class="post-date">2024-05-25</div>
+            
+            <div class="post-content" v-pre>
+              <h1 id="afternoon">afternoon</h1>
+<h2 id="索引的种类">索引的种类</h2>
+<ol>
+<li>普通索引</li>
+</ol>
+<p>所有构建在非主键字段列的索引都是普通索引<br>
+2. 唯一索引</p>
+<p>唯一索引具有唯一性，索引必须是唯一的且不能为null<br>
+3. 全文索引</p>
+<p>优化模糊查询的<br>
+大文本的模糊匹配检索</p>
+<p><strong>主键跟索引的关系</strong></p>
+<ol>
+<li>因为索引定义在主键列 叫做聚簇索引</li>
+<li>我们一般声明了主键就会自动构建一个聚簇索引</li>
+<li>如果没有声明主键 会选择一个唯一索引作为聚簇索引</li>
+<li>如果也没有符合要求的聚簇索引 那么会创建个6字节的row_id作为聚簇索引</li>
+</ol>
+<p>只有聚簇索引的value才是数据的地址<br>
+所有定义在非主键的索引 都是非聚簇索引 也叫二级索引 也是辅助索引<br>
+1， 非聚簇索引的value是主键值</p>
+<p>有一种现象 就是我们遍历一颗非聚簇索引 无法完全获得所有的查询列</p>
+<p>1， index（name)select id，name,age from student where id =1002;<br>
+2. 此时 我们一颗B+Tree的遍历只能获得name id 无法获得age所以我们需要age还要遍历一次主键id的b+tree 那么我们遍历了两次b+tree<br>
+3. 这种现象就叫做回表查询</p>
+<p>还有第二种现象 就是我们遍历一次B+tree就可以获得所有的查询列 不需要再回表了</p>
+<ol>
+<li>index（name）select id,name from student where name=&quot;小明&quot;；</li>
+<li>我们是可以避免回表查询</li>
+<li>这种现象就是覆盖索引</li>
+</ol>
+<h2 id="索引应该如何使用">索引应该如何使用</h2>
+<p><strong>建立索引</strong></p>
+<ol>
+<li>
+<p>首先，索引并不是越多越好</p>
+</li>
+<li>
+<p>在合适的字段上建立索引</p>
+<ul>
+<li>频繁查询的字段</li>
+<li>where后面的条件字段</li>
+<li>外键字段</li>
+<li>有序的字段列上建立索引</li>
+<li>在离散度比较高的字段列建立索引（反而言之，就是重复度比较低的字段列）</li>
+</ul>
+</li>
+<li>
+<p>建立联合索引代替单列索引（遵循索引的最左匹配）</p>
+</li>
+</ol>
+<h2 id="索引怎么维护-何时失效">索引怎么维护 何时失效</h2>
+<ol>
+<li>select * 会失效 遇见 星号之后就会直接全表扫描</li>
+<li>隐式数据类型转换 字符串不加引号</li>
+<li>对索引列使用函数 或者算数运算</li>
+<li>模糊查询的前模糊查询会失效，后模糊不会失效</li>
+<li>负向查询 not in not like not exists</li>
+</ol>
+<p>数据库优化</p>
+<ol>
+<li>搭建集群（一主多从） 配置读写分离 主服务器用来写 从服务器用来读</li>
+<li>提供缓存中间件 避免或者减少磁盘的IO</li>
+<li>花钱升级配置</li>
+<li>MySQL--》Oracle</li>
+</ol>
+<!-- java多线程注意 -->
+<!-- 数据库的锁注意一下 -->
+<h2 id="什么是事务">什么是事务</h2>
+<ul>
+<li>是数据库操作的最小逻辑单元</li>
+<li>一条或者一组sql组成的一个不可分割的整体</li>
+</ul>
+<h2 id="为什么需要事务">为什么需要事务</h2>
+<ul>
+<li>数据安全--》数据的一致性</li>
+<li>数据库事务特点</li>
+</ul>
+<ol>
+<li>
+<p>A 原子性 <strong>不可再分割就是原子性</strong> undo log</p>
+</li>
+<li>
+<p>C 一致性 要么全部执行成功 要么全不执行rollback ，回滚回退版本，类似撤销的感觉<br>
+如果在执行过程中因为一些原因导致 执行失败或者异常那么回到事务开始之前的状态<br>
+double write<br>
+<strong>事务更新前后的数据状态是一致的</strong></p>
+</li>
+<li>
+<p>I 隔离性 事务之间互不干扰<br>
+只隔离事务，不隔离数据。数据之间互不隔离</p>
+</li>
+<li>
+<p>D 持久性<br>
+数据一旦提交，对于数据库的影响是持久的redolog</p>
+</li>
+</ol>
+<h2 id="事务的三个并发问题">事务的三个并发问题</h2>
+<ul>
+<li>
+<p>出现在事务的并发操作下 并发 DML</p>
+</li>
+<li>
+<p>脏读</p>
+</li>
+<li>
+<p>不可重复读</p>
+</li>
+<li>
+<p>幻读</p>
+</li>
+</ul>
+<p>脏读：T1更新了一条数据 T2读取了这个更新但是<strong>没有提交</strong>的数据T1 <strong>回滚</strong>了 所以T2<strong>读</strong>到的数据和磁盘数据不一致<br>
+不可重复读：事务1先读一条数据 事务2把这条数据更新了 如何提交、事务1再次读取 发现跟第一次数据不一样。<br>
+幻读 多条数据 添加</p>
+<h2 id="事务的四种隔离级别">事务的四种隔离级别</h2>
+<ol>
+<li>读未提交<br>
+事务可以读取到没有提交的数据</li>
+<li>读已提交<br>
+事务只能读取已经提交的数据</li>
+<li>可重复读<br>
+在一个事务中 后两次读取的数据内容是一样的</li>
+<li>串行化<br>
+事务是依次执行</li>
+</ol>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://linjunya.github.io/tag/lYw4DqVrS/" class="tag">
+                    数据库
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://linjunya.github.io/post/db-4-5-25/">
+                  <h3 class="post-title">
+                    db-4 （5-25）
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>

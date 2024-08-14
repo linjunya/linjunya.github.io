@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>db-3（5-19） | 林君需要温习</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://linjunya.github.io//favicon.ico?v=1723624590115">
+<link rel="stylesheet" href="https://linjunya.github.io//styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="db-3
+
+讲了一上午作业（第一套）那个文档就是
+hw1.sql是讲解内容
+
+13：42
+
+对分组之后的结果做判断就用having
+对分组之前的结果做判断就用where
+
+（主要看筛选对象）
+但是分组之后不能用where
+15：35
+
+sq..." />
+    <meta name="keywords" content="数据库" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://linjunya.github.io/">
+        <img src="https://linjunya.github.io//images/avatar.png?v=1723624590115" class="site-logo">
+        <h1 class="site-title">林君需要温习</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      温故而知新
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://linjunya.github.io//atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">db-3（5-19）</h2>
+            <div class="post-date">2024-05-19</div>
+            
+            <div class="post-content" v-pre>
+              <h1 id="db-3">db-3</h1>
+<ol>
+<li>讲了一上午作业（第一套）那个文档就是</li>
+<li>hw1.sql是讲解内容</li>
+</ol>
+<h2 id="1342">13：42</h2>
+<ol>
+<li>对分组之后的结果做判断就用having</li>
+<li>对分组之前的结果做判断就用where</li>
+</ol>
+<p>（主要看筛选对象）<br>
+但是分组之后不能用where</p>
+<h2 id="1535">15：35</h2>
+<ul>
+<li>sql执行原理</li>
+<li>持久化的数据在哪</li>
+<li>存储的过程是谁来决定的 （存储引擎）</li>
+</ul>
+<h3 id="mysql-服务端-服务">Mysql 服务端 服务</h3>
+<p>net start mysql 开启mysql服务</p>
+<p>navicat是客户端工具</p>
+<p>sqlyoung datagrip之列都叫做客户端工具</p>
+<h4 id="流程">流程</h4>
+<ol>
+<li>先建立客户端与服务端的连接</li>
+</ol>
+<p>分为<strong>长连接</strong>与<strong>短连接</strong></p>
+<p>长连接一般8h</p>
+<ol start="2">
+<li>Mysql数据存储在磁盘上  需要通过IO获取数据</li>
+</ol>
+<p>所有磁盘的读写都会建立一个缓冲区 缓存</p>
+<p>在读写执行没有完成的时候，磁盘的数据都在缓冲区里存放</p>
+<ol start="3">
+<li>查看一下缓冲区里有没有我需要的数据</li>
+</ol>
+<p>使用场景： 查询缓存 query——cache<br>
+必须是连续执行两次的查询语句 才能使用查询缓存<br>
+5.7版本关闭了查询缓存<br>
+8.0就直接删除了<br>
+改用外部的缓存中间件redis</p>
+<ol start="4">
+<li>我们写的语句需要是sql语句</li>
+</ol>
+<p>首先要先保证结构<br>
+我们需要用一个解析器来检查sql的语法是否正确<br>
+先检查单词是否正确，关键字是否正确<br>
+将sql变成解析树，查看语法格式是否正确</p>
+<p>需要再次解析<br>
+检查表，字段，是否存在<br>
+完善上面的解析树</p>
+<p>给定一个执行计划</p>
+<p>执行计划会有多种，指定一个标准来执行，要遵循最小开销原则<br>
+查询优化器的作用根据已有条件，基于最小开销原则，给定一个执行计划</p>
+<p>执行引擎（explain）来执行计划</p>
+<p>执行引擎执行计划时，我们就是IO数据了</p>
+<ul>
+<li>数据在磁盘上以什么方式存储？ 文件 后缀名--》文本格式 .txt .md .c .py</li>
+</ul>
+<p>存储引擎觉得存储数据写入格式</p>
+<h5 id="存储引擎有哪些">存储引擎有哪些</h5>
+<p>可以用c语言自己写一个存储引擎</p>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://linjunya.github.io/tag/lYw4DqVrS/" class="tag">
+                    数据库
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://linjunya.github.io/post/db-2/">
+                  <h3 class="post-title">
+                    db-2
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+
+  </body>
+</html>
